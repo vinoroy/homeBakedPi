@@ -1,0 +1,47 @@
+SPECIFICATIONS
+
+
+Navigation bar structure of the app
+
+ - Environmental (drop down)
+        - Summary report - see page type 1
+        - Detailed reports (drop down)
+            - node 1
+            - node 2
+            - node n
+            - one per node - see page type 2
+         - Threshold settings
+
+ - Occupency (drop down)
+        - Summary report - see page type 3
+        - Detailed reports (drop down)
+            - node 1
+            - node 2
+            - node n
+            - one per node - see page type 4
+ - Intrusion
+ - Controls
+
+
+Page type 1 - Summary environmental sensors report :
+
+    For each node produce a table of :
+
+    - Inst ID
+    - Inst type
+    - Value
+    - Date
+    - Unit
+    - Graf
+
+Page type 2 - Detailed environmental report for one sensor :
+
+    For the selected instrument produce :
+
+    - a graf measurement vs date (default last 24 hours)
+    - a date and measurement table (default last 24 hours)
+
+    include hyperlinks for «week» and «month»
+
+
+

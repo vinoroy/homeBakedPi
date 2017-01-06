@@ -1,0 +1,29 @@
+STICKY NOTES
+------------
+
+#the flask app is at the following path
+/home/www/flask_project
+
+#must start the guicorn service ... this must be done from the directory where the app is located
+sudo gunicorn app:app -b localhost:8000
+
+# if gunicorn is already running must stop
+sudo pkill gunicorn
+
+
+# identify all process
+sudo fuser -v 80/tcp
+
+
+# start and restart nginx
+sudo /etc/init.d/nginx start
+
+
+# to use the deploy script
+bash deploy.sh
+
+# to run flask on dev box use vitrualenvwrapper hbp
+
+
+
+

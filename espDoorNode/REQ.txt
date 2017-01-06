@@ -1,0 +1,18 @@
+Title : Door monitoring
+
+Goal : Develop the hardware and software architecture to monitor door opening events in the home
+
+Requirements :
+
+ - detect the opening of a door
+ - send the data about the event over the home wifi network
+ - register events in the homeBakedPi system
+
+ Architecture :
+
+ - a magnetic (reed) switch will be used to sense if the door is opened or closed ;
+ - an esp8266 module will be used to monitor the door opening event. The event data will be sent over the wifi home network ;
+ - data messages will be received (POST) by a Flask REST API, which will intern register the parameters of the event with the homeBakedPi system ;
+
+
+

@@ -1,0 +1,15 @@
+TODO LIST
+---------
+
+version 0.0.X
+-------------
+- order the parts
+- assemble the hardware
+- program the switch detection with a led indicator
+
+
+version 0.0.1
+-------------
++ create git repo
++ create REQ and ARCH docs
++ identify the parts

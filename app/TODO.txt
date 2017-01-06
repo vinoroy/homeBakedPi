@@ -1,0 +1,953 @@
+TO DO
+-----
+
+Important note :
+
+ - Version 0.3.2 represents a more drastic change in the code with the introduction 
+   of the hub of nodes, hence to go back to single node code base we must back up 
+   to version 0.3.1 or 0.2.2
+
+ - Version 0.4 represents an architecure change. The homebakedpi web app will not longer be hosted on a remote host.
+   The web app in 0.4will be hosted on the hub and will also act as a web app server.
+
+ - Version 0.7 present another architecture change. The following is a list of the changes to the architecture and the infrastructure :
+        1)  No hardware and software dependencies to the hub (ie serial communication between nodes and the hub, hard software links to actuators).
+                - Communication between hub and the nodes will be done over wifi using a web api.
+                - Selected actuators will need to be also activated over wifi via a web api (ie Insteon)
+
+        2)  Prod DB will be copied from the dev DB with no data and a script will be created to reload the prod data. All time stamped data will
+            be lost in the process
+
+        3)  The dev and the prod will be setup on identical servers.
+
+        4)  All development will be done directly to the dev server over ssh
+
+
+Current version :
+
+version 0.7.+
+
+left off : cleaning the comments --> homeBakedPi
+
+P1
+ - build the documentation with sphinx
+ + add command line tool to homeBakedPi
+ + add the occp sensors in the hub factory
+ + add tests for occp sensors on the network
+ + add the occupation motion detection
+ + remove the upload column in the sensor tables
+ + add  column for the date string in the sensor tables
+ + update the auto uml script
+ + clean code comments
+ + cleaning the comments, test names and standardizing the names of the mock sensors in the test suite
+ + build the api for inserting sensor value as a result of an event
+ + add to the env sensors the specifc classes for other esp node type sensors (humidity, light, etc)
+ + test on the dev machine
+ + test the code on raspberry pi with the mock esp node
+ + clean up the test database (we should have just one database)
+ + add to sensor methods for sending a ulr request
+ + add to the env sensors the specifc classes for esp temp node type sensors
+ + remove all of the arduino sensors and associated unit tests
+ + remove the serial com
+ + remove the wemo actuator and associated unit tests
+ + remove pi web camera and pi camera
+ + remove all old sensors in the hubFactory
+ + cleanup code test code
+
+P2
+
+ - develop the event queue task treatment module
+ - the scheduling function of the actuators should be put in a separate class to be used by all
+
+
+P3
+ - change instID for sensorID (this is a deep one .. it even touches the db)
+ - generalize comm util email agent so that it can connect to any smtp servers
+
+
+
+Past versions :
+
+version 0.1
+ + clean repo
+ + mock all of the instrument types
+ + develop unit tests for all modules of the project
+ + clean up the project modules documentation
+ + put all unit tests in the unitest framework
+
+
+version 0.1.3
+ + add an association between the sensor and the container node during init to 
+   handle node event notification
+ + added the serialCommUtil
+ > start to add some type checking for nodeStruct
+ > add eventPool to nodeStruct
+ >> add the threshold verification and handling
+ - add the inturpt handling capabilities
+
+version 0.1.4
+ + established a communication protocol for the arduino
+ + programmed the arduino with respect to the communication protocol
+ + added the serialCommUtil and the associated test
+ > started to add the an RFID sensor to the Sensor module
+ > start to add some type checking for nodeStruct
+ > add eventPool to nodeStruct
+ >> add the threshold verification and handling
+ - add the inturpt handling capabilities
+
+version 0.1.5
+ + added the an RFID sensor to the Sensor module
+ + added a serialComm object to the node
+ + deactivated the pickling process of node in the upDate method since it attempts to save the node object with a serial object and a serial object is not pickleable
+ > add eventPool to nodeStruct
+ > add the threshold verification and handling
+ > start to add some type checking for nodeStruct
+ - the loop in Node should be an object with start and stop methods. A way to set different scan frequecies
+ - add the inturpt handling capabilities for PIR. This will be used to trigger the camera
+ - must add a way to get a sensor from the sensor list in node based on the id
+
+version 0.1.6
+ + modified Node for unit test deactivation of serial comm object
+ + changed nodeStuct module to nodeElements
+ + removed the startNode and upDateNode.py files
+ >> add eventPool to nodeStruct and event hanlding
+ > add the threshold verification and handling to RFID and Temp
+ - modify node loop to contain differnt frequency loops
+ - add a node id number for serial communication
+ - identify a way to produce UML diagram without the system modules
+ - add the inturpt handling capabilities for PIR. This will be used to trigger the camera
+ - must add a way to get a sensor from the sensor list in node based on the id
+
+version 0.1.7
+ + seperated tests into ON and OFF line test suites
+         - ONNetwork OFFNetwork
+         - ONGPIO OFFGPIO
+         - ONSerial OFFSerial
+ + combined a main function for the OFF and ON test modules
+ >> add eventPool to nodeStruct and event hanlding
+ >> add the threshold verification and handling to RFID and Temp
+ - make the event handling a seperate class
+ - modify node loop to contain differnt frequency loops
+ - add a node id number for serial communication
+ - identify a way to produce UML diagram without the system modules
+ - add the inturpt handling capabilities for PIR. This will be used to trigger the camera
+ - must add a way to get a sensor from the sensor list in node based on the id
+
+version 0.1.8
+ + changed the Node creation for test cases where the serial comm is needed
+ + make the event handling a seperate class
+ + create / modify the tests for the event queue object
+ + must modify the calls in the other objects to the node event pool
+ + identified a way to produce UML diagram without the serial modules (must comment out the serial object)
+ + add eventPool to nodeStruct and event hanlding
+ >> add the threshold verification and handling to RFID
+ - add test cases
+ - modify node loop to contain differnt frequency loops
+ - add a node id number in the messages for serial communication
+ - add the inturpt handling capabilities for PIR. This will be used to trigger the camera
+ - must add a way to get a sensor from the sensor list in node based on the id
+
+version 0.1.9
+ + must add a way to get a sensor from the sensor list in node based on the id
+ + added node loop to contain low and high freq loop
+ + added a method to set the high and low feq loops
+ + modified the name of upDateNode to lowFreqUpDate
+ >> add the threshold verification and handling to RFID
+ >> add test cases (so far tests have been added to nodeElements and eventQueue)
+ - add a node id number in the messages for serial communication
+ - add the inturpt handling capabilities for PIR. This will be used to trigger the camera
+
+version 0.2.0
+ + add a mock RFID sensor for testing purposes
+ + added a temperature mesurement to the arduino code
+ + added a arduino temperature mesurement to the sensor class
+ + added store result in sqlite database 
+        + need to generalize the call to storeReading for temp
+        + need to add unit test to the storeReading for temp
+        + need to add tables for camera and RFID and unit tests 
+ >> add the threshold verification and handling to RFID
+ >> add test cases (so far tests have been added to nodeElements and eventQueue)
+ - add humidity (40 to 90) and atmospheric pressure (90-105) to the sensor
+ - loop frequency and actions 
+ - add a node id number in the messages for serial communication
+ - add the inturpt handling capabilities for PIR. This will be used to trigger the camera
+
+
+version 0.2.2
+ > add the LDR sensor (need towork on the tests)
+ - add the ssh log in info in TODO.txt
+ - add humidity (40 to 90) and atmospheric pressure (90-105) to the sensor module
+ + add the xbee communication to the hub and to the arduino
+ - implement the humidity and pressure sensors to the arduino
+ - introduce the notion of a hub that contains serveral nodes
+ - loop frequency and actions 
+ - add a node id number in the messages for serial communication
+ - add the inturpt handling capabilities for PIR. This will be used to trigger the camera 
+ >> add the threshold verification and handling to RFID
+ >> add test cases (so far tests have been added to nodeElements and eventQueue)
+
+
+version 0.3.1
+
+P1
+ - introduce the notion of a hub that contains serveral nodes
+ - add a node id number in the messages for serial communication
+ - each sensor is associated to a node 
+ >> add the threshold verification and handling to RFID
+ >> add test cases (so far tests have been added to nodeElements and eventQueue)
+ + add the git and connection to my bitbucket repos for the new machine 
+ + add the LDR sensor
+ + add the ssh log in info in TODO.txt
+ + add the xbee communication to the hub and to the arduino
+ + document the requirements
+
+
+P2
+
+ - add humidity (40 to 90) and atmospheric pressure (90-105) to the sensor module
+ - loop frequency and actions
+        - high frequency sensor updates (PIR,sound,magnetic) 10 sec
+        - low frequency sensor updates (temp, pressure, humiidity) 15 min
+        - frequency for server update 15
+ - add a console monitor for the hub
+
+P3
+
+ - server side script requirements
+
+
+version 0.3.2
+
+
+P1
+ + add the a message in node to identify the destination node for message passing on the xbee radio
+ + split arduinoSensorNode.ino one file for an environmnetal monitoring node (environmentalNode.ino)
+ - need to split the arduino software for occupancy monitoring node
+ + added node id in the message to be recieved by the arduino (in the arduino software)
+ + modify the testSonsorOnSerial to include the LDR and an assert clause that validates if the there os an new entry in the database
+ > introduce the notion of a hub that contains serveral nodes
+ - a node will contain two lists of sensors : low freq update sensors and high freq update
+   hence it will also contain the methods to add and remove sensors
+ - add a node id number in the messages so that the message will be sent to the proper node
+ > each sensor is associated to a node 
+ >> add the threshold verification and handling to RFID
+ >> add test cases (so far tests have been added to nodeElements and eventQueue)
+
+P2
+
+ - add humidity (40 to 90) and atmospheric pressure (90-105) to the sensor module
+ - loop frequency and actions
+        - high frequency sensor updates (RFID,PIR,sound,magnetic) 1 min
+        - low frequency sensor updates (temp, pressure, humiidity) 15 min
+        - frequency for server update 15
+ - add a console monitor for the hub
+
+P3
+
+ - server side script requirements
+
+version 0.3.3
+
+
+P1
+ + need to integrte a wait (using while) for the serialComm fuction
+ - add the barometric and humidity sensors + tests
+ - create a database to store nodes and sensors info
+ - add a newtowk builder from a database - nodeFactory 
+ + hub should not be doing the handshake since it has to be created forst and we don't know what node to do a handshake with.
+   When a node is attached to the hub it should initate a handshake and store the result in node attributes
+ + add the a message in node to identify the destination node for message passing on the xbee radio
+ + split arduinoSensorNode.ino one file for an environmnetal monitoring node (environmentalNode.ino)
+ - need to split the arduino software for occupancy monitoring node
+ + added node id in the message to be recieved by the arduino (in the arduino software)
+ + modify the testSonsorOnSerial to include the LDR and an assert clause that validates if the there os an new entry in the database
+ + introduce the notion of a hub that contains serveral nodes
+ - a node will contain two lists of sensors : low freq update sensors and high freq update
+   hence it will also contain the methods to add and remove sensors
+ + add a node id number in the messages so that the message will be sent to the proper node
+ > each sensor is associated to a node 
+ >> add the threshold verification and handling to RFID
+ >> add test cases (so far tests have been added to nodeElements and eventQueue)
+
+P2
+
+ - add humidity (40 to 90) and atmospheric pressure (90-105) to the sensor module
+ - loop frequency and actions
+        - high frequency sensor updates (RFID,PIR,sound,magnetic) 1 min
+        - low frequency sensor updates (temp, pressure, humiidity) 15 min
+        - frequency for server update 15
+ - add a console monitor for the hub
+
+P3
+
+ - server side script requirements
+
+
+version 0.3.4
+
+left off : testHubOFF see marker
+
+P1
+
+ + add test to Hub addNode, getIdxNode etc ...
+ + need to add tests for the hubFactory
+ + change the instType names so that they are short and precise for queries
+ + add the barometric and humidity sensors
+ - add tests for the barometric and humidity sensors
+ + modify the tables to store the readings to include the name of the node (nodeID), this way it is possible to have sensors
+   with the same name
+ + change the sensor name for the mock sensors
+ + create a database to store nodes and sensors info
+ + add a newtowk builder from a database - nodeFactory
+ - need to split the arduino software for occupancy monitoring node
+ - a node will contain two lists of sensors : low freq update sensors and high freq update
+   hence it will also contain the methods to add and remove sensors
+ >> add the threshold verification and handling to RFID
+ >> add test cases (so far tests have been added to nodeElements and eventQueue)
+
+P2
+
+ + add humidity (40 to 90) and atmospheric pressure (90-105) to the sensor module
+ - loop frequency and actions
+        - high frequency sensor updates (RFID,PIR,sound,magnetic) 1 min
+        - low frequency sensor updates (temp, pressure, humiidity) 15 min
+        - frequency for server update 15
+ - add a console monitor for the hub
+
+P3
+
+ - server side script requirements
+
+version 0.3.5
+
+left off :  testNodeOFF ... test scan HIGH with no HIGH
+
+P1
+
+ + modify node so that the scan freq type low or high is passed as a parameter to the node scan function
+ + modify the node scan function to verify the freq of update of the sensor
+ + add low and high freq loop counters
+ + modify hub loop -- add to markers one for the low freq and for the high
+ + remove the make html in hub
+ + the setFreq in hub should be more of a set freq loop time for the hub (could be hardcoded to start)
+ - ?add freq time to the db parameters of the hub, currently no parameters for the hub are stored in the db (could be hardcoded to
+ T test with the arduino on serial
+ T ?add test for the new function to set the frequency of the sensor scans
+ + modify loop test for the hub not really of assertion type
+ T add test for the hub setLoopFreqTime
+ T add tests for the barometric and humidity sensors
+ + have the Sensor super class initialize the instID instead of the concrete class
+ + add the freq of scan in the init ... however i will need to modify all of my constructor calls
+ - all object creation should be done with the factory class ... even the tests !
+ + hub loop frequency and actions (need to modify)
+        - high frequency sensor updates (RFID,PIR,sound,magnetic) 1 min
+        - low frequency sensor updates (temp, pressure, humiidity) 15 min
+        - maybe the sensor should have an attribute for frequency of updates, these could come from the db
+        - the hub should have an attribute to specify the update time for the low and high frequency
+
+ - need to split the arduino software for occupancy monitoring node
+ >> add the threshold verification and handling to RFID
+
+
+P2
+
+ - develop the serverside scripts
+
+P3
+
+ - none
+
+
+version 0.3.6
+
+left off : modify all calls to hub in the test and replace with hub factory
+
+P1
+
+ - perform OFF tests
+ + create homeBakedPi to populate data in the database inorder to develope the flask app
+ + remove the htmlList attribute to hub
+ + remove the Ftp in hub and test, do not remove the code for FTP agent
+ + must be able to create a hub with no nodes and no sensors from the hub factory, must have some sort of by pass
+   in the create hub of the hub factory (that is not from a db). This is useful for the test where I need to control the exact setup
+   of the node (order of the sensors and what not). This will also ensure only one place where I modify the interface to the Hub.
+ + add freq time to the db parameters of the hub, currently no parameters for the hub are stored in the db (could be hardcoded to)
+    - hubID *
+    - serStatus *
+    - dbFile *
+    - must add the following 5 parameters to the hub call
+    - hubMailAgt = EmailAgent('vinoroy70@gmail.com','miller12')
+    - lowFreqLoopTime = 0.0005 # 45 seconds in days
+    - highFreqLoopTime = 0.00005 # 5 seconds in days
+    - loopSleepTime = 5 seconds
+
+
+    - here is the list of para names
+    email = 'vinoroy70@gmail.com'
+    emailPass = 'miller12'
+    lowFreqLoopTime = 0.0005
+    highFreqLoopTime = 0.00005
+    loopSleepTime = 5
+
+
+ + the database file has to be stored as a parameter of hub, so that all data can be stored to appropriate db
+ - add system dates to all the sensor type tables
+ - add loop logging into the database
+ - developpe the homeBakedPi code, this is the production code that will start a homeBakedPi service
+ - add the following test cases :
+        - test with the arduino on serial
+        - ?add test for the new function to set the frequency of the sensor scans
+        - add tests for the hub setLoopFreqTime
+        - add tests for the barometric and humidity sensors
+ + remove the TMP36_sensor usind the readADC.py for the raspberry pi
+
+P2
+
+ - develop the serverside scripts
+ - add more comments to code
+ - clean unused imports
+
+
+P3
+
+ - need to develope the arduino software for occupancy monitoring, since we split the orignal arduino code to make a specific for environmental
+ >> add the threshold verification and handling to RFID
+ - all object creation should be done with the factory class ... even the tests ! (this one will be a bit messy)
+
+
+version 0.3.7
+
+left off : working on the data server transfer, bug with non unique row inserts. However in the source db
+file they are unique ... my guess st this point is that the node os sending the data and not waiting for a reply from server
+
+P1
+ - modify hub and hubfactory so that the URL of the homeBakedPi Server is an attribute
+ + add new column upload to all readings tables, and modify insert value calls
+ + add possibilty to pass data to the web app through post
+ - refactor and comment web app
+ + move the store readings up to the superclass of envSensors
+ + add graf to web app (start with a proto)
+ + add the table of values for an instrument in web app
+ + perform a test ON
+ + add more parameters to HubFactory to take advantage of the parameter options of hub (ex loopFreq time)
+ + perform ON and OFF tests
+ - add system dates to all the sensor type tables
+ - add loop logging into the database
+ + developpe the homeBakedPi code, this is the production code that will start a homeBakedPi service
+ - add the following test cases :
+        - test with the arduino on serial
+        - ?add test for the new function to set the frequency of the sensor scans
+        - add tests for the hub setLoopFreqTime
+        - add tests for the barometric and humidity sensors
+
+P2
+
+ - remove the postgres and mysql installation on mac
+ + develop the serverside scripts
+ - add more comments to code
+ - clean unused imports
+
+
+P3
+
+ - need to develope the arduino software for occupancy monitoring, since we split the orignal arduino code to make a specific for environmental
+ >> add the threshold verification and handling to RFID
+ - all object creation should be done with the factory class ... even the tests ! (this one will be a bit messy)
+
+
+version 0.3.8.1
+
+left off : documenting envSensors --> stopped at Barometric
+
+P1
+
+ + put the send data in try test block, so that if the server is not running the program will not fail
+ - must perform test with the hardware
+ + modify hub and hubfactory so that the URL of the homeBakedPi Server is an attribute
+ + setup test for the hub data transfer to the server
+        - test with positive transfer to local server
+        - test so that it is not supposed to transfer to local server serverURL = ''
+        - perform a fail test after having inserted the try block in the code
+ - refactor and comment web app
+ - add the following test cases :
+        - test with the arduino on serial
+        - ?add test for the new function to set the frequency of the sensor scans
+        - add tests for the hub setLoopFreqTime
+        - add tests for the barometric and humidity sensors
+
+P2
+ - change instID for sensorID
+ - remove the postgres and mysql installation on mac
+ - add more comments to code
+ - clean unused imports
+ - add loop logging into the database
+ ? build scripts to prep and clean up databases
+        - empty tables of the server db
+        - empty tables of the homebaked pi db
+        - set uploads to 0
+        - set uploads to 1
+
+P3
+
+ - add javascripts to server code
+ - need to develope the arduino software for occupancy monitoring, since we split the orignal arduino code to make a specific for environmental
+ >> add the threshold verification and handling to RFID
+ - all object creation should be done with the factory class ... even the tests ! (this one will be a bit messy)
+
+
+version 0.3.8.3 to 0.3.8.5
+
+left off : documenting sensorEvent
+
+P1
+ + comment the code
+ + test homeBakedPi OFF sensor network but on live paas (ok)
+ - modify arduino code for barometric pressure ... there seems to be a bottleneck
+ - add a start method to hub ... this should in turn start the looping process
+ - must add precision to the name of the test offline and off network
+ + add the usb string for the serialCommUtil as a parameter
+ + must perform test with the hardware (ie using serialCommUtil)
+ - refactor and comment web app
+ - add the following test cases :
+        - test with the arduino on serial
+        - ?add test for the new function to set the frequency of the sensor scans
+        - add tests for the hub setLoopFreqTime
+        - add tests for the barometric and humidity sensors
+
+P2
+ - change instID for sensorID (this is a deep one .. it even touched the db)
+ + change usr to usrEmail in commUtil
+ + change loopTime for upDateTime in hub and hubFactory
+ - modernize the code for occSensors --> wait to start the work on the actual hardware
+ - remove the postgres and mysql installation on mac
+ - add more comments to code
+ - clean unused imports
+ - add loop logging into the database
+ ? build scripts to prep and clean up databases
+        - empty tables of the server db
+        - empty tables of the homebaked pi db
+        - set uploads to 0
+        - set uploads to 1
+
+P3
+
+ - generalize comm util email agent so that it can connect to any smtp servers
+ - add javascripts to server code
+ - need to develope the arduino software for occupancy monitoring, since we split the orignal arduino code to make a specific for environmental
+ >> add the threshold verification and handling to RFID
+ - all object creation should be done with the factory class ... even the tests ! (this one will be a bit messy)
+
+
+version 0.3.8.6
+
+left off : documenting sensorEvent
+
+P1
+ - the web app displays time in UTC zone, must find a way to convert to EST time unicode(datetime object here)
+ - add logging to the crontab job
+ + developpe a universal homeBakedPi
+ + analyse the modification of hub.loop for the cron type jobs contexte
+ + bug in the hubFactory  --> create hub no usbPort parameter
+ + transfer code to the raspberry pi and setup for integrated tests (ie live sensors network and live paas web app) and let run for a few days
+ - add javascript grafs to the web app
+ - modify Arduino code for barometric pressure ... there seems to be a bottleneck
+ + add a start method to hub ... this should in turn start the looping process
+ - add the following test cases :
+        - test with the arduino on serial
+        - ?add test for the new function to set the frequency of the sensor scans
+        - add tests for the hub setLoopFreqTime
+        - add tests for the barometric and humidity sensors
+
+P2
+ - change instID for sensorID (this is a deep one .. it even touches the db)
+ - must add precision to the name of the test offline and off network
+ - modernize the code for occSensors --> wait to start the work on the actual hardware
+ - remove the postgres and mysql installation on mac
+ - add loop logging into the database
+ ? build scripts to prep and clean up databases
+        - empty tables of the server db
+        - empty tables of the homebaked pi db
+        - set uploads to 0
+        - set uploads to 1
+
+P3
+
+ - generalize comm util email agent so that it can connect to any smtp servers
+ - add javascripts to server code
+ - need to develope the arduino software for occupancy monitoring, since we split the orignal arduino code to make a specific for environmental
+ >> add the threshold verification and handling to RFID
+ - all object creation should be done with the factory class ... even the tests ! (this one will be a bit messy)
+
+
+version 0.3.8.7
+
+left off : documenting sensorEvent
+
+P1
+ - the web app displays time in UTC zone, must find a way to convert to EST time unicode(datetime object here)
+ - add logging to the crontab job
+ + developpe a universal homeBakedPi
+ + analyse the modification of hub.loop for the cron type jobs contexte
+ + bug in the hubFactory  --> create hub no usbPort parameter
+ + transfer code to the raspberry pi and setup for integrated tests (ie live sensors network and live paas web app) and let run for a few days
+ - add javascript grafs to the web app
+ - modify Arduino code for barometric pressure ... there seems to be a bottleneck
+ + add a start method to hub ... this should in turn start the looping process
+ - add the following test cases :
+        - test with the arduino on serial
+        - ?add test for the new function to set the frequency of the sensor scans
+        - add tests for the hub setLoopFreqTime
+        - add tests for the barometric and humidity sensors
+
+P2
+ - change instID for sensorID (this is a deep one .. it even touches the db)
+ - must add precision to the name of the test offline and off network
+ - modernize the code for occSensors --> wait to start the work on the actual hardware
+ - remove the postgres and mysql installation on mac
+ - add loop logging into the database
+ ? build scripts to prep and clean up databases
+        - empty tables of the server db
+        - empty tables of the homebaked pi db
+        - set uploads to 0
+        - set uploads to 1
+
+P3
+
+ - generalize comm util email agent so that it can connect to any smtp servers
+ - add javascripts to server code
+ - need to develope the arduino software for occupancy monitoring, since we split the orignal arduino code to make a specific for environmental
+ >> add the threshold verification and handling to RFID
+ - all object creation should be done with the factory class ... even the tests ! (this one will be a bit messy)
+
+
+version 0.3.8.8
+
+left off : modify the UPDATE '%s' SET UPLOAD = 1
+
+P1
+- modify the current mechanism to ensure that all of the readings have been transfered to the web database (set upload to one
+  after each transfer !!)
+        - I added a data set date confirmation array
+        - the dataCnt does not do anything in the node and hub !!
+        - must tie in the upload variable --> if no data transfer no upload to 1
+ - must add the following to generalize node:
+        - node type (environmetal, financial, etc.)
+ - must test the new generalized homeBakedPi script
+    - must add the possibility to change the loop freq times
+
+ - make a formmated print statement for debugging purposes when transfering data
+        - print the name of the database
+        - be verbose
+
+ - the graf do not seem to have the last 24hrs of data !!! ???
+ - add some node destination verifaction on serial communication by adding the node letter in the return message
+ + finalize the graphing func of the web app (with documentation)
+ - build the hardware and the software for the RFID occupation sensor
+ - modernize the code for occSensors --> wait to start the work on the actual hardware
+ - the web app displays time in UTC zone, must find a way to convert to EST time unicode(datetime object here)
+ - add logging to the crontab job
+ - modify Arduino code for barometric pressure ... there seems to be a bottleneck
+ - add the following test cases :
+        - test with the arduino on serial
+        - ?add test for the new function to set the frequency of the sensor scans
+        - add tests for the hub setLoopFreqTime
+        - add tests for the barometric and humidity sensors
+
+P2
+ - add javascript grafs to the web app
+ - change instID for sensorID (this is a deep one .. it even touches the db)
+ - must add precision to the name of the test offline and off network
+
+ - remove the postgres and mysql installation on mac
+ - add loop logging into the database
+ ? build scripts to prep and clean up databases
+        - empty tables of the server db
+        - empty tables of the homebaked pi db
+        - set uploads to 0
+        - set uploads to 1
+
+P3
+
+ - generalize comm util email agent so that it can connect to any smtp servers
+ - add javascripts to server code
+ - need to develope the arduino software for occupancy monitoring, since we split the orignal arduino code to make a specific for environmental
+ >> add the threshold verification and handling to RFID
+ - all object creation should be done with the factory class ... even the tests ! (this one will be a bit messy)
+
+
+ version 0.3.8.9.1
+
+left off : modify the UPDATE '%s' SET UPLOAD = 1
+
+P1
+- modify the current mechanism to ensure that all of the readings have been transfered to the web database (set upload to one
+  after each transfer !!)
+        - I added a data set date confirmation array
+        - the dataCnt does not do anything in the node and hub !!
+        - must tie in the upload variable --> if no data transfer no upload to 1
+ - must add the following to generalize node:
+        - node type (environmetal, financial, etc.)
+ - must test the new generalized homeBakedPi script
+    - must add the possibility to change the loop freq times
+
+ - make a formmated print statement for debugging purposes when transfering data
+        - print the name of the database
+        - be verbose
+
+ - the graf do not seem to have the last 24hrs of data !!! ???
+ - add some node destination verifaction on serial communication by adding the node letter in the return message
+ + finalize the graphing func of the web app (with documentation)
+ - build the hardware and the software for the RFID occupation sensor
+ - modernize the code for occSensors --> wait to start the work on the actual hardware
+ - the web app displays time in UTC zone, must find a way to convert to EST time unicode(datetime object here)
+ - add logging to the crontab job
+ - modify Arduino code for barometric pressure ... there seems to be a bottleneck
+ - add the following test cases :
+        - test with the arduino on serial
+        - ?add test for the new function to set the frequency of the sensor scans
+        - add tests for the hub setLoopFreqTime
+        - add tests for the barometric and humidity sensors
+
+P2
+ - add javascript grafs to the web app
+ - change instID for sensorID (this is a deep one .. it even touches the db)
+ - must add precision to the name of the test offline and off network
+
+ - remove the postgres and mysql installation on mac
+ - add loop logging into the database
+ ? build scripts to prep and clean up databases
+        - empty tables of the server db
+        - empty tables of the homebaked pi db
+        - set uploads to 0
+        - set uploads to 1
+
+P3
+
+ - generalize comm util email agent so that it can connect to any smtp servers
+ - add javascripts to server code
+ - need to develope the arduino software for occupancy monitoring, since we split the orignal arduino code to make a specific for environmental
+ >> add the threshold verification and handling to RFID
+ - all object creation should be done with the factory class ... even the tests ! (this one will be a bit messy)
+
+
+
+version 0.4.1
+
+left off :
+
+P1
+ + problems with email agent to google
+ + remove the hub loop since we will be using the crontab to execute at predifined times the low and high freq scan
+ + configure git to ignore the venv folder see : http://codekarate.com/blog/using-virtual-environments-django
+ + use pip freeze to generate requirements text
+ + remove the remote database update :
+        + node --> transReadingsToServer() remove
+        + hub --> transferCnt remove
+        + hub --> serverURL remove and from all the calls
+        + hub --> lowFreqUpDate()  mod
+        + file --> homeBaked...PAAS remove
+ - clean up directory
+ - create methods for all request to the database by the web app (make a clean seperation between the core application and the web app)
+ - add WTF forms to the web app to prevent against cross scripting attacks
+ - the graf do not seem to have the last 24hrs of data !!! ???
+
+
+P2
+ - build the hardware and the software for the RFID occupation sensor
+ - modernize the code for occSensors --> wait to start the work on the actual hardware
+ - add logging to the crontab job
+ - add the following test cases :
+        - test with the arduino on serial
+        - ?add test for the new function to set the frequency of the sensor scans
+        - add tests for the hub setLoopFreqTime
+        - add tests for the barometric and humidity sensors
+ - add some node destination verifaction on serial communication by adding the node letter in the return message
+ - must add the following to generalize node:
+        - node type (environmetal, financial, etc.)
+ - change instID for sensorID (this is a deep one .. it even touches the db)
+ ? build scripts to prep and clean up databases
+        - empty tables of the server db
+        - empty tables of the homebaked pi db
+        - set uploads to 0
+        - set uploads to 1
+
+P3
+ - the web app displays time in UTC zone, must find a way to convert to EST time unicode(datetime object here)
+ - modify Arduino code for barometric pressure ... there seems to be a bottleneck
+ - add loop logging into the database
+ - generalize comm util email agent so that it can connect to any smtp servers
+ - need to develope the arduino software for occupancy monitoring, since we split the orignal arduino code to make a specific for environmental
+ >> add the threshold verification and handling to RFID
+ - all object creation should be done with the factory class ... even the tests ! (this one will be a bit messy)
+
+
+version 0.5.1
+
+left off :
+
+P1
+ + problem with the getAllValuesDict when using the homeBakedPi object tester --> issues with the format of the CAMREADINGS db
+ - heat test to see if email is generated when a threshold is exceeded
+ + how to specify the node address (URL) in the case of node for which we are using http to communicate
+        - 1 - add a new parameter to node for the URL address
+        - 2 - modify the nnode msg ID user for serial comm (this could be messy) but no need for new field in db
+ + script to just clear the db
+
+ + clean up code (left off --> testHubFactory)
+ + prod db should be in an other directory to simplify updates
+        + change the name of the db file to : bakedPiDB_Prod
+        + put the prod db in the /www directory so that it is not changed on the git update
+ + clean up the script name for the cron job
+ + adjust the cron job for every 30 min
+ + !!! we are not protected for a request to an empty database, see test_getSensorValuesFrmDB_empty not  working
+ + change the queries in sensor to return a list not a numpy array and add date string format
+ + add a method to node or sensor to get all the values of a sensor in date string format
+ + add method in hub to get a dictionary of all the nodes and the last values of all the sensors
+
+ + get list of nodes
+ + get values for a node (matrix of inst ID, inst type, value, date, units)
+ + script to prep db for web app testing (clear db entries for each sensor and create current and past entries for 0 to 30 day range)
+ + add the clear readings in db for a sensor
+ + modify the negative return from the get from db methods tobe an empty array
+ + create methods for all request to the database by the web app (make a clean seperation between the core application and the web app)
+    + get last stored reading for all sensors of all nodes
+    + get all of the stored readings
+    + get stored readings greater then a certain date
+    + get readings between two dates
+    + get last 24 hours
+    + get last week
+    + get last month
+ + create a testing harness for the homeBakedPi app
+ + add print attribute functions for hub, node and sensors
+ + make a universal entry point (remove other ON OFF) by passing params
+    + we need a script for low freq updates
+    + we need a script for high freq updates
+    + we need to be able to create a hub and then use it in an app
+ + clean up directory
+ + change dbName for for dbTable
+ + modify the storereadings to reference the object attributes self.dbTable etc that are needed
+
+
+P2
+ - script to remove all readings after unittests (each unittest !)
+ - modify camera to use : raspistill -o cam.jpg -q 5 -vf -hf
+ - build the hardware and the software for the RFID occupation sensor
+ - modernize the code for occSensors --> wait to start the work on the actual hardware
+ - add logging to the crontab job
+ - add the following test cases :
+        - test with the arduino on serial
+        - ?add test for the new function to set the frequency of the sensor scans
+        - add tests for the hub setLoopFreqTime
+        - add tests for the barometric and humidity sensors
+ - add some node destination verifaction on serial communication by adding the node letter in the return message
+ - change instID for sensorID (this is a deep one .. it even touches the db)
+ ? build scripts to prep and clean up databases
+        - empty tables of the server db
+        - empty tables of the homebaked pi db
+        - set uploads to 0
+        - set uploads to 1
+
+P3
+
+ - modify Arduino code for barometric pressure ... there seems to be a bottleneck
+ - add loop logging into the database
+ - generalize comm util email agent so that it can connect to any smtp servers
+ >> add the threshold verification and handling to RFID
+ - all object creation should be done with the factory class ... even the tests ! (this one will be a bit messy)
+
+
+version 0.5.+
+
+left off : trying to deploy the homeBakedPi to the server -- errors
+
+P1
+ - add a set the threshold function
+ - add the PiWebCamera unit tests in testPiWebCameraON ...
+ - add test for clearSensorValuesInDB() in testSensorOFF
+ - test to see if email is generated when a threshold is exceeded (change the threshold value)
+ + must integrate the get statements in the envSensor
+ + check for all the ###--- to see if all the set and get have been properly inserted
+ + run tests and deploy to server
+ + remove all direct references to class attribute --> use set and get methods ??? (alot of work)
+ + create the class diagrams for the code
+ + create the scan all sensors sequence diagram
+ + change the object references in the class documentation
+ + document and organise the db tools
+ + ensure that all the code is propoerly documented
+ + unit test all modules
+        - the sensor should test all of its functions
+        - the env sensor should test only the takeReading in off and online mode
+ + functions for camera :
+        - node instrument list and type
+
+
+P2
+
+ - script to remove all readings after unittests (each unittest !)
+ - modify camera to use : raspistill -o cam.jpg -q 5 -vf -hf
+ - build the hardware and the software for the RFID occupation sensor
+ - modernize the code for occSensors --> wait to start the work on the actual hardware
+ - add logging to the crontab job
+ - add some node destination verifaction on serial communication by adding the node letter in the return message
+ - change instID for sensorID (this is a deep one .. it even touches the db)
+ ? build scripts to prep and clean up databases
+        - empty tables of the server db
+        - empty tables of the homebaked pi db
+        - set uploads to 0
+        - set uploads to 1
+
+P3
+
+ - modify Arduino code for barometric pressure ... there seems to be a bottleneck
+ - add loop logging into the database
+ - generalize comm util email agent so that it can connect to any smtp servers
+ >> add the threshold verification and handling to RFID
+ - all object creation should be done with the factory class ... even the tests ! (this one will be a bit messy)
+
+
+
+version 0.6.+
+
+left off :
+
+P1
+ > build test the homeBakedPi main file on dev for low, chkSchedules, resetSchedules
+ - actuator set schedule should also set falgs to zero at the same time
+ - modify prod db
+ + build the script and the cron entry to check the schedule of the actuators
+ + build the script and the cron entry to reset the schedule of the actuators
+ - id problem with switch (seems to be related the flask app toggle function. When I try it on the server by itself, ie
+   no flask, and just the open and close commands I do not have the issue)
+ + make a checkSchudulesOfActuators function in hub to iterate over each actuator and check to see if the actuator should be tunred on or off
+   add a scan status for the actuators in hub with the lowfrequpdate
+ + add checkSchudulesOfActuators to the homeBakedPi entry point that is called by the cron job
+ + add a reset schedule flags of the actuators in the homeBakedPi entry point
+ + add schedule flags to the db and add an udate schdule flag method to actuators
+ + modify the hubFactory to include the database schedules to the actuator
+ + add contact switch sensor
+ + set threshold function
+ + add actuator state in the db (current sate and state datetime) --> will also need to add to the prod db
+ + modify the hub factory to create the actuators
+ + program the actuator class
+ + add the add amd get actuator to the hub
+ + modify the db for actuators
+ + test to see if email is generated when a threshold is exceeded (change the threshold value)
+
+
+P2
+ - add the PiWebCamera unit tests in testPiWebCameraON ...
+ - add test for clearSensorValuesInDB() in testSensorOFF
+ - script to remove all readings after unittests (each unittest !)
+ - add some node destination verifaction on serial communication by adding the node letter in the return message
+ - change instID for sensorID (this is a deep one .. it even touches the db)
+ ? build scripts to prep and clean up databases
+        - empty tables of the server db
+        - empty tables of the homebaked pi db
+        - set uploads to 0
+        - set uploads to 1
+
+P3
+
+ - modify Arduino code for barometric pressure ... there seems to be a bottleneck
+ - add loop logging into the database
+ - generalize comm util email agent so that it can connect to any smtp servers

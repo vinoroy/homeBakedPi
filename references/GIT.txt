@@ -1,0 +1,27 @@
+# user and password for github
+user : vinoroy70
+pass word for bitbucket : MillerBeer12
+
+# to add files for staging
+git add .
+
+# to stage deleted files
+git add -u
+
+# command for the commit to the repository
+git commit -m 'texte'
+
+# command to update the original source
+git push -u origin master
+
+# to clone a repo to a specfic directory
+git clone https://github.com/vinoroy/homeBakedPi.git
+
+# how to update the local repos from the master --> go into the repos
+git pull
+
+# how to add a .gitignore file to the repos
+touch .gitignore
+
+# how to add the exclusion of  directory
+nano .gitignore ---> then add the directory name in question /venv

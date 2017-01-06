@@ -1,0 +1,38 @@
+1) push all of the development files to the git repos
+    rm *.pyc
+    git add .
+    git commit -m 'version x.x'
+    git push -u origin master
+
+
+2) log onto the server and cd into www directory
+
+    ssh -p 8022 pi@137.175.164.12
+    cd /home/www
+
+3) kill the current web app
+
+    sudo pkill gunicorn
+
+
+4) remove the /home/www/homeBakedPiWebApp dir
+
+    sudo rm -rf homeBakedPiWebApp
+
+5) clone from the repos the homeBakedPiWebApp dir
+
+    sudo git clone https://github.com/vinoroy/homeBakedPiWebApp.git
+
+6) cd into the homeBakedPiWebApp dir and
+
+    cd homeBakedPiWebApp
+
+7) make sure the web app environment parameter is set correctly
+
+    sudo nano app.py
+    change the line in the makeHub routine
+    save the changes
+
+8) restart the web app
+
+    sudo gunicorn app:app -b localhost:8000

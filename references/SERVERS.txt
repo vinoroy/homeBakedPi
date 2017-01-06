@@ -1,0 +1,67 @@
+ROUTER
+------
+
+# Videotron wireless router @ http://192.168.0.1/
+user : admin
+pass : MillerBeer12
+
+
+# pour compte videotron
+vinoroy70
+MillerBeer12
+
+
+RASPBERRY PI #1
+---------------
+
+# network address #1 pi
+192.168.0.138
+
+# to ssh into the #1 pi from local network
+ssh pi@192.168.0.138
+
+
+# web server #1 pi is on port 8080
+74.58.59.13:8080
+
+# ssh from outside on #1 pi
+ssh -p 8022 pi@74.58.59.13
+
+# perform file transfer between raspberry pi #1 and computer from internet
+sftp -oPort=8022 pi@74.58.59.13
+
+
+RASPBERRY PI #2
+---------------
+
+# network address #2 pi
+192.168.0.122
+
+# to ssh into the #2 pi from local network
+ssh pi@192.168.0.122
+
+
+# web server #2 pi is on port 9080
+74.58.59.13:9080
+
+# ssh from outside on #2 pi
+ssh -p 9022 pi@74.58.59.13
+
+# perform file transfer between raspberry pi #2 and computer from internet
+sftp -oPort=9022 pi@74.58.59.13
+
+
+ESP8296
+-------
+
+192.168.0.112
+192.168.0.181
+
+
+
+DIVERS
+------
+
+# raspberry pi password ?
+user : pi
+pass : raspberry ... MillerBeer12zzz

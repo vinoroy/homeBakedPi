@@ -1,0 +1,147 @@
+{% extends "baseLogged.html" %}
+
+<!--Environmental detailed content added to the page content place holder-->
+{% block page_content %}
+
+
+    <div class="page-header">
+        <h2>Detailed report for {{selNode}} node</h2>
+    </div>
+
+
+    <!--Sensor type drop down menu-->
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger">Sensor</button>
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+
+            {% for i in range(listOfSensors|length) %}
+                <li><a href="{{ url_for('envNodeDetailed',selNode=selNode,selSensorNum=i,selGrafTable=selGrafTable,selTimePeriode=selTimePeriode) }}">{{listOfSensors[i]}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!--Representation type drop down menu (graf or table)-->
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger">Representation</button>
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="{{ url_for('envNodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable='Graf',selTimePeriode=selTimePeriode) }}">Graf</a></li>
+            <li><a href="{{ url_for('envNodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable='Table',selTimePeriode=selTimePeriode) }}">Table</a></li>
+
+        </ul>
+    </div>
+
+    <!--Time periode drop down menu-->
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger">Time periode</button>
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="{{ url_for('envNodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable=selGrafTable,selTimePeriode='1 Day') }}">1 Day</a></li>
+            <li><a href="{{ url_for('envNodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable=selGrafTable,selTimePeriode='1 Week') }}">1 Week</a></li>
+            <li><a href="{{ url_for('envNodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable=selGrafTable,selTimePeriode='1 Month') }}">1 Month</a></li>
+        </ul>
+    </div>
+
+
+    <!--User option selection display-->
+    <div class="page-header">
+
+        <h3>{{selTimePeriode}} {{selGrafTable}} for sensor {{selSensorName}}</h3>
+
+    </div>
+
+      <!--Graf display script-->
+      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+      <script type="text/javascript">
+        google.load('visualization', '1.1', {packages: ['line']});
+        google.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('number', 'Day');
+          data.addColumn('number', 'Value');
+
+          {% for row in listOfValues %}
+
+            data.addRows([
+                [{{row[3]}},  {{row[2]}}]
+            ]);
+
+          {% endfor %}
+
+          var options = {
+            chart: {
+              title: '',
+              subtitle: ''
+            },
+            width: 400,
+            height: 250,
+            axes: {
+              x: {
+                0: {side: 'bottom'}
+              }
+            }
+          };
+
+          var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+          chart.draw(data, options);
+        }
+      </script>
+
+    <!--If the selected representation is a graf than display the graf-->
+    {% if selGrafTable=='Graf' %}
+
+        <div id="line_top_x"></div>
+
+    <!--Else display the table-->
+    {% else %}
+
+        <table class="table table-hover">
+
+            <!--Table head-->
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Value</th>
+
+              </tr>
+            </thead>
+
+            <!--Table contents-->
+            <tbody>
+
+                <!--Loop through the array  of values to be displayed-->
+                {% for row in listOfValues %}
+
+                  <tr>
+                    <td>{{ row[1]}}</td>
+                    <td>{{ row[2]}}</td>
+
+                  </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    {% endif %}
+
+
+{% endblock %}
+
+
+
+

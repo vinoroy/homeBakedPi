@@ -1,0 +1,26 @@
+<envList app="homeBakedPi">
+<env title="prod">
+   <dbPath>/home/www/homeBakedPi/app/bakedPiDB</dbPath>
+   <email>vinoroy70@gmail.com</email>
+   <emailPass>miller12</emailPass>
+   <mockMode>0</mockMode>
+</env>
+<env title="dev">
+   <dbPath>bakedPiDB</dbPath>
+   <email>vinoroy70@gmail.com</email>
+   <emailPass>miller12</emailPass>
+   <mockMode>0</mockMode>
+</env>
+<env title="dev-m">
+   <dbPath>bakedPiDB</dbPath>
+   <email>vinoroy70@gmail.com</email>
+   <emailPass>miller12</emailPass>
+   <mockMode>1</mockMode>
+</env>
+<env title="local">
+   <dbPath>../app/bakedPiDB</dbPath>
+   <email>vinoroy70@gmail.com</email>
+   <emailPass>miller12</emailPass>
+   <mockMode>0</mockMode>
+</env>
+</envList>

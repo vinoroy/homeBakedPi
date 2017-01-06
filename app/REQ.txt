@@ -1,0 +1,48 @@
+REQUIREMENTS
+------------
+
+ 1) Home environmental monitoring and notification
+
+ - measure the environmental parameters (temp, humidity, lighting and pressure) at one or
+   several locations within the home
+ - monitor the environmental parameters based on thresholds. Each environmental sensor can be 
+   attributed a high and low threhold wich will trigger a notification
+ - issue notifications by email or text if an environmental parameter exceeds a threshold
+ - display home environmental paramters on web portal (summary, tabular and graf)
+  
+2) Home occupancy monitoring and notification
+
+ - identify home occupant entry via RFID tag reader and door contacts
+ - monitor room occupancy via motion detection and sound sensor
+ - visually monitor room with camera
+ - notify by email and text home occupant entry
+ - display home occupant entry times on web portal
+ - display room occupancy on web portal
+ - display images of rooms on web portal
+
+3) Home intrusion monitoring and notification
+
+ - identify intrusion using a combination of sensors (PIR, sound sensor, contact switch)
+ - allow home occupants to arm and disarm intrusion monitoring
+ - notify intruder with an audio message
+ - notify home occupants of intrusion via email and text
+
+4) Home lighting control
+
+ - schedule light activation times through a web portal
+ - control one or several wall plugin lamps at scheduled times
+ - remotely turn on or off a light
+
+5) Exterior environmental monitoring
+
+ - measure the environmental parameters outside the home (temp, humidity, pressure and wind speed, rain)
+ - measure the environmental parameters in the garden (soil temp and humidity)
+ - the requirements here are essentially the same as home environmental monitoring. 
+   The difference lies in the array of sensors (temperature, wind speed, humidity, rain, etc)
+
+
+6) Home safety monitoring
+
+ - detect state of the oven and range (on or off)
+ - detect and notify fire
+ - detect and notify gases

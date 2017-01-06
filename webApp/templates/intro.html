@@ -1,0 +1,87 @@
+{% extends "baseLogged.html" %}
+
+<!--Environmental node summary content added to the page content place holder-->
+{% block page_content %}
+
+    <div class="page-header">
+        <h1>Summary report</h1>
+
+        <!--For each env node create a summary table-->
+        {% for envNode in listNodes %}
+
+
+                <div class="container">
+
+                  <!--Display node name-->
+                  <h4>{{envNode}}</h4>
+
+                  <!--Display summary table-->
+                  <table class="table table-hover">
+
+                    <!--Table head-->
+                    <thead>
+                      <tr>
+                        <th>Inst</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Value</th>
+                      </tr>
+                    </thead>
+
+                    <!--Table contants-->
+                    <tbody>
+
+                        {% for row in results[envNode] %}
+
+                          <tr>
+                            <td>{{ row[0]}}</td>
+                            <td>{{ row[1]}}</td>
+                            <td>{{ row[3]}}</td>
+                            <td>{{ row[4]}}</td>
+                          </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                  </table>
+                </div>
+
+        {% endfor %}
+
+
+        <!--Create a summary table for the actuators-->
+
+                <div class="container">
+
+                  <!--Display node name-->
+                  <h4>Actuators</h4>
+
+                  <!--Display summary table-->
+                  <table class="table table-hover">
+
+                    <!--Table head-->
+                    <thead>
+                      <tr>
+                        <th>Actuator name and state</th>
+                      </tr>
+                    </thead>
+
+                    <!--Table contents-->
+                    <tbody>
+
+                        {% for act in actuators %}
+
+                          <tr>
+                            <td>{{ act[0]}}</td>
+
+                          </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                  </table>
+                </div>
+
+
+    </div>
+{% endblock %}

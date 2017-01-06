@@ -1,0 +1,30 @@
+1) push all of the development files to the git repos
+    rm *.pyc
+    git add .
+    git commit -m 'version x.x'
+    git push -u origin master
+
+
+2) log onto the server and cd into the homeBakedPi dir
+
+    ssh -p 8022 pi@137.175.164.12
+    cd /home/www/homeBakedPiDir
+
+3) copy the bakedPiDB_Prod to the www dir with the current date
+
+    sudo copy bakedPiDB_Prod ../bakedPiDBProd_xxxxxx
+
+4) remove the /home/www/homeBakedPi dir
+
+    sudo rm -rf homeBakedPi
+
+5) clone from the repos the homeBakedPi dir
+
+    sudo git clone https://github.com/vinoroy/homeBakedPi.git
+
+6) copy back the bakedPiDB_Prod into the homeBakedPiDB dir
+
+    sudo copy bakedPiDB_Prod_xxxxxx ./homeBakedPi/bakedPiDBProd
+
+
+DONE

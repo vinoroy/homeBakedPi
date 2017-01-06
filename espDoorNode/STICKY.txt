@@ -1,0 +1,5 @@
+# list all of the USB ports
+ls /dev/cu.*
+
+# note
+must have the correct USB driver to upload data to the esp modules

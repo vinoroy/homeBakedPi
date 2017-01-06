@@ -1,0 +1,62 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}HomeBakedPi{% endblock %}
+
+<!--This is the base navigation bar code block-->
+{% block navbar %}
+    <div class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+
+                <a href="#" class="pull-left"><img src="{{ url_for('static', filename = 'homeBakedPiLogo.png') }}" height="60" width="60"></a>
+
+            </div>
+
+
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    {% if not session.logged_in %}
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                      {% else %}
+                        <li><a href="{{ url_for('intro') }}">Home</a></li>
+                    {% endif %}
+
+
+
+                    {% block nav_drop %}{% endblock %}
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+
+
+                    {% if not session.logged_in %}
+                        <li><a href="{{ url_for('login') }}">Log in</a></li>
+                      {% else %}
+                        <li><a href="{{ url_for('logout') }}">Log out</a></li>
+                    {% endif %}
+
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+<!--This is the page content code block-->
+{% block content %}
+    <div class="container">
+    {% block page_content %}{% endblock %}
+    </div>
+{% endblock %}

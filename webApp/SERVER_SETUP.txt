@@ -1,0 +1,87 @@
+SERVER CONFIGURATION
+
+
+Important :
+
+NAT
+
+forward port 8080 to 80
+forward port 8022 to 22
+
+
+I used the following
+
+http://137.175.164.12:8080/
+
+
+I removed 5000 from the iptables
+
+
+Outline :
+
+
+1) On the router fixed the address of the raspberry pi so it is always the same
+
+    192.168.0.138
+
+2) Forwarded the port for SSH
+
+    on the router forwarded port 8022 to port 22
+
+3) Modified the raspberry pi password
+
+    new pass : MillerBeer12zzz
+
+4) Added key authentification for SSH
+
+    https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md
+
+5) Modified the ssh config file so that password identification is disabled
+
+    sudo nano /etc/ssh/sshd_config
+
+    PasswordAuthentication no
+
+
+6) Installed Nginx on the raspberry pi
+
+
+
+7) Modified the ip tables according to
+
+    https://www.linode.com/docs/security/securing-your-server/
+
+    # this is to midify the firewall rules
+    sudo nano /etc/iptables.firewall.rules
+
+    # this is to update the firewall rules
+    sudo iptables-restore < /etc/iptables.firewall.rules
+
+    # this is to check the firewall rules
+    sudo iptables -L
+
+    IMPORTANT MUST MAKE SURE THAT FIREWALL RULES ARE LOADED WHEN RASPERRRY PI IS STARTED
+    (see article)
+
+
+8) Installed fail2abn
+
+    sudo apt-get install fail2ban
+
+9) I wasn't able to install a virtual env correctly. The flask never got instsalled on the local env correctly
+
+    http://docs.python-guide.org/en/latest/dev/virtualenvs/
+
+   However, I did install it globally
+
+
+*************** THIS IS WERE I AM ***************************
+
+10) Configured the link for the Flask app to be called from nginx (web server)
+
+    After numerous attemps from different tutorials. The only one that was really complete and worked correctly was
+
+    https://realpython.com/blog/python/kickstarting-flask-on-ubuntu-setup-and-deployment/
+
+
+

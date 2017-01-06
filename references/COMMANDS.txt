@@ -1,0 +1,98 @@
+UNIX COMMANDS
+-------------
+
+# to remove a directory with all its contents
+rm -rf homeBakedPiWebApp/
+
+nano file --> to open editor with the given file
+
+#list all of the used ports
+ls /dev/tty*
+
+# to edit crontab
+crontab -e
+
+# to view the crontab log
+grep CRON /var/log/syslog
+
+# to strart stop and verify the cron
+sudo /etc/init.d/cron stop
+sudo /etc/init.d/cron start
+sudo /etc/init.d/cron restart
+sudo /etc/init.d/cron status
+
+
+# to run a bash script
+sudo chmod u+x deploy.sh
+sudo ./deploy.sh
+
+
+VIRTUALENV
+----------
+
+# to install the virtula env in a given directory
+virtualenv env
+
+
+# activate the virtual env
+source venv/bin/activate
+
+# deactivate the virtual env
+deactivate
+
+
+VIRTUALENV WRAPPER
+------------------
+
+# to initalize the bash terminal for virtual wrapper
+source /usr/local/bin/virtualenvwrapper.sh
+source ~/.bash_profile
+
+
+# to activate the virtualenv
+workon cv
+
+# to deactivate the virtualenv
+deactivate
+
+
+# how to make a new virtualenv wrapper
+
+
+
+REASPBERRY PI
+------------
+
+startx --> to start the GUI environment
+raspi-config --> to start the configiuration utility of the raspberry pi
+
+sudo shutdown -r now
+
+
+TOOLS
+-----
+
+# to start vim under root and use the .vrmrc file
+sudo -E vim
+
+
+# to get html version of the docs on port 1234
+pydoc -p 1234
+
+# to start the ipython notebook
+ipython notebook
+
+# to produce the uml diagram we must comment out the the serial object
+# shell script to regenerate the UML of the project
+./umlGen.sh
+
+
+
+
+
+
+
+
+
+
+

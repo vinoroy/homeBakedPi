@@ -1,0 +1,158 @@
+ARCHITECTURE
+------------
+
+Functional architecture :
+
+ - the system is composed of a hub, a web app and one or several nodes
+
+ - the hub is the centralized component of the system responsible for
+        - collecting data from the sensors attached to the nodes
+        - storing the data from the sensors
+        - verifying the thresholds and sending the notifications
+        - sending command messages to actuator node
+
+- a web app responsible for :
+        - displaying the sensor data
+        - allowing the user to adjust the parameters of the hub (arm and disarm intrusion monitoring, schedule lights, etc)
+        - act as a gateway to receive data from nodes (sensors measurements, events)
+
+ - there are two type of nodes in the system :
+        - sensor node
+        - actuator node
+
+ - a sensor node is a decentralized component of the system composed of one or several sensors
+   that measure :
+        - discrete events (motion,contact switch, threshold acceleration, sound, RFID tag identification). Events are push type,
+          meaning that a message is sent to the hub after an event has happened (door opening, etc).
+        - continuous analog measurement  (temperature, humidity, pressure). This is of pull type, meaning that the hub
+          sends a request to the node to get a measurement from a sensor
+
+ - an actuator node is also a decentralized component of the system  composed of one or more actuators, such as
+        - light switch control
+        - door lock
+
+ - nodes will regroup a set of sensors to implement a set of requirements
+        1) Home environmental monitoring
+        2) Home occupancy monitoring
+        3) Home intrusion monitoring
+        4) Home lighting control
+        5) Exterior environmental monitoring
+
+ - nodes are responisble for :
+        - recieving and handling commands from the hub
+        - notify the hub of an event (room occupation)
+        - getting measurements from sensors
+        - sending data back to the node
+
+
+>>>>>>>>Technological architecture :
+
+ - a long distance node is composed of :
+        - an arduino microcontroller and software responsible for :
+                - handling commands from the hub
+                - getting measurements from sensors
+                - preparing messages to send the data back to the hub
+        - an Xbee radio (shield + xbee module) and configuration program for
+          recieving and sending data from and to the hub
+        - an array of sensors for making measurements on the physical environment.
+          The sensor array composition is a function of the requirements to implement
+        - a proto shield and various electronic components required to connect the
+          sensors
+        - a power supply
+        - an enclosure
+
+ - the server is composed of :
+        - a linux based computer (raspberry pi) running a web server (nginx + flask)
+        - python code that implements the functional requirements of the hub
+        - python flask code that implements the functional requirements of the web app
+        - an sqlite database to store the sensor readings and events
+        - a wifi usb module
+        - a power supply
+        - an enclosure
+
+
+Parts to be ordered
+
+
+DC-960-2.1 Wall Adapter 9VDC 600mA - 2.1mm
+Product Code : DC-960-2.1
+Price 5.74$
+Quantity : 2
+ok
+
+MPL3115A2 - I2C Barometric Pressure/Altitude/Temperature Sensor
+Product Code : 1893-ADA
+Price 11.44
+Quantity : 1
+on order
+
+385 DHT22 temperature-humidity sensor + extras
+Product Code : 385 ADA
+Price : 14.38$
+Quantity : 1
+ok
+
+DEV-11235 Arduino and Breadboard Holder
+Product Code : DEV-11235
+Price : 4.54
+Quantity : 3
+ok
+
+ABRA-6-TP Breadboard Clear Self-Adhesive
+Product Code : ABRA-6-TP
+Price : 5.69
+Quantity : 2
+ok
+
+XB24-API-001 XBee 1mW Trace Antenna - Series 1
+Product Code : XB24-API-001
+Price : 28.69
+Quantity : 1
+
+
+
+IM120417004 ITEAD XBEE SHIELD
+Product Code : IM120417004
+Price : 11.44
+
+
+
+FIT0184 10 sets M3 * 30 hexagonal standoffs mounting kit
+Product Code : FIT0184
+Price : 5.58
+
+
+FIT0183 10 sets M3 * 20 hexagonal standoffs mounting kit
+Product Code : FIT0183
+Price :  5.00
+
+
+
+------------------------------------------
+
+
+PRT-12070 Solder-able Breadboard
+Product Code : PRT-12070
+Price : 5.69$
+
+
+WRL-10854 XBee Shield
+Product Code : WRL-10854
+Price : 28.68
+
+
+PRT-10738 Standoff - Metal (1", 4-40, 10 pack)
+Product Code : PRT-10738
+Price : 5.12
+Quantity : 1
+
+54-562-1 4-40 Hardware Assortment
+Product Code : 54-562-1
+Price : 11.49
+
+
+
+Acrylic for enclosure
+
+Standoff and hardware
+

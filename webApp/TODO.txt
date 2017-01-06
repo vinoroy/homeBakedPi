@@ -1,0 +1,79 @@
+TO DO
+-----
+
+Important note :
+
+ - Version 0.4.0 represents a change in the web app that will support all of the architectural changes of version 0.7.0 of
+   the homeBakedPi automation framework
+
+Current version :
+
+version 0.4.x
+
+left off :
+
+P1
+ - change envNode to node in templates
+ > make sure that occp sensor data is viewable in app (generalize for any type of node)
+ + add test for inserting the occp sensor events - motion detection
+ + clean the code comments
+ + build script to automate the update of the app from master and start the flask service
+
+P2
+
+ - add page to view the actuator on off times in table format
+ - modify menu names Env sensors Occ sensors
+ - remove from env menu the summary since it is covered in the
+ - change intro to summary page
+ - graf problem when no data
+
+P3
+
+- the web app displays time in UTC zone, must find a way to convert to EST time unicode(datetime object here)
+
+
+Past versions :
+
+version 0.3.x
+
+left off :
+
+P1
+ + add pages to modify the timing parameters of the actuator
+ - add page to view the actuator on off times in table format
+ - modify menu names Env sensors Occ sensors
+ - remove from env menu the summary since it is covered in the
+ - change intro to summary page
+ - build a script to
+        - remove the web app from server
+        - download from git the new version
+        - start nginx and the start the app (via gunicorn) automatically
+ + modify the width of the login fields
+ + add page to modify the threshold values of the instrument
+ + make sure the menus are populated for each page
+ + clean up code
+ + test bootstrap tables with selectable rows
+ + make the parameters file relative to the homeBakedPi module, not the homeBakedPiWebApp
+ + build the detailed table and graf for a sensor (add options to adjust the time length)
+        + for the graf look into using javascript
+ + create an hub object in the app
+ + build the general app menu with empty links
+ + modify the url_for to take of production and developpment environements
+ + test to include an image taken by the raspberry pi camera
+ + test to include page selection in a menu type object in page
+
+
+P2
+
+- uninstall the apache server
+- find a way to set the default server to ngix
+- graf problem when no data
+
+P3
+
+- the web app displays time in UTC zone, must find a way to convert to EST time unicode(datetime object here)
+
+
+
+
+

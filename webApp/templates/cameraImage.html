@@ -1,0 +1,15 @@
+{% extends "baseLogged.html" %}
+
+<!--Occupational node summary content added to the page content place holder-->
+{% block page_content %}
+
+
+    <img src= {{ url_for('download_file', filename=imageFileName) }} width="400" height="400" alt="previous" title="Previous" border="0">
+
+    <p>Node : {{selNode}}</p>
+    <p>Camera : {{selCam}}</p>
+    <p>Date : {{imageDateStr}}</p>
+
+
+
+{% endblock %}
