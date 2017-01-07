@@ -1,0 +1,2050 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Modules &#8212; homeBakedPi 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="homeBakedPi 0.7.1 documentation" href="index.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="modules">
+<h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="module-hub">
+<span id="hub-module"></span><h2>hub module<a class="headerlink" href="#module-hub" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Vincent Roy [*]</p>
+<p>This module contains the Hub class. The hub is the central governing component of the homeBakedPi system.</p>
+<dl class="class">
+<dt id="hub.Hub">
+<em class="property">class </em><code class="descclassname">hub.</code><code class="descname">Hub</code><span class="sig-paren">(</span><em>hubID</em>, <em>dbFile</em>, <em>email='vinoroy70&#64;gmail.com'</em>, <em>emailPass='miller12'</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub" title="Permalink to this definition">¶</a></dt>
+<dd><p>The hub is the central governing component of the homeBakedPi system. It is composed of one or more nodes. Each node contains
+one or more sensors. The hub contains several methods to manage the nodes (add, remove a node, get index of a node, etc)</p>
+<dl class="docutils">
+<dt>Attributes :</dt>
+<dd><ul class="first last simple">
+<li>nodes : (list) list of all the nodes that compose the hub</li>
+<li>actuators : (list) list of all the actuators that compose the hub</li>
+<li>hubMailAgt : (EmailAgent) reference to the EmailAgent object of the hub</li>
+<li>hubID : (string) name of the hub</li>
+<li>eventQ : (EventQueue) reference to the event queue object that is part of the hub</li>
+<li>dbFile : (string) name of the database file associated to the hub</li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="hub.Hub.addActuator">
+<code class="descname">addActuator</code><span class="sig-paren">(</span><em>act</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.addActuator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends an actuator to the list of actuators associated to the hub</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>actuator : (Actuator object) an actuator that we wish to add to the actuators list</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.addNode">
+<code class="descname">addNode</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.addNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends a node to the list of nodes associated to the hub</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>node : (node object) a node that we wish to add to the node list</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.checkSchedulesOfActuators">
+<code class="descname">checkSchedulesOfActuators</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.checkSchedulesOfActuators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requests all of the registered actuators to check their scheduling</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getActuator">
+<code class="descname">getActuator</code><span class="sig-paren">(</span><em>actuatorID</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getActuator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the reference for the corresponding actuator. Returns -1 if the actuator is
+not found</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>actuatorID : (string) name of the actuator</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(object ref)  reference to the actuator (-1 if the actuator is not found)</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getActuatorIdx">
+<code class="descname">getActuatorIdx</code><span class="sig-paren">(</span><em>actuatorID</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getActuatorIdx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the index for the corresponding actuator. Returns -1 if the actuator is
+not found</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>actuatorID : (string) name of the actuator</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) index of the actuator 0 to n (-1 if the actuator is not found)</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getAllLastValues">
+<code class="descname">getAllLastValues</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getAllLastValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns a dictionary with the sensor values for each node</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>dict of all the nodes, each node contains list of all the last values for each sensor</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getDBFile">
+<code class="descname">getDBFile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getDBFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the database file name</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(string) name of the database file</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getEventQ">
+<code class="descname">getEventQ</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getEventQ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the event queue object of the hub</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(EventQueue) event queue of the hub</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getHubID">
+<code class="descname">getHubID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getHubID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the hub id</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(string) hub id</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getHubMailAgt">
+<code class="descname">getHubMailAgt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getHubMailAgt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the EmailAgent object associated to the hub</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(EmailAgent) email agent object associated to the hub</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getInstAtNode">
+<code class="descname">getInstAtNode</code><span class="sig-paren">(</span><em>nodeID</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getInstAtNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>nodeID : (string) ID of the node</li>
+<li>instID : (string) ID of the instrument</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>inst (ref Sensor) instrument object, -1 if not found</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getListActuators">
+<code class="descname">getListActuators</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getListActuators" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns a list of all the actuators attached to the hub</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>list of all actuator ids</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getListActuatorsWithState">
+<code class="descname">getListActuatorsWithState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getListActuatorsWithState" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns a list of all the actuators with the present state (on  or off)</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>list of all actuator ids with the state (on or off) tagged at the end of the actuator id</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getListNodesInstruments">
+<code class="descname">getListNodesInstruments</code><span class="sig-paren">(</span><em>nodeType=''</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getListNodesInstruments" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns a list of all the node IDs - instruments attached to the hub.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>nodeType : (string) filter for the type of node</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>list of all the nodes - instruments attached to the hub</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getListOfNodes">
+<code class="descname">getListOfNodes</code><span class="sig-paren">(</span><em>nodeType=''</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getListOfNodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns a list of all the node IDs attached to the hub that corrspond to the node type.
+If the node type is not specified all nodes attached to the hub will be returned.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>node type : (string) node type to for the list creation</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>list of all the nodes that correspond to the node type</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getListOfNodesWithCamera">
+<code class="descname">getListOfNodesWithCamera</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getListOfNodesWithCamera" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns a list of all the nodeID instID pairs that correspond to cameras</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>list of all the nodeID instID pairs that correspond to cameras</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getNode">
+<code class="descname">getNode</code><span class="sig-paren">(</span><em>nodeID</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the reference for the corresponding node. Returns -1 if the node is
+not found</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>nodeID : (string) name of the node</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(object ref)  reference to the node (-1 if the node is not found)</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getNodeAtIdx">
+<code class="descname">getNodeAtIdx</code><span class="sig-paren">(</span><em>idx</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getNodeAtIdx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the node at index</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>(int) index of node to be returned</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Node) node at index</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getNodeIdx">
+<code class="descname">getNodeIdx</code><span class="sig-paren">(</span><em>nodeID</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getNodeIdx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the index for the corresponding node. Returns -1 if the node is
+not found</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>nodeID : (string) name of the node</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) index of the node 0 to n (-1 if the node is not found)</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getNumberActuators">
+<code class="descname">getNumberActuators</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getNumberActuators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of actuators associated to the hub</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) number of actuators associated to the hub</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getNumberNodes">
+<code class="descname">getNumberNodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getNumberNodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of nodes associated to the hub</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) number of nodes associated to the hub</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.highFreqUpDate">
+<code class="descname">highFreqUpDate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.highFreqUpDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requests all of the registered nodes to scan the high frequency sensors</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.lowFreqUpDate">
+<code class="descname">lowFreqUpDate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.lowFreqUpDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requests all of the registered nodes to scan the low frequency sensors</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.prtHubAttributes">
+<code class="descname">prtHubAttributes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.prtHubAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints to the console the attributes of the hub. Used for debugging purposes</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.prtHubLastValuesFromDB">
+<code class="descname">prtHubLastValuesFromDB</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.prtHubLastValuesFromDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints to the console the last values from DB (ie not buffer) of all the sensors of the attached to the hub.
+Used for debugging purposes</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.resetSchedulesOfActuators">
+<code class="descname">resetSchedulesOfActuators</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.resetSchedulesOfActuators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the schedules of all of the registered actuators</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="node-module">
+<h2>node module<a class="headerlink" href="#node-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-node"></span><p>&#64;author: Vincent Roy []</p>
+<p>This module contains the node class. A node can contain one or more sensors. And a hub can contain one or more nodes.</p>
+<dl class="class">
+<dt id="node.Node">
+<em class="property">class </em><code class="descclassname">node.</code><code class="descname">Node</code><span class="sig-paren">(</span><em>nodeID</em>, <em>hub</em>, <em>nodeMsgID</em>, <em>nodeUrl</em>, <em>nodeType</em><span class="sig-paren">)</span><a class="headerlink" href="#node.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>A node is the backbone of the sensening array of a given location. It holds
+all of the sensing instruments and provides the basic logic of the node.</p>
+<dl class="docutils">
+<dt>Attributes :</dt>
+<dd><ul class="first last">
+<li><p class="first">sensors : (Sensor list) list of sensor objects attached to the node</p>
+</li>
+<li><p class="first">nodeID : (string) name of the node</p>
+</li>
+<li><dl class="first docutils">
+<dt>nodeMsgID</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(character) character used in prefixing a message to be sent to the physical node by serial comm.</span><dd><p class="first last">The character enables a node to recognize if the message is destined for it. Must
+set empty if to disable serial com activity</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">nodeURL : (string) URL of the node</p>
+</li>
+<li><p class="first">hub : (Hub) reference to the hub object to which the node belongs</p>
+</li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="node.Node.addSensor">
+<code class="descname">addSensor</code><span class="sig-paren">(</span><em>sen</em><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.addSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends a sensor to the list of sensors for the node</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>sen : (obj ref) sensor object to add to the list</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.getHub">
+<code class="descname">getHub</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.getHub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the hub object associated to the node</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Hub) hub object associated to the node</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.getListSensorsID">
+<code class="descname">getListSensorsID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.getListSensorsID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of all the sesnor IDs attached to the node</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(string list) list of all the sensor IDs</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.getNodeID">
+<code class="descname">getNodeID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.getNodeID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the node id</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(string) node id</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.getNodeMsgID">
+<code class="descname">getNodeMsgID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.getNodeMsgID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the node message id</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(string) node message id</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.getNodeUrl">
+<code class="descname">getNodeUrl</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.getNodeUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the node url</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(String) url of the node</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.getNumberSensors">
+<code class="descname">getNumberSensors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.getNumberSensors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of sensors associated to the node</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) number of sensors associated to the node</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.getSensor">
+<code class="descname">getSensor</code><span class="sig-paren">(</span><em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.getSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the reference for the corresponding sensor. Returns -1 if the sensor is
+not found</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>instID : (string) name of the sensor</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>obj reference to the sensor with the corresponding identification. Returns -1 if the sensor is
+not found</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.getSensorAtIdx">
+<code class="descname">getSensorAtIdx</code><span class="sig-paren">(</span><em>idx</em><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.getSensorAtIdx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sensor at index x</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>(int) index of the sensor to be returned</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Sensor) sensor at index x</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.getSensorIdx">
+<code class="descname">getSensorIdx</code><span class="sig-paren">(</span><em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.getSensorIdx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the index for the corresponding sensor. Returns -1 if the sensor is
+not found</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>instID : (string) name of the sensor</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) index of  the sensor list that contains the desired sensor object. Retruns -1 if the desired sensor
+has not been identified</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.getSensorsValuesMatrix">
+<code class="descname">getSensorsValuesMatrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.getSensorsValuesMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a matrix with the instID, inst type, date, value and unit type for each sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.prtAllValuesOfSensorsInBuffer">
+<code class="descname">prtAllValuesOfSensorsInBuffer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.prtAllValuesOfSensorsInBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loop through each sensor output the attributes and then all of its measurements to standard out</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.prtLastValueOfAllSensorsInBuffer">
+<code class="descname">prtLastValueOfAllSensorsInBuffer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.prtLastValueOfAllSensorsInBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loop through each sensor and print to standard out the last value of the sensor tht is in the buffer</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.prtNodeAttributes">
+<code class="descname">prtNodeAttributes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.prtNodeAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints to the console the attributes of the node. Used for debugging purposes</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.prtNodeLastValuesFromDB">
+<code class="descname">prtNodeLastValuesFromDB</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.prtNodeLastValuesFromDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loop through each sensor and print to standard out the last value of the sensor tht is in the DB</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.scanSensors">
+<code class="descname">scanSensors</code><span class="sig-paren">(</span><em>scanFreq</em><span class="sig-paren">)</span><a class="headerlink" href="#node.Node.scanSensors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loops through all of the sensors associated to a certain frequency and takes a reading</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>scanFreq</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(string) frequency (low or high) that must be used to filter the sensors associated with the</span><dd><p class="first last">node that will be read</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor">
+<span id="sensor-module"></span><h2>sensor module<a class="headerlink" href="#module-sensor" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Vincent Roy [*]</p>
+<p>This module contains the base class for all of the sensor types that can be used in a homeBakedPi
+network</p>
+<dl class="class">
+<dt id="sensor.Sensor">
+<em class="property">class </em><code class="descclassname">sensor.</code><code class="descname">Sensor</code><span class="sig-paren">(</span><em>node=[]</em>, <em>freq='LOW'</em>, <em>instID=''</em><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is an abstract class of sensor type. No concrete objects can be logically
+instantiated from this class. Furthermore not all methods are implemented</p>
+<p>Attributes :</p>
+<blockquote>
+<div><ul class="simple">
+<li>mesureType : (string) measurement type of the sensor (ex Temperature)</li>
+<li>mesureUnit : (string) unit for the measurement (ex deg C)</li>
+<li>instType : (string) model type of the sensor (TMP36)</li>
+<li>instID : (string) identification of the sensor</li>
+<li>dbTable : (string) name of the database table that will store sensor values</li>
+<li>data : (list) data struct to hold sensor values since the application is live</li>
+<li>thrsh : (list) lower and upper threshold values for the sensor</li>
+<li>alarmMsg : (string) message that is to be relayed with the alarm</li>
+<li>node : (Node) reference to the node that is composed of sensor objects</li>
+<li>scanFreq : (string) LOW or HIGH, default is LOW. The actual time is set in the hub object</li>
+<li>urlSensorExtension : (string) identifies the url extension for the sensor to be read</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="sensor.Sensor.clearSensorValuesInDB">
+<code class="descname">clearSensorValuesInDB</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.clearSensorValuesInDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function clears all the values for the given sensor in the database table</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>1 if successful storage in price db</li>
+<li>-1 if unsuccessful storage in price db</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getHighThreshhold">
+<code class="descname">getHighThreshhold</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getHighThreshhold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the high threshold value</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(float) high threshold value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getHub">
+<code class="descname">getHub</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getHub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the hub object associated to the node that is associated to the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Hub) hub object associated to the node that is associated to the sensor</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getInstID">
+<code class="descname">getInstID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getInstID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the inst id</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(string) inst id</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getLastDayValuesFrmDB">
+<code class="descname">getLastDayValuesFrmDB</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getLastDayValuesFrmDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gets from the database the values for the last day.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>sensorDateMatrix : (list of list) array of date and sensor values (datenumber, date str, value, days frm most recent)</li>
+<li>if no values the return will be an empty array</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getLastMonthValuesFrmDB">
+<code class="descname">getLastMonthValuesFrmDB</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getLastMonthValuesFrmDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gets from the database the values for the last month.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>sensorDateMatrix : (list of list) array of date and sensor values (datenumber, date str, value, days frm most recent)</li>
+<li>if no values the return will be an empty array</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getLastReadingInBuffer">
+<code class="descname">getLastReadingInBuffer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getLastReadingInBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the last reading of the instrument</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(float) numerical value of the last reading</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getLastReadingStrInBuffer">
+<code class="descname">getLastReadingStrInBuffer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getLastReadingStrInBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representation of the last reading. Can be used
+for html output in between tags</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>return</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getLastWeekValuesFrmDB">
+<code class="descname">getLastWeekValuesFrmDB</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getLastWeekValuesFrmDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gets from the database the values for the last week.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>sensorDateMatrix : (list of list) array of date and sensor values (datenumber, date str, value, days frm most recent)</li>
+<li>-1 if unsuccessful</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getLowThreshhold">
+<code class="descname">getLowThreshhold</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getLowThreshhold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the low threshold value</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(float) low threshold value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getNode">
+<code class="descname">getNode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the node object associated to the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Node) Node object associated to the sensor</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getSensorValuesFrmDB">
+<code class="descname">getSensorValuesFrmDB</code><span class="sig-paren">(</span><em>strDate=None</em>, <em>endDate=None</em>, <em>last=0</em><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getSensorValuesFrmDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gets from the database historic values for the sensors.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>strDate : (float) datenum of the start date of the search</li>
+<li>endDate : (float) datenum of the end date of the search</li>
+<li>last : (int) 1 = get the last value</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>sensorDateMatrix : (list of list) array of date and sensor values (datenumber, date str, value, days frm most recent)</li>
+<li>if no values the return will be an empty list</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getThresholds">
+<code class="descname">getThresholds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getThresholds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the low and high threshold values</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(list float) low and high threshold values</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.getValueFrmSensor">
+<code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value from the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(double) sensor value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.insertEventValue">
+<code class="descname">insertEventValue</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.insertEventValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store the reading and verify the thresholds. This function is used when the value is generated by the sensor as
+result of an event.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>value : (float) value of the sensor</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.prtSensorAttributes">
+<code class="descname">prtSensorAttributes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.prtSensorAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints to the console the attributes of the sensor. Used for debugging purposes</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>return</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.prtSensorLastValueFromDBB">
+<code class="descname">prtSensorLastValueFromDBB</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.prtSensorLastValueFromDBB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints the last value of a sensor in the DB. Used for debugging</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>return</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.prtSensorValuesInBuffer">
+<code class="descname">prtSensorValuesInBuffer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.prtSensorValuesInBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints all the measurement values of a sensor. Used for debugging</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>return</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.sendUrlRequestToNode">
+<code class="descname">sendUrlRequestToNode</code><span class="sig-paren">(</span><em>requestedSensor</em><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.sendUrlRequestToNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sends a url request to a node. The response is then returned to the caller</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>requestedSensor : (string) sensor value that is requested</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(float) value of the sensor</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.setScanFreq">
+<code class="descname">setScanFreq</code><span class="sig-paren">(</span><em>newFreq</em><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.setScanFreq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the scan frequency of the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>newFreq : (string) LOW or HIGH. The actual time is set in the hub object</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.setThresholds">
+<code class="descname">setThresholds</code><span class="sig-paren">(</span><em>low</em>, <em>high</em><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.setThresholds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to set the low and high threshold values of the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>low : (float) value of the low threshold</li>
+<li>high : (float) value  of the low threshold</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.storeReading">
+<code class="descname">storeReading</code><span class="sig-paren">(</span><em>date</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.storeReading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores the reading into the associated database table</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ul class="first last simple">
+<li>date : (float) date of the measurement</li>
+<li>value : (float) value of the measurement</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.takeReading">
+<code class="descname">takeReading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.takeReading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take a reading for the sensor, store the value in the db and validate the thresholds</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.verifyThresholds">
+<code class="descname">verifyThresholds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.verifyThresholds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify if the new reading exceeds the thresholds. If a threshold is exceeded an event is added to the event pool.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>return</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-envSensor">
+<span id="envsensor-module"></span><h2>envSensor module<a class="headerlink" href="#module-envSensor" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Vincent Roy [*]</p>
+<p>This module implements all of the abstract and concrete classes for the environmental type sensors.</p>
+<dl class="class">
+<dt id="envSensor.BarometricPressureSensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">BarometricPressureSensor</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.BarometricPressureSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for the barometric pressure family of sensors. Here only some specific
+attributes are specified, no method implementation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="envSensor.HumiditySensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">HumiditySensor</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.HumiditySensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for the humidity family of sensors. Here only some specific
+attributes are specified, no method implementation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="envSensor.IPBaroSensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">IPBaroSensor</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.IPBaroSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>IP barometric pressure sensor class</p>
+<dl class="method">
+<dt id="envSensor.IPBaroSensor.getValueFrmSensor">
+<code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.IPBaroSensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value from the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(double) sensor value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="envSensor.IPHumiditySensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">IPHumiditySensor</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.IPHumiditySensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>IP humidity sensor class</p>
+<dl class="method">
+<dt id="envSensor.IPHumiditySensor.getValueFrmSensor">
+<code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.IPHumiditySensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value from the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(double) sensor value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="envSensor.IPLDRSensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">IPLDRSensor</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.IPLDRSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>IP LDR (light dependant resistor) sensor</p>
+<dl class="method">
+<dt id="envSensor.IPLDRSensor.getValueFrmSensor">
+<code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.IPLDRSensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value from the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(double) sensor value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="envSensor.IPTempSensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">IPTempSensor</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.IPTempSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>IP temperature sensor class</p>
+<dl class="method">
+<dt id="envSensor.IPTempSensor.getValueFrmSensor">
+<code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.IPTempSensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value from the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(double) sensor value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="envSensor.LDRSensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">LDRSensor</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.LDRSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for the LDR (light dependant resistor) family of sensors. Here only some specific
+attributes are specified, no method implementation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="envSensor.MOCK_BarometricPressureSensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">MOCK_BarometricPressureSensor</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_BarometricPressureSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock barometric pressure class used for integration and unit tests when
+sensors are offline</p>
+<dl class="method">
+<dt id="envSensor.MOCK_BarometricPressureSensor.getValueFrmSensor">
+<code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_BarometricPressureSensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value from the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(double) sensor value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="envSensor.MOCK_HumiditySensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">MOCK_HumiditySensor</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_HumiditySensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock humidity class used for integration and unit tests when
+sensors are offline</p>
+<dl class="method">
+<dt id="envSensor.MOCK_HumiditySensor.getValueFrmSensor">
+<code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_HumiditySensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value from the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(double) sensor value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="envSensor.MOCK_LDRSensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">MOCK_LDRSensor</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_LDRSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock LDR class used for integration and unit tests when
+sensors are offline</p>
+<dl class="method">
+<dt id="envSensor.MOCK_LDRSensor.getValueFrmSensor">
+<code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_LDRSensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value from the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(double) sensor value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="envSensor.MOCK_TempSensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">MOCK_TempSensor</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_TempSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock temperture class used for integration and unit tests when
+sensors are offline</p>
+<dl class="method">
+<dt id="envSensor.MOCK_TempSensor.getValueFrmSensor">
+<code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_TempSensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value from the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(double) sensor value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="envSensor.TempSensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">TempSensor</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.TempSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for the temperature family of sensors. Here only some specific
+attributes are specified, no method implementation</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-actuator">
+<span id="actuator"></span><h2>actuator<a class="headerlink" href="#module-actuator" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Vincent Roy [*]</p>
+<p>This module contains the base class and derived classes of the actuator types that can be used in a homeBakedPi
+network.</p>
+<dl class="class">
+<dt id="actuator.Actuator">
+<em class="property">class </em><code class="descclassname">actuator.</code><code class="descname">Actuator</code><span class="sig-paren">(</span><em>actuatorID</em>, <em>address</em>, <em>hub</em><span class="sig-paren">)</span><a class="headerlink" href="#actuator.Actuator" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is an abstract class of the actuator type. No concrete objects can be logically
+instantiated from this class. Furthermore not all methods are implemented</p>
+<p>Attributes :</p>
+<blockquote>
+<div><ul class="simple">
+<li>actuatorType : (string) actuator type (ex WEMO 110V switch)</li>
+<li>actuatorID : (string) identification for the sensor</li>
+<li>address : (string) address to localize the actuator</li>
+<li>dbTable : (string) name of the table that stores the actuator data</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="actuator.Actuator.getActuatorID">
+<code class="descname">getActuatorID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.Actuator.getActuatorID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the ID of the actuator</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(string) ID of the actuator</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.Actuator.getAddress">
+<code class="descname">getAddress</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.Actuator.getAddress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the network address of the actuator</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(string) network address of the actuator</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.Actuator.getHub">
+<code class="descname">getHub</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.Actuator.getHub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the hub object associated to the actuator</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Hub) hub object associated to the node</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.Actuator.getLastStateFrmDB">
+<code class="descname">getLastStateFrmDB</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.Actuator.getLastStateFrmDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the last state of the actuator from the database</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(list) last state (int : 0 for closed &amp; 1 for open) and the last date time number (double)</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.Actuator.getState">
+<code class="descname">getState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.Actuator.getState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not implemented in the base class but must be implemented in the concrete
+classes</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.Actuator.setClose">
+<code class="descname">setClose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.Actuator.setClose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not implemented in the base class but must be implemented in the concrete
+classes</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.Actuator.setOpen">
+<code class="descname">setOpen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.Actuator.setOpen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not implemented in the base class but must be implemented in the concrete
+classes</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.Actuator.updateDBState">
+<code class="descname">updateDBState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.Actuator.updateDBState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the state of the actuator in the database</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="actuator.MOCK_V110Switch">
+<em class="property">class </em><code class="descclassname">actuator.</code><code class="descname">MOCK_V110Switch</code><span class="sig-paren">(</span><em>actuatorID</em>, <em>address</em>, <em>hub</em>, <em>openTime=None</em>, <em>closeTime=None</em><span class="sig-paren">)</span><a class="headerlink" href="#actuator.MOCK_V110Switch" title="Permalink to this definition">¶</a></dt>
+<dd><p>MOCK 110V outlet switch actuator</p>
+<dl class="method">
+<dt id="actuator.MOCK_V110Switch.getState">
+<code class="descname">getState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.MOCK_V110Switch.getState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that returns the state of the actuator switch. 1 for open and 0 for closed</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) 0 for closed and 1 for open</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.MOCK_V110Switch.setClose">
+<code class="descname">setClose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.MOCK_V110Switch.setClose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that sets the actuator switch to close</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.MOCK_V110Switch.setOpen">
+<code class="descname">setOpen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.MOCK_V110Switch.setOpen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that sets the actuator switch to open</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="actuator.V110Switch">
+<em class="property">class </em><code class="descclassname">actuator.</code><code class="descname">V110Switch</code><span class="sig-paren">(</span><em>actuatorID</em>, <em>address</em>, <em>hub</em>, <em>openTime</em>, <em>closeTime</em><span class="sig-paren">)</span><a class="headerlink" href="#actuator.V110Switch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for the 110V family of switches. Here only some specific
+attributes are specified and added to the actuator base class.</p>
+<p>Attributes :</p>
+<blockquote>
+<div><ul class="simple">
+<li>actuatorType : (string) actuator type (ex WEMO 110V switch)</li>
+<li>actuatorID : (string) identification for the sensor</li>
+<li>address : (string) address to localize the actuator</li>
+<li>openTimes : (float list) list that contains the ON times in hours</li>
+<li>closeTimes : (string) list that contains the OFF times in hours</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="actuator.V110Switch.checkSchedule">
+<code class="descname">checkSchedule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.V110Switch.checkSchedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the scheduled open and close times programmed for the actuator and consequently opens or closes the switch</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.V110Switch.getCloseFlag">
+<code class="descname">getCloseFlag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.V110Switch.getCloseFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets from the db the state of the close flag</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) state of the close flag to set</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.V110Switch.getOpenFlag">
+<code class="descname">getOpenFlag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.V110Switch.getOpenFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets from the db the state of the open flag</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) state of the open flag to set</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.V110Switch.getScheduleTimes">
+<code class="descname">getScheduleTimes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.V110Switch.getScheduleTimes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to return the open and close time schedule of the actuator</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(float list) openTime and closeTime</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.V110Switch.resetScheduleFlags">
+<code class="descname">resetScheduleFlags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.V110Switch.resetScheduleFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets to the db the state of the open and close flags to 0</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.V110Switch.setCloseFlag">
+<code class="descname">setCloseFlag</code><span class="sig-paren">(</span><em>closeFlag</em><span class="sig-paren">)</span><a class="headerlink" href="#actuator.V110Switch.setCloseFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets to the db the state of the close flag</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>closeFlag : (int) state of the flag to set</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.V110Switch.setOpenFlag">
+<code class="descname">setOpenFlag</code><span class="sig-paren">(</span><em>openFlag</em><span class="sig-paren">)</span><a class="headerlink" href="#actuator.V110Switch.setOpenFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets to the db the state of the open flag</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>openFlag : (int) state of the flag to set</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.V110Switch.setScheduleTimes">
+<code class="descname">setScheduleTimes</code><span class="sig-paren">(</span><em>openTime</em>, <em>closeTime</em><span class="sig-paren">)</span><a class="headerlink" href="#actuator.V110Switch.setScheduleTimes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to set the open and close time schedule of the actuator</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>openTime : (float) value of the open time</li>
+<li>closeTime : (float) value  of the close time</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuator.V110Switch.toggleSwitch">
+<code class="descname">toggleSwitch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuator.V110Switch.toggleSwitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the current state of the switch and toggles the state</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Modules</a><ul>
+<li><a class="reference internal" href="#module-hub">hub module</a></li>
+<li><a class="reference internal" href="#node-module">node module</a></li>
+<li><a class="reference internal" href="#module-sensor">sensor module</a></li>
+<li><a class="reference internal" href="#module-envSensor">envSensor module</a></li>
+<li><a class="reference internal" href="#module-actuator">actuator</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="intro.html" title="previous chapter">Introduction</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/modules.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Vincent Roy.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/modules.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

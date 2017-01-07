@@ -9,7 +9,7 @@ This module contains the classes and functions for the homeBakedPi web app.
 import os
 import sys
 
-path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../homeBakedPi'))
+path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../app'))
 if not path in sys.path:
     sys.path.insert(1, path)
 del path
@@ -22,12 +22,11 @@ from wtforms.validators import Required, DataRequired
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, send_file, send_from_directory
 from subprocess import call
-from homeBakedPi import *
+from hbpApp import *
 from flask import jsonify
 from datetime import datetime
 from datetime import timedelta
 from dateTimeConversion import *
-
 
 
 
@@ -109,7 +108,7 @@ def makeHub():
         -  hub : (obj ref) hub object
     """
 
-    theHub = createHub(['../homeBakedPi/parameters.xml',sys.argv[1]])
+    theHub = createHub(['../app/parameters.xml',sys.argv[1]])
 
     return theHub
 

@@ -1,2 +1,2 @@
 # to start the homeBakedPi app on dev with a low freq scan
-./homeBakedPi.py parameters.xml dev low
+./hbpApp.py parameters.xml dev low
