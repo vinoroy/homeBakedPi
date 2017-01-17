@@ -3,8 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to homeBakedPi's documentation!
-=======================================
+Welcome to homeBakedPi a python home automation platform
+========================================================
+
 
 Contents:
 
@@ -12,6 +13,7 @@ Contents:
    :maxdepth: 2
 
    intro.rst
+   envNode.rst
    modules.rst
 
 

@@ -1,0 +1,18 @@
+Title : Environmental monitoring
+
+Goal : Develop the hardware and software architecture to monitor the environmental parameters of a room
+
+Requirements :
+
+ - measure the temperature
+ - measure the humidity
+ - mesure the luminosity
+
+ Architecture :
+
+ - an esp8266 module will act as a web server to recieve http request to read the a sensor. The results of the sensor
+ value will be sent back over the http response
+
+
+
+

@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="homeBakedPi 0.7.1 documentation" href="index.html" />
-    <link rel="prev" title="Introduction" href="intro.html" />
+    <link rel="prev" title="Environmental node" href="envNode.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -45,7 +45,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <div class="section" id="module-hub">
-<span id="hub-module"></span><h2>hub module<a class="headerlink" href="#module-hub" title="Permalink to this headline">¶</a></h2>
+<span id="hub-module"></span><h2>Hub module<a class="headerlink" href="#module-hub" title="Permalink to this headline">¶</a></h2>
 <p>&#64;author: Vincent Roy [*]</p>
 <p>This module contains the Hub class. The hub is the central governing component of the homeBakedPi system.</p>
 <dl class="class">
@@ -543,8 +543,58 @@ Used for debugging purposes</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-hubFactory">
+<span id="hubfactory-module"></span><h2>HubFactory module<a class="headerlink" href="#module-hubFactory" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Vincent Roy [*]</p>
+<p>This module contains a factory class designed for the creation of a Hub.</p>
+<dl class="class">
+<dt id="hubFactory.HubFactory">
+<em class="property">class </em><code class="descclassname">hubFactory.</code><code class="descname">HubFactory</code><span class="sig-paren">(</span><em>dbFile</em>, <em>mockMode</em>, <em>email='vinoroy70&#64;gmail.com'</em>, <em>emailPass='miller12'</em><span class="sig-paren">)</span><a class="headerlink" href="#hubFactory.HubFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>The HubFactory is a factory class that is responsible for the creation of a hub. Hub creation can be linked
+to a database, hence all of the hub attibutes and nodes can be loaded from a database.</p>
+<dl class="docutils">
+<dt>Attributes :</dt>
+<dd><ul class="first last">
+<li><p class="first">dbFile : (string) name of data base file that contains the node and sensor attributes as well as the tables for the readings</p>
+</li>
+<li><dl class="first docutils">
+<dt>fromDB</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(int) 0  - do not create hub and sensors from database file (for testing purposes)</span><dd><p class="first last">1  - create the hub from the attributes stored in the database file</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">email : (string) email address where the notifications will be sent</p>
+</li>
+<li><p class="first">emailPass : (string) password for the email account where the notifications will be sent.</p>
+</li>
+<li><p class="first">mockMode : (int) flag to indicate if the application hub is in test mode (1 = test mode)</p>
+</li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="hubFactory.HubFactory.createHub">
+<code class="descname">createHub</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hubFactory.HubFactory.createHub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a hub and returns it to the requester.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>hub object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="node-module">
-<h2>node module<a class="headerlink" href="#node-module" title="Permalink to this headline">¶</a></h2>
+<h2>Node module<a class="headerlink" href="#node-module" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="module-node"></span><p>&#64;author: Vincent Roy []</p>
 <p>This module contains the node class. A node can contain one or more sensors. And a hub can contain one or more nodes.</p>
 <dl class="class">
@@ -874,7 +924,7 @@ has not been identified</li>
 
 </div>
 <div class="section" id="module-sensor">
-<span id="sensor-module"></span><h2>sensor module<a class="headerlink" href="#module-sensor" title="Permalink to this headline">¶</a></h2>
+<span id="sensor-module"></span><h2>Sensor module<a class="headerlink" href="#module-sensor" title="Permalink to this headline">¶</a></h2>
 <p>&#64;author: Vincent Roy [*]</p>
 <p>This module contains the base class for all of the sensor types that can be used in a homeBakedPi
 network</p>
@@ -1346,7 +1396,7 @@ result of an event.</p>
 
 </div>
 <div class="section" id="module-envSensor">
-<span id="envsensor-module"></span><h2>envSensor module<a class="headerlink" href="#module-envSensor" title="Permalink to this headline">¶</a></h2>
+<span id="envsensor-module"></span><h2>EnvSensor module<a class="headerlink" href="#module-envSensor" title="Permalink to this headline">¶</a></h2>
 <p>&#64;author: Vincent Roy [*]</p>
 <p>This module implements all of the abstract and concrete classes for the environmental type sensors.</p>
 <dl class="class">
@@ -1574,8 +1624,168 @@ attributes are specified, no method implementation</p>
 </dd></dl>
 
 </div>
+<div class="section" id="occpsensor-module">
+<h2>OccpSensor module<a class="headerlink" href="#occpsensor-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-occpSensor"></span><p>&#64;author: Vincent Roy [*]</p>
+<p>This module contains all of the occupation sensor classes</p>
+<dl class="class">
+<dt id="occpSensor.DoorSwitch">
+<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">DoorSwitch</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.DoorSwitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for the door contact switch family of sensors. Here only some specific
+attributes are specified, no method implementation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="occpSensor.MOCK_DoorSwitch">
+<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">MOCK_DoorSwitch</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_DoorSwitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock door contact switch class used for integration and unit tests when
+sensors are offline</p>
+<dl class="method">
+<dt id="occpSensor.MOCK_DoorSwitch.getValueFrmSensor">
+<code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_DoorSwitch.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value from the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(double) sensor value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="occpSensor.MOCK_MotionDetection">
+<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">MOCK_MotionDetection</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_MotionDetection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock door contact switch class used for integration and unit tests when
+sensors are offline</p>
+<dl class="method">
+<dt id="occpSensor.MOCK_MotionDetection.getValueFrmSensor">
+<code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_MotionDetection.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value from the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(double) sensor value</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="occpSensor.MOCK_RFIDReader">
+<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">MOCK_RFIDReader</code><span class="sig-paren">(</span><em>instID</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_RFIDReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock RFID class used for integration and unit tests when
+sensors are offline</p>
+<dl class="method">
+<dt id="occpSensor.MOCK_RFIDReader.takeReading">
+<code class="descname">takeReading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_RFIDReader.takeReading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take a reading from the mock RFID sensor.</p>
+<dl class="docutils">
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="occpSensor.MotionDetection">
+<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">MotionDetection</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MotionDetection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for the motion detection family of sensors. Here only some specific
+attributes are specified, no method implementation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="occpSensor.ParallaxRFIDReader_ArduinoSensor">
+<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">ParallaxRFIDReader_ArduinoSensor</code><span class="sig-paren">(</span><em>instID</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.ParallaxRFIDReader_ArduinoSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>RFID sensor connected to an Arduino microcontroller. Note that the communication to the Arduino is serial</p>
+<dl class="method">
+<dt id="occpSensor.ParallaxRFIDReader_ArduinoSensor.takeReading">
+<code class="descname">takeReading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.ParallaxRFIDReader_ArduinoSensor.takeReading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take a reading from the RFID sensor that is connected to the Arduino microcontroller</p>
+<dl class="docutils">
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="occpSensor.ParallaxRFIDReader_ArduinoSensor.verifyThresholds">
+<code class="descname">verifyThresholds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.ParallaxRFIDReader_ArduinoSensor.verifyThresholds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifies if there has been a change in the state of the sensor</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="occpSensor.RFIDSensor">
+<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">RFIDSensor</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.RFIDSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for the RFID family of sensors. Here only some specific
+attributes are specified, no method implementation</p>
+<dl class="method">
+<dt id="occpSensor.RFIDSensor.storeReading">
+<code class="descname">storeReading</code><span class="sig-paren">(</span><em>date</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.RFIDSensor.storeReading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores the reading for the RFID class of sensors. Overides the base class store method</p>
+<p>Args :</p>
+<blockquote>
+<div><ul class="simple">
+<li>date</li>
+<li>value</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="occpSensor.RFIDSensor.takeReading">
+<code class="descname">takeReading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.RFIDSensor.takeReading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not implemented in the base class but must be in the concrete
+classes</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-actuator">
-<span id="actuator"></span><h2>actuator<a class="headerlink" href="#module-actuator" title="Permalink to this headline">¶</a></h2>
+<span id="actuator-module"></span><h2>Actuator module<a class="headerlink" href="#module-actuator" title="Permalink to this headline">¶</a></h2>
 <p>&#64;author: Vincent Roy [*]</p>
 <p>This module contains the base class and derived classes of the actuator types that can be used in a homeBakedPi
 network.</p>
@@ -1983,6 +2193,94 @@ attributes are specified and added to the actuator base class.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="commutility-module">
+<h2>commUtility module<a class="headerlink" href="#commutility-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-dateTimeConversion">
+<span id="datetimeconversionmodule-module"></span><h2>dateTimeConversionModule module<a class="headerlink" href="#module-dateTimeConversion" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Vincent Roy [*]</p>
+<p>This module contains functions to convert a datetime object into a
+datenumber and back to a datetime object. The datenumber system is based on the Excel
+datenumber system which sets datenumber 0 equivalent to 1900</p>
+<dl class="function">
+<dt id="dateTimeConversion.conDateNumToDateStr">
+<code class="descclassname">dateTimeConversion.</code><code class="descname">conDateNumToDateStr</code><span class="sig-paren">(</span><em>dateNum</em><span class="sig-paren">)</span><a class="headerlink" href="#dateTimeConversion.conDateNumToDateStr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a date number to a date in string format</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>dateNum (float) date number to be converted to a string representation of the date</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(string) string representation of the date</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dateTimeConversion.conDateTimeToNum">
+<code class="descclassname">dateTimeConversion.</code><code class="descname">conDateTimeToNum</code><span class="sig-paren">(</span><em>dateToBeConv</em><span class="sig-paren">)</span><a class="headerlink" href="#dateTimeConversion.conDateTimeToNum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts date object into a datenumber of the Excel datenumber system (1900/01/00)</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>dateToBeConv : (datetime) date to be converted</li>
+</ul>
+</dd>
+<dt>Returns :</dt>
+<dd><ul class="first last simple">
+<li>dateNum : (float)</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dateTimeConversion.conNumToDateTime">
+<code class="descclassname">dateTimeConversion.</code><code class="descname">conNumToDateTime</code><span class="sig-paren">(</span><em>dateNum</em><span class="sig-paren">)</span><a class="headerlink" href="#dateTimeConversion.conNumToDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a date number back to a date object</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>dateNum : (float) date number to be converted to a date object</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>dateObj : (datetime) date time object of the date number</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dateTimeConversion.conNumToNumDateGregorian">
+<code class="descclassname">dateTimeConversion.</code><code class="descname">conNumToNumDateGregorian</code><span class="sig-paren">(</span><em>dateNum</em><span class="sig-paren">)</span><a class="headerlink" href="#dateTimeConversion.conNumToNumDateGregorian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a date number of the excel datenumber system (1900-01-01) to the Gregorian date (0000-01-01)</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>dateNum : (float) date number to be converted to Gregorian date number</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>dateNum : (float) date number to be converted to Gregorian date number</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dateTimeConversion.nowInHours">
+<code class="descclassname">dateTimeConversion.</code><code class="descname">nowInHours</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dateTimeConversion.nowInHours" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to get the current time in decimal hours</p>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -1994,11 +2292,15 @@ attributes are specified and added to the actuator base class.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Modules</a><ul>
-<li><a class="reference internal" href="#module-hub">hub module</a></li>
-<li><a class="reference internal" href="#node-module">node module</a></li>
-<li><a class="reference internal" href="#module-sensor">sensor module</a></li>
-<li><a class="reference internal" href="#module-envSensor">envSensor module</a></li>
-<li><a class="reference internal" href="#module-actuator">actuator</a></li>
+<li><a class="reference internal" href="#module-hub">Hub module</a></li>
+<li><a class="reference internal" href="#module-hubFactory">HubFactory module</a></li>
+<li><a class="reference internal" href="#node-module">Node module</a></li>
+<li><a class="reference internal" href="#module-sensor">Sensor module</a></li>
+<li><a class="reference internal" href="#module-envSensor">EnvSensor module</a></li>
+<li><a class="reference internal" href="#occpsensor-module">OccpSensor module</a></li>
+<li><a class="reference internal" href="#module-actuator">Actuator module</a></li>
+<li><a class="reference internal" href="#commutility-module">commUtility module</a></li>
+<li><a class="reference internal" href="#module-dateTimeConversion">dateTimeConversionModule module</a></li>
 </ul>
 </li>
 </ul>
@@ -2006,7 +2308,7 @@ attributes are specified and added to the actuator base class.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="intro.html" title="previous chapter">Introduction</a></li>
+      <li>Previous: <a href="envNode.html" title="previous chapter">Environmental node</a></li>
   </ul></li>
 </ul>
 </div>

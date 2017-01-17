@@ -4,7 +4,8 @@ TO DO
 left off :
 
 P1
- - change envNode to node in templates
+ - generalize envNode to node in templates
+ > write a script to insert dummy values into db for dev and testing purposes. Use the testInsert script as an example
  > make sure that occp sensor data is viewable in app (generalize for any type of node)
 
 P2

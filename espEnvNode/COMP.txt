@@ -1,0 +1,15 @@
+envNode
+-------
+
+- esp thing dev *
+- male headers *
+- female headers *
+- general pcb *
+- 5v wall wart power supply *
+- plastic enclosure or sintra board with standoffs
+- DHT22
+- LDR sensor
+- 7.5k and 3k resistor
+- micro usb cable
+
+* to order

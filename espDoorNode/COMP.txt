@@ -1,0 +1,17 @@
+occNode
+-------
+- esp thing dev *
+- male headers *
+- female headers *
+- general pcb *
+- 5v wall wart power supply *
+- white wire (two strand) 10ft *
+- white shrink wrap *
+- plastic enclosure or sintra board with standoffs
+- magnetic door reed switch
+- 10 k resistors for the pull down
+- pir
+- bornier
+- micro usb cable
+
+* to order

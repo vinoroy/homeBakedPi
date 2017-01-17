@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Environmental node &#8212; homeBakedPi 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="homeBakedPi 0.7.1 documentation" href="index.html" />
+    <link rel="next" title="Modules" href="modules.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="environmental-node">
+<h1>Environmental node<a class="headerlink" href="#environmental-node" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="about-the-environmental-node">
+<h2>About the environmental node<a class="headerlink" href="#about-the-environmental-node" title="Permalink to this headline">¶</a></h2>
+<p>The environmental sensor node is used to sense the temperature, humidity and luminosity. It is composed of a esp8266
+Sparkfun Thing Dev micro controller, DHT22 temperature and humidity sensor and light dependant resistor (LDR) to measure
+the luminosity.</p>
+<p>The code to control the microcontroller is programmed in Arduino C.</p>
+<p>The environmental node acts as an http web server in order to receive sensor data request from the hub. The results of
+a data request are relayed back to the hub over the http. A typical http request consist of the ip address of the node
+followed by the name of the sensor and the required measurement (ex 192.168.0.1/TMP-1/temp). The following is a list of the
+permitted http requests :</p>
+<ol class="arabic simple">
+<li>Temperature measurement request</li>
+</ol>
+<p>xxx.xxx.xxx.xxx/TMP-1/temp</p>
+<ol class="arabic" start="2">
+<li><p class="first">Humidity measurement request</p>
+<blockquote>
+<div><p>xxx.xxx.xxx.xxx/HUMID-1/humid</p>
+</div></blockquote>
+</li>
+<li><p class="first">Luminosity measurement request</p>
+<blockquote>
+<div><p>xxx.xxx.xxx.xxx/LDR-1/ldr</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="component-list">
+<h2>Component list<a class="headerlink" href="#component-list" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Sparkfun ESP8266 Thing Dev - Figure 1</li>
+<li>DHT22 sensor temperature and humidity sensor - Figure 2</li>
+<li>LDR sensor (luminosity)</li>
+<li>7.5k and 3k resistors for voltage divider</li>
+</ul>
+</div>
+<div class="section" id="schematic">
+<h2>Schematic<a class="headerlink" href="#schematic" title="Permalink to this headline">¶</a></h2>
+<p>Figure 3 shows the schematic for the environmental node.</p>
+<div class="figure align-left" id="id1">
+<a class="reference internal image-reference" href="_images/thingDev.jpeg"><img alt="Sparkfun Thing Dev" src="_images/thingDev.jpeg" style="width: 100px; height: 100px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1 - Sparkfun Thing dev ESP8266</span></p>
+</div>
+<div class="figure align-left" id="id2">
+<a class="reference internal image-reference" href="_images/dht22.jpeg"><img alt="DHT22 temperature and humidity sensor" src="_images/dht22.jpeg" style="width: 100px; height: 100px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2 - DHT22 temperature and humidity sensor</span></p>
+</div>
+<div class="figure align-left" id="id3">
+<a class="reference internal image-reference" href="_images/envNodeSchematic.png"><img alt="envNode schematic" src="_images/envNodeSchematic.png" style="width: 600px; height: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 3 - Schematic for the environmental node</span></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Environmental node</a><ul>
+<li><a class="reference internal" href="#about-the-environmental-node">About the environmental node</a></li>
+<li><a class="reference internal" href="#component-list">Component list</a></li>
+<li><a class="reference internal" href="#schematic">Schematic</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="intro.html" title="previous chapter">Introduction</a></li>
+      <li>Next: <a href="modules.html" title="next chapter">Modules</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/envNode.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Vincent Roy.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/envNode.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

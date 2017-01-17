@@ -1,0 +1,39 @@
+Thresholds and actions
+
+environmental sensor monitoring
+
+threshold parameters
+
+- lower and upper
+
+condition
+
+- if one of the two is exceeded and environmental monitoring is active
+
+possible actions :
+
+ - event notification by email
+ - event notification by sms
+
+occupational sensor monitoring
+
+threshold parameter
+
+binary condition of 0 or 1
+
+condition
+
+if sensor measurement is equal to set threshold and occupational monitoring is active
+
+possible actions :
+
+ - event notification by email
+ - event notification by sms
+ - turn a or several lights on
+ - take a picture (or take a picture from camera x, y and z)
+ - activate siren
+ - read voice message
+
+
+
+
