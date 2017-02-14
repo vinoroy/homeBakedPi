@@ -28,7 +28,7 @@ class TestEnvSensorONLocalNetwork(unittest.TestCase):
 
 
         self.myHub = Hub('Main','bakedPiDB')
-        self.myNode = Node('KITCHEN',self.myHub,'','http://192.168.0.112','ENV')
+        self.myNode = Node('KITCHEN',self.myHub,'','http://192.168.0.119','ENV')
 
         self.testSenTemp = IPTempSensor('TMP-1',[0,100000],self.myNode,'LOW')
         self.testSenHumid = IPHumiditySensor('HUMID-1',[0,100000],self.myNode,'LOW')

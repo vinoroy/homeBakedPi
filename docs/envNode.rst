@@ -82,6 +82,13 @@ pvc board with standoffs.
 
     Figure 3 - Schematic for the environmental node
 
+.. figure:: ./images/envNodePhoto.jpg
+    :width: 600px
+    :align: left
+    :height: 500px
+    :alt: envNode photo
+
+    Figure 4 - Schematic for the environmental node
 
 
 

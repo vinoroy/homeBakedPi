@@ -21,7 +21,7 @@ permitted http requests :
 
 1) Temperature measurement request
 
-xxx.xxx.xxx.xxx/TMP-1/temp
+    xxx.xxx.xxx.xxx/TMP-1/temp
 
 2) Humidity measurement request
 
@@ -39,12 +39,23 @@ Component list
 - DHT22 sensor temperature and humidity sensor - Figure 2
 - LDR sensor (luminosity)
 - 7.5k and 3k resistors for voltage divider
+- pref board
+- standoffs
+- pvc board
 
 
 Schematic
 ---------
 
 Figure 3 shows the schematic for the environmental node.
+
+
+Construction
+------------
+
+The environmental node component were mounted on a perf board as shown in figure 4. The perfboard was then mounted to
+pvc board with standoffs.
+
 
 
 .. figure:: ./images/thingDev.jpeg
@@ -71,6 +82,13 @@ Figure 3 shows the schematic for the environmental node.
 
     Figure 3 - Schematic for the environmental node
 
+.. figure:: ./images/envNodePhoto.jpg
+    :width: 600px
+    :align: left
+    :height: 500px
+    :alt: envNode photo
+
+    Figure 4 - Schematic for the environmental node
 
 
 

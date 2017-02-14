@@ -4,7 +4,8 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="Python 2.7.8 (~/anaconda/bin/python)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="gitRepos" />
+    <orderEntry type="module" module-name="pythonTestCenter" />
+    <orderEntry type="module" module-name="trips" />
   </component>
 </module>
 

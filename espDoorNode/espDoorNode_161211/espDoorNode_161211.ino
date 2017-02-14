@@ -10,7 +10,7 @@
 #include <ESP8266WebServer.h>
 
 // door switch assignments
-const int doorPin = 12;     
+const int doorPin = 16;     
 
 long debouncingTimeDoor = 15; //Debouncing Time in Milliseconds
 volatile unsigned long lastTimeMicrosDoor;
@@ -19,7 +19,7 @@ int doorOpenState = 0;
 int doorMsgSentState = 1;
 
 // pir motion detection assignments
-const int pirPin = 14;     
+const int pirPin = 12;     
 
 long timeDelaySecondsPir = 15; //time delay in seconds between events
 volatile unsigned long lastTimeSecondsPir;

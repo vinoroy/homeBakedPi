@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Environmental node &#8212; homeBakedPi 0.7.1 documentation</title>
+    <title>Occupational node &#8212; homeBakedPi 0.7.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,8 +24,6 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="homeBakedPi 0.7.1 documentation" href="index.html" />
-    <link rel="next" title="Modules" href="modules.html" />
-    <link rel="prev" title="Introduction" href="intro.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -41,34 +39,37 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="environmental-node">
-<h1>Environmental node<a class="headerlink" href="#environmental-node" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="occupational-node">
+<h1>Occupational node<a class="headerlink" href="#occupational-node" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="about-the-environmental-node">
-<h2>About the environmental node<a class="headerlink" href="#about-the-environmental-node" title="Permalink to this headline">¶</a></h2>
-<p>The environmental sensor node is used to sense the temperature, humidity and luminosity. It is composed of a esp8266
-Sparkfun Thing Dev micro controller, DHT22 temperature and humidity sensor and light dependant resistor (LDR) to measure
-the luminosity.</p>
+<div class="section" id="about-the-occupational-node">
+<h2>About the occupational node<a class="headerlink" href="#about-the-occupational-node" title="Permalink to this headline">¶</a></h2>
+<p>The occupational sensor node is used to monitor event association to door openings, door lock positions and room motion detection.
+It is composed of a esp8266 Sparkfun Thing Dev micro controller, a door magnetic switch, a door lock contact switch and
+passive infrared sensor.</p>
 <p>The code to control the microcontroller is programmed in Arduino C.</p>
-<p>The environmental node acts as an http web server in order to receive sensor data request from the hub. The results of
+<p>The occupational node is designed to send a message over http to the homeBakedPi web app api in the event that a door is
+opened, that the door lock is unlocked or that motion is detected in the room. The logic of the event treatment is left
+to the hub.</p>
+<p>The occupational node acts as an http web server in order to receive sensor data request from the hub. The results of
 a data request are relayed back to the hub over the http. A typical http request consist of the ip address of the node
-followed by the name of the sensor and the required measurement (ex 192.168.0.1/TMP-1/temp). The following is a list of the
+followed by the name of the sensor and the required measurement (ex 192.168.0.1/MD-1/motion). The following is a list of the
 permitted http requests :</p>
 <ol class="arabic">
-<li><p class="first">Temperature measurement request</p>
+<li><p class="first">Motion detection measurement request</p>
 <blockquote>
 <div><p>xxx.xxx.xxx.xxx/TMP-1/temp</p>
 </div></blockquote>
 </li>
-<li><p class="first">Humidity measurement request</p>
+<li><p class="first">Door opening measurement request</p>
 <blockquote>
-<div><p>xxx.xxx.xxx.xxx/HUMID-1/humid</p>
+<div><p>xxx.xxx.xxx.xxx/SW-1/door</p>
 </div></blockquote>
 </li>
-<li><p class="first">Luminosity measurement request</p>
+<li><p class="first">Door lock measurement request</p>
 <blockquote>
-<div><p>xxx.xxx.xxx.xxx/LDR-1/ldr</p>
+<div><p>xxx.xxx.xxx.xxx/DL-1/lock</p>
 </div></blockquote>
 </li>
 </ol>
@@ -77,9 +78,10 @@ permitted http requests :</p>
 <h2>Component list<a class="headerlink" href="#component-list" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Sparkfun ESP8266 Thing Dev - Figure 1</li>
-<li>DHT22 sensor temperature and humidity sensor - Figure 2</li>
-<li>LDR sensor (luminosity)</li>
-<li>7.5k and 3k resistors for voltage divider</li>
+<li>magnetic door switch</li>
+<li>PIR motion sensor</li>
+<li>10k resistors * 2</li>
+<li>terminals</li>
 <li>pref board</li>
 <li>standoffs</li>
 <li>pvc board</li>
@@ -87,11 +89,11 @@ permitted http requests :</p>
 </div>
 <div class="section" id="schematic">
 <h2>Schematic<a class="headerlink" href="#schematic" title="Permalink to this headline">¶</a></h2>
-<p>Figure 3 shows the schematic for the environmental node.</p>
+<p>Figure 3 shows the schematic for the occupational node.</p>
 </div>
 <div class="section" id="construction">
 <h2>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h2>
-<p>The environmental node component were mounted on a perf board as shown in figure 4. The perfboard was then mounted to
+<p>The occupational node component were mounted on a perf board as shown in figure 4. The perfboard was then mounted to
 pvc board with standoffs.</p>
 <div class="figure align-left" id="id1">
 <a class="reference internal image-reference" href="_images/thingDev.jpeg"><img alt="Sparkfun Thing Dev" src="_images/thingDev.jpeg" style="width: 100px; height: 100px;" /></a>
@@ -105,10 +107,6 @@ pvc board with standoffs.</p>
 <a class="reference internal image-reference" href="_images/envNodeSchematic.png"><img alt="envNode schematic" src="_images/envNodeSchematic.png" style="width: 600px; height: 500px;" /></a>
 <p class="caption"><span class="caption-text">Figure 3 - Schematic for the environmental node</span></p>
 </div>
-<div class="figure align-left" id="id4">
-<a class="reference internal image-reference" href="_images/envNodePhoto.jpg"><img alt="envNode photo" src="_images/envNodePhoto.jpg" style="width: 600px; height: 500px;" /></a>
-<p class="caption"><span class="caption-text">Figure 4 - Schematic for the environmental node</span></p>
-</div>
 </div>
 </div>
 
@@ -120,8 +118,8 @@ pvc board with standoffs.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Environmental node</a><ul>
-<li><a class="reference internal" href="#about-the-environmental-node">About the environmental node</a></li>
+<li><a class="reference internal" href="#">Occupational node</a><ul>
+<li><a class="reference internal" href="#about-the-occupational-node">About the occupational node</a></li>
 <li><a class="reference internal" href="#component-list">Component list</a></li>
 <li><a class="reference internal" href="#schematic">Schematic</a></li>
 <li><a class="reference internal" href="#construction">Construction</a></li>
@@ -132,15 +130,13 @@ pvc board with standoffs.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="intro.html" title="previous chapter">Introduction</a></li>
-      <li>Next: <a href="modules.html" title="next chapter">Modules</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/envNode.txt"
+      <li><a href="_sources/occpNode.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -166,7 +162,7 @@ pvc board with standoffs.</p>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/envNode.txt"
+      <a href="_sources/occpNode.txt"
           rel="nofollow">Page source</a>
     </div>
 

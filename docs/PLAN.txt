@@ -32,15 +32,19 @@ Phase I (may 2017) :
 --------------------
 
 
-1) construct the env node on pcb
+1) construct the env node on a perfbord
 
-2) construct the occp node on pcb
+2) construct the occp node on a perfboard
 
-3) documentation
+3) adapt the web app the the new node types
 
-4) setup the aq and prod environment on the raspberry pi 1 and 2
+4) documentation
 
-5) design and code the event pool and action modules
+5) setup the aq and prod environment on the raspberry pi 1 and 2
+
+6) design and code the event pool and action modules
+
+7) add logging
 
 
 Phase II :

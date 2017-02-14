@@ -10,10 +10,9 @@
 #include <DHT.h>
 
 
-#define DHTPIN 14
+#define DHTPIN 12
 #define DHTTYPE DHT22
 
-int ldrPin = 12;
 
 const char* ssid     = "VIDEOTRON3761";
 const char* password = "3EEMTCVC333XA";
@@ -23,7 +22,7 @@ const char* password = "3EEMTCVC333XA";
 
 
 // DHT sensor
-DHT dht(DHTPIN, DHTTYPE, 15);
+DHT dht(DHTPIN, DHTTYPE,15);
 
 
 
@@ -67,6 +66,11 @@ void setup(void)
   
   server.on("/temp", [](){  // if you add this subdirectory to your webserver call, you get text below :)
 
+    int t = (int)dht.readTemperature();
+
+    Serial.println("Temp : ");
+    Serial.println(t);
+
     int temperature_data = (int)dht.readTemperature();
       
     webString="KITCHEN;TMP-1;"+String(temperature_data);   
@@ -77,6 +81,13 @@ void setup(void)
 
   server.on("/humid", [](){  // if you add this subdirectory to your webserver call, you get text below :)
   
+    
+    float h = dht.readHumidity();
+
+    Serial.println("Humidity : ");
+    Serial.println(h);
+    
+    
     int humidity_data = (int)dht.readHumidity();
 
     webString="KITCHEN;HUMID-1;"+String(humidity_data);

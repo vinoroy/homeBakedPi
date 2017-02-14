@@ -29,8 +29,8 @@ class Hub():
     one or more sensors. The hub contains several methods to manage the nodes (add, remove a node, get index of a node, etc)
 
     Attributes :
-        - nodes : (list) list of all the nodes that compose the hub
-        - actuators : (list) list of all the actuators that compose the hub
+        - nodes : (list Nodes) list of all the nodes that compose the hub
+        - actuators : (list Actuators) list of all the actuators that compose the hub
         - hubMailAgt : (EmailAgent) reference to the EmailAgent object of the hub
         - hubID : (string) name of the hub
         - eventQ : (EventQueue) reference to the event queue object that is part of the hub
