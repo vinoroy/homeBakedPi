@@ -19,7 +19,7 @@
         <ul class="dropdown-menu">
 
             {% for i in range(listOfSensors|length) %}
-                <li><a href="{{ url_for('envNodeDetailed',selNode=selNode,selSensorNum=i,selGrafTable=selGrafTable,selTimePeriode=selTimePeriode) }}">{{listOfSensors[i]}}</a></li>
+                <li><a href="{{ url_for('nodeDetailed',selNode=selNode,selSensorNum=i,selGrafTable=selGrafTable,selTimePeriode=selTimePeriode) }}">{{listOfSensors[i]}}</a></li>
             {% endfor %}
         </ul>
     </div>
@@ -32,8 +32,8 @@
             <span class="sr-only">Toggle Dropdown</span>
         </button>
         <ul class="dropdown-menu">
-            <li><a href="{{ url_for('envNodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable='Graf',selTimePeriode=selTimePeriode) }}">Graf</a></li>
-            <li><a href="{{ url_for('envNodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable='Table',selTimePeriode=selTimePeriode) }}">Table</a></li>
+            <li><a href="{{ url_for('nodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable='Graf',selTimePeriode=selTimePeriode) }}">Graf</a></li>
+            <li><a href="{{ url_for('nodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable='Table',selTimePeriode=selTimePeriode) }}">Table</a></li>
 
         </ul>
     </div>
@@ -46,9 +46,9 @@
             <span class="sr-only">Toggle Dropdown</span>
         </button>
         <ul class="dropdown-menu">
-            <li><a href="{{ url_for('envNodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable=selGrafTable,selTimePeriode='1 Day') }}">1 Day</a></li>
-            <li><a href="{{ url_for('envNodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable=selGrafTable,selTimePeriode='1 Week') }}">1 Week</a></li>
-            <li><a href="{{ url_for('envNodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable=selGrafTable,selTimePeriode='1 Month') }}">1 Month</a></li>
+            <li><a href="{{ url_for('nodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable=selGrafTable,selTimePeriode='1 Day') }}">1 Day</a></li>
+            <li><a href="{{ url_for('nodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable=selGrafTable,selTimePeriode='1 Week') }}">1 Week</a></li>
+            <li><a href="{{ url_for('nodeDetailed',selNode=selNode,selSensorNum=selSensorNum,selGrafTable=selGrafTable,selTimePeriode='1 Month') }}">1 Month</a></li>
         </ul>
     </div>
 

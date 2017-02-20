@@ -10,6 +10,8 @@ pass : MillerBeer12
 vinoroy70
 MillerBeer12
 
+# ip
+74.58.59.13
 
 RASPBERRY PI #1
 ---------------

@@ -30,7 +30,7 @@ sudo ./deploy.sh
 VIRTUALENV
 ----------
 
-# to install the virtula env in a given directory
+# to install the virtulal env in a given directory
 virtualenv env
 
 # to install from a specific python

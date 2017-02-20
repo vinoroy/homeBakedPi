@@ -42,7 +42,8 @@ app.config.update(dict(
     SECRET_KEY='my first cat is pompom',
     USERNAME='admin',
     PASSWORD='pompom',
-    IMAGES='../imgArch'
+    IMAGES='../imgArch',
+    ENV=''
 ))
 
 
@@ -108,7 +109,20 @@ def makeHub():
         -  hub : (obj ref) hub object
     """
 
-    theHub = createHub(['../app/parameters.xml',sys.argv[1]])
+
+    # determin the environement for the server local or prod
+    if len(sys.argv) > 1:
+
+        app.config['ENV'] = 'local'
+
+    else:
+
+        app.config['ENV'] = 'prod'
+
+    print app.config['ENV']
+
+
+    theHub = createHub(['../app/parameters.xml',app.config['ENV']])
 
     return theHub
 
@@ -153,16 +167,108 @@ def index():
     return render_template('index.html',listNodes=listNodes,cams=cams,actuators=actuators)
 
 
-@app.route('/intro')
-def intro():
+@app.route('/login', methods=['GET', 'POST'])
+def login():
     """
-    Function to render the intro page of the app. once the user has logged in
+    Decorator function for url call to login.html. The login.html page displays a form to enter the username, password
+    and a submit button. Once data is submitted a call is made to the current login function and the submitted results
+    (ie username and password) are verified to see if acces is granted to the web app.
+
+    Args:
+        - passed in via the post method. the parameters are the username and the password
+
+    Return :
+        - login.html page
+
+    """
+
+    error = None
+
+    form = LoginForm()
+
+    # check to see if the form has been submitted
+    if form.validate_on_submit():
+        userID = form.userID.data
+        passW = form.passW.data
+
+
+        if userID != app.config['USERNAME']:
+            error = 'Invalid username'
+
+        if passW != app.config['PASSWORD']:
+            error = 'Invalid password'
+
+        # if the user and pass are valid then set loggin to true and open the home page
+        else:
+
+            session['logged_in'] = True
+
+            return redirect(megaurl_for('home'))
+
+
+    # if the form has not submitted than display the login form
+    return render_template('login.html', form=form, error=error)
+
+
+
+@app.route('/logout')
+def logout():
+    """
+    Decorator function for url call to logout.html
 
     Args :
         - none
 
     Return :
-        - (page ref) intro page
+        - logout.html
+
+    """
+
+    session.pop('logged_in', None)
+
+    return render_template('index.html')
+
+
+def megaurl_for(funcName):
+    """
+    Function to adjust the url of a redirect based on prod or dev server environment
+
+    Args :
+        - none
+
+    Return :
+        - (string) adjusted url based on environment type
+    """
+
+    # get the external URL and the local and compare
+    fullUrl = url_for(funcName,_external = True)
+    localUrl = url_for(funcName)
+    localServerStr = ':5000'
+
+    # see if :5000 is in the external string
+    pos = fullUrl.find(localServerStr)
+
+    # identify if we are on the local server or on the production server
+    # and adjust the url
+    if pos >= 0 : # :5000 is in the string
+        return localUrl
+
+    # production server
+    else :
+        pos = fullUrl.find(localUrl);
+        return fullUrl[0:pos] + ':9080' + localUrl
+
+
+@app.route('/home')
+def home():
+    """
+    Function to render the home page of the app. once the user has logged in
+
+    Args :
+        - none
+
+    Return :
+        - (page ref) home page
     """
 
     if not session.get('logged_in'):
@@ -178,140 +284,12 @@ def intro():
 
     actuators = theHub.getListActuatorsWithState()
 
-    return render_template('intro.html',listNodes=listNodes,cams=cams,actuators=actuators,results=results)
-
-
-@app.route('/envNodesSummary')
-def envNodesSummary():
-    """
-    Function to render the environmental nodes summary page of the app
-
-    Args :
-        - none
-
-    Return :
-        - (page ref) environmental nodes summary page page
-    """
-
-    if not session.get('logged_in'):
-        abort(401)
-
-    theHub = getHub()
-
-    listNodes = theHub.getListOfNodes()
-
-    results = theHub.getAllLastValues()
-
-    cams = theHub.getListOfNodesWithCamera()
-
-    actuators = theHub.getListActuatorsWithState()
-
-    return render_template('envNodesSummary.html',results=results,listNodes=listNodes,cams=cams,actuators=actuators)
+    return render_template('home.html',listNodes=listNodes,cams=cams,actuators=actuators,results=results)
 
 
 
-@app.route('/uploads/<path:filename>')
-def download_file(filename):
-    """
-    Function to down load an image file
-
-    Args :
-        - none
-
-    Return :
-        -
-    """
-
-    return send_from_directory(app.config['IMAGES'], filename, as_attachment=True)
-
-
-
-@app.route('/cameraImage/', methods=['GET'])
-def cameraImage():
-    """
-    Function to render the current image of a given node camera
-
-    Args :
-        - none
-
-    Return :
-        - (page ref) cameraImage page
-    """
-
-    if not session.get('logged_in'):
-        abort(401)
-
-    selNodeCam = request.args.get('selNodeCam')
-    temp = selNodeCam.split(':',1)
-    selNode = temp[0]
-    selCam = temp[1]
-
-    theHub = getHub()
-
-    listNodes = theHub.getListOfNodes()
-
-    cams = theHub.getListOfNodesWithCamera()
-
-    theNode = theHub.getNode(selNode)
-    theCam = theNode.getSensor(selCam)
-    theCam.takeReading()
-
-    # get the last image name stored in the db and date
-    result =  theCam.getSensorValuesFrmDB(last=1)
-    imageFileName = result[0][2]
-    imageDateStr = result[0][1]
-
-
-    #extract the image filename without the path
-    start = imageFileName.find('Arch/')+5
-    imageFileName = imageFileName[start:]
-
-
-    return render_template('cameraImage.html',cams=cams,listNodes=listNodes,imageFileName=imageFileName,imageDateStr=imageDateStr,selNode=selNode,selCam=selCam)
-
-
-
-@app.route('/toggleActuator/', methods=['GET'])
-def toggleActuator():
-    """
-    Function to toggle the state of a given actuator
-
-    Args :
-        - none
-
-    Return :
-        - (page ref) intro.html page
-    """
-
-    if not session.get('logged_in'):
-        abort(401)
-
-    selActuator = request.args.get('selActuator')
-    temp = selActuator.split(':',1)
-    selActuator = temp[0]
-
-    theHub = getHub()
-
-    listNodes = theHub.getListOfNodes()
-
-    results = theHub.getAllLastValues()
-
-    cams = theHub.getListOfNodesWithCamera()
-
-    theActuator = theHub.getActuator(selActuator)
-    theActuator.toggleSwitch()
-
-    print selActuator
-    print 'Current state : '+str(theActuator.getState())
-
-    actuators = theHub.getListActuatorsWithState()
-
-    return render_template('intro.html',listNodes=listNodes,cams=cams,actuators=actuators,results=results)
-
-
-
-@app.route('/envNodeDetailed/', methods=['GET'])
-def envNodeDetailed():
+@app.route('/nodeDetailed/', methods=['GET'])
+def nodeDetailed():
     """
     Function to render the environmental node detailed page of the app
 
@@ -358,70 +336,94 @@ def envNodeDetailed():
 
         listOfValues = selSensor.getLastMonthValuesFrmDB()
 
-    return render_template('envNodeDetailed.html',cams=cams,listNodes=listNodes,selNode=selNode, listOfSensors=listOfSensors,selSensorName=selSensorName,selSensorNum=selSensorNum,listOfValues=listOfValues,selGrafTable=selGrafTable,selTimePeriode=selTimePeriode,actuators=actuators)
+    return render_template('nodeDetailed.html',cams=cams,listNodes=listNodes,selNode=selNode, listOfSensors=listOfSensors,selSensorName=selSensorName,selSensorNum=selSensorNum,listOfValues=listOfValues,selGrafTable=selGrafTable,selTimePeriode=selTimePeriode,actuators=actuators)
 
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+@app.route('/setSchedules/', methods=['GET', 'POST'])
+def setSchedules():
     """
-    Decorator function for url call to login.html. The login.html page displays a form to enter the username, password
-    and a submit button. Once data is submitted a call is made to the current login function and the submitted results
-    (ie username and password) are verified to see if acces is granted to the web app.
+    Function to display and handle the form for setting the schedule times of a given actuator.
 
     Args:
-        - passed in via the post method. the parameters are the username and the password
+        - passed in via the post method. the parameters are the open and close time for a given actuator
 
     Return :
-        - login.html page
+        - (page ref) threshold page or home page if the form has been submitted
 
     """
 
     error = None
 
-    form = LoginForm()
+    scheduleTimes = []
 
-    # check to see if the form has been submitted
+    if not session.get('logged_in'):
+        abort(401)
+
+    theHub = getHub()
+
+    listNodes = theHub.getListOfNodes()
+
+    cams = theHub.getListOfNodesWithCamera()
+
+    actuators = theHub.getListActuatorsWithState()
+
+    listActuators = theHub.getListActuators()
+
+    selActuator = request.args.get('selActuator')
+
+    if selActuator in listActuators:
+
+        print 'The selected actuator : ' + selActuator
+
+        theAct = theHub.getActuator(selActuator)
+
+        scheduleTimes = theAct.getScheduleTimes()
+
+    form = ScheduleForm()
+
     if form.validate_on_submit():
-        userID = form.userID.data
-        passW = form.passW.data
+
+        openTime = form.openTime.data
+        closeTime = form.closeTime.data
+
+        selActuator = request.args.get('selActuator')
+
+        theAct = theHub.getActuator(selActuator)
+
+        theAct.setScheduleTimes(openTime,closeTime)
+
+        return redirect('home')
+
+    # if the form has not submitted than display it
+    return render_template('setSchedules.html',listNodes=listNodes,cams=cams,actuators=actuators, form=form, error=error, selActuator=selActuator,listActuators=listActuators, scheduleTimes=scheduleTimes)
 
 
-        if userID != app.config['USERNAME']:
-            error = 'Invalid username'
-
-        if passW != app.config['PASSWORD']:
-            error = 'Invalid password'
-
-        # if the user and pass are valid then set loggin to true and open the intro page
-        else:
-
-            session['logged_in'] = True
-
-            absURL = megaurl_for('intro')
-            return redirect(absURL)
-
-    # if the form has not submitted than display the login form
-    return render_template('login.html', form=form, error=error)
-
-
-
-@app.route('/logout')
-def logout():
+@app.route('/systemActivation')
+def systemActivation():
     """
-    Decorator function for url call to logout.html
+    Function to render the system activation parameters page where the user can arm and disarm the system. This
+    function is UNDER CONSTRUCTION !!!
 
     Args :
         - none
 
     Return :
-        - logout.html
-
+        - (page ref) homeBakedPi system activation page
     """
 
-    session.pop('logged_in', None)
+    if not session.get('logged_in'):
+        abort(401)
 
-    return render_template('index.html')
+    theHub = getHub()
+
+    listNodes = theHub.getListOfNodes()
+
+    cams = theHub.getListOfNodesWithCamera()
+
+    actuators = theHub.getListActuatorsWithState()
+
+    return render_template('systemActivation.html',cams=cams,listNodes=listNodes,actuators=actuators)
 
 
 @app.route('/setThresholds/', methods=['GET', 'POST'])
@@ -433,7 +435,7 @@ def setThresholds():
         - passed in via the post method. the parameters are the low and high threshold of an instrument
 
     Return :
-        - (page ref) threshold page or intro page if the form has been submitted
+        - (page ref) threshold page or home page if the form has been submitted
 
     """
 
@@ -486,156 +488,48 @@ def setThresholds():
 
         theInst.setThresholds(lowThresh,highThresh)
 
-        return redirect('/intro')
+        return redirect(megaurl_for('home'))
 
     # if the form has not submitted than display t
     return render_template('setThresholds.html',listNodes=listNodes,cams=cams,actuators=actuators, form=form, error=error, selNodeInst=selNodeInst,listNodesInst=listNodesInst, thresholds=thresholds)
 
 
-
-@app.route('/setSchedules/', methods=['GET', 'POST'])
-def setSchedules():
+@app.route('/toggleActuator/', methods=['GET'])
+def toggleActuator():
     """
-    Function to display and handle the form for setting the schedule times of a given actuator.
+    Function to toggle the state of a given actuator
 
-    Args:
-        - passed in via the post method. the parameters are the open and close time for a given actuator
+    Args :
+        - none
 
     Return :
-        - (page ref) threshold page or intro page if the form has been submitted
-
+        - (page ref) home.html page
     """
-
-    error = None
-
-    scheduleTimes = []
 
     if not session.get('logged_in'):
         abort(401)
-
-    theHub = getHub()
-
-    listNodes = theHub.getListOfNodes()
-
-    cams = theHub.getListOfNodesWithCamera()
-
-    actuators = theHub.getListActuatorsWithState()
-
-    listActuators = theHub.getListActuators()
 
     selActuator = request.args.get('selActuator')
-
-    if selActuator in listActuators:
-
-        print 'The selected actuator : ' + selActuator
-
-        theAct = theHub.getActuator(selActuator)
-
-        scheduleTimes = theAct.getScheduleTimes()
-
-    form = ScheduleForm()
-
-    if form.validate_on_submit():
-
-        openTime = form.openTime.data
-        closeTime = form.closeTime.data
-
-        selActuator = request.args.get('selActuator')
-
-        theAct = theHub.getActuator(selActuator)
-
-        theAct.setScheduleTimes(openTime,closeTime)
-
-        return redirect('/intro')
-
-    # if the form has not submitted than display it
-    return render_template('setSchedules.html',listNodes=listNodes,cams=cams,actuators=actuators, form=form, error=error, selActuator=selActuator,listActuators=listActuators, scheduleTimes=scheduleTimes)
-
-
-
-def megaurl_for(funcName):
-    """
-    Function to adjust the url of a redirect based on prod or dev server environment
-
-    Args :
-        - none
-
-    Return :
-        - (string) adjusted url based on environment type
-    """
-
-    # get the external URL and the local and compare
-    fullUrl = url_for(funcName,_external = True)
-    localUrl = url_for(funcName)
-    localServerStr = ':5000'
-
-    # see if :5000 is in the external string
-    pos = fullUrl.find(localServerStr)
-
-    # identify if we are on the local server or on the production server
-    # and adjust the url
-    if pos >= 0 : # :5000 is in the string
-        return localUrl
-
-    # production server
-    else :
-        pos = fullUrl.find(localUrl);
-        return fullUrl[0:pos] + ':8080' + localUrl
-
-
-@app.route('/systemOver')
-def systemOver():
-    """
-    Function to render the homeBakedPi system overview web page
-
-    Args :
-        - none
-
-    Return :
-        - (page ref) homeBakedPi system description web page
-    """
-
-    if not session.get('logged_in'):
-        abort(401)
+    temp = selActuator.split(':',1)
+    selActuator = temp[0]
 
     theHub = getHub()
 
     listNodes = theHub.getListOfNodes()
 
-    cams = theHub.getListOfNodesWithCamera()
-
-    actuators = theHub.getListActuatorsWithState()
-
-    return render_template('systemOver.html',cams=cams,listNodes=listNodes,actuators=actuators)
-
-
-
-@app.route('/systemActivation')
-def systemActivation():
-    """
-    Function to render the system activation parameters page where the user can arm and disarm the system. This
-    function is UNDER CONSTRUCTION !!!
-
-    Args :
-        - none
-
-    Return :
-        - (page ref) homeBakedPi system activation page
-    """
-
-    if not session.get('logged_in'):
-        abort(401)
-
-    theHub = getHub()
-
-    listNodes = theHub.getListOfNodes()
+    results = theHub.getAllLastValues()
 
     cams = theHub.getListOfNodesWithCamera()
 
+    theActuator = theHub.getActuator(selActuator)
+    theActuator.toggleSwitch()
+
+    print selActuator
+    print 'Current state : '+str(theActuator.getState())
+
     actuators = theHub.getListActuatorsWithState()
 
-    return render_template('systemActivation.html',cams=cams,listNodes=listNodes,actuators=actuators)
-
+    return render_template('home.html',listNodes=listNodes,cams=cams,actuators=actuators,results=results)
 
 
 #**********************************************************************************************************************
@@ -677,6 +571,70 @@ def insertSensorValue(insertStr):
     else:
 
         return '0'
+
+#**********************************************************************************************************************
+#
+# Not in use anymore
+#
+#**********************************************************************************************************************
+
+@app.route('/uploads/<path:filename>')
+def download_file(filename):
+    """
+    Function to down load an image file
+
+    Args :
+        - none
+
+    Return :
+        -
+    """
+
+    return send_from_directory(app.config['IMAGES'], filename, as_attachment=True)
+
+
+@app.route('/cameraImage/', methods=['GET'])
+def cameraImage():
+    """
+    Function to render the current image of a given node camera
+
+    Args :
+        - none
+
+    Return :
+        - (page ref) cameraImage page
+    """
+
+    if not session.get('logged_in'):
+        abort(401)
+
+    selNodeCam = request.args.get('selNodeCam')
+    temp = selNodeCam.split(':',1)
+    selNode = temp[0]
+    selCam = temp[1]
+
+    theHub = getHub()
+
+    listNodes = theHub.getListOfNodes()
+
+    cams = theHub.getListOfNodesWithCamera()
+
+    theNode = theHub.getNode(selNode)
+    theCam = theNode.getSensor(selCam)
+    theCam.takeReading()
+
+    # get the last image name stored in the db and date
+    result =  theCam.getSensorValuesFrmDB(last=1)
+    imageFileName = result[0][2]
+    imageDateStr = result[0][1]
+
+
+    #extract the image filename without the path
+    start = imageFileName.find('Arch/')+5
+    imageFileName = imageFileName[start:]
+
+
+    return render_template('cameraImage.html',cams=cams,listNodes=listNodes,imageFileName=imageFileName,imageDateStr=imageDateStr,selNode=selNode,selCam=selCam)
 
 
 

@@ -6,31 +6,16 @@
         {% if session.logged_in %}
 
 
-            <!--Config drop down menu-->
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Config<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="{{ url_for('systemActivation') }}">System activation params</a></li>
-                    <li><a href="{{ url_for('systemOver') }}">System overview</a></li>
-
-                </ul>
-            </li>
-
-
-
-
-
             <!--Environmental monitoring drop down menu-->
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Nodes<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ url_for('envNodesSummary') }}">Summary report</a></li>
-
 
                     {% for envNode in listNodes %}
-                    <li><a href="{{ url_for('envNodeDetailed',selNode=envNode,selSensorNum=0,selGrafTable='Table',selTimePeriode='1 Day') }}">{{envNode}}</a></li>
+                    <li><a href="{{ url_for('nodeDetailed',selNode=envNode,selSensorNum=0,selGrafTable='Table',selTimePeriode='1 Day') }}">{{envNode}}</a></li>
                     {% endfor %}
 
 
-                    <li><a href="{{ url_for('setThresholds') }}">Threshold settings</a></li>
+
                 </ul>
             </li>
 
@@ -45,6 +30,18 @@
                     {% endfor %}
 
                     <li><a href="{{ url_for('setSchedules') }}">Schedule settings</a></li>
+
+
+                </ul>
+            </li>
+
+
+            <!--Config drop down menu-->
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Config<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('systemActivation') }}">System activation params</a></li>
+                    <li><a href="{{ url_for('setThresholds') }}">Threshold settings</a></li>
+
 
 
                 </ul>
