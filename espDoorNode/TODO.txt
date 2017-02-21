@@ -1,7 +1,0 @@
-TODO LIST
----------
-
- - order the parts for the pcb proto
- - draw the schematic of the bread board proto
- - build the pcb protobord env node
- - flash code and test
