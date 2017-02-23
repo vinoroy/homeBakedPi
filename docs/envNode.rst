@@ -88,7 +88,7 @@ pvc board with standoffs.
     :height: 500px
     :alt: envNode photo
 
-    Figure 4 - Schematic for the environmental node
+    Figure 4 - Environmental node mounted on a bread board
 
 
 

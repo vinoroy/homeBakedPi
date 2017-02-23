@@ -604,7 +604,7 @@ class Sensor:
 
         try:
 
-            response = urllib2.urlopen(urlString)
+            response = urllib2.urlopen(urlString,timeout=4)
 
             responseStr = response.read()
 
@@ -624,6 +624,8 @@ class Sensor:
                     return floatOfSensorValue
 
         except:
+
+            print 'URL timed out'
 
             return None
 

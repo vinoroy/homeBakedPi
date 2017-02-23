@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>TO DO &#8212; homeBakedPi 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="homeBakedPi 0.7.1 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="to-do">
+<h1>TO DO<a class="headerlink" href="#to-do" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="app">
+<h2>App<a class="headerlink" href="#app" title="Permalink to this headline">¶</a></h2>
+<p>&gt;1 prototype the event queue task treatment module</p>
+<p>-2 the scheduling function of the actuators should be put in a separate class to be used by all
+-3 change instID for sensorID (this is a deep one it even touches the db)
+-4 generalize comm util email agent so that it can connect to any smtp servers</p>
+</div>
+<div class="section" id="webapp">
+<h2>WebApp<a class="headerlink" href="#webapp" title="Permalink to this headline">¶</a></h2>
+<p>&gt;1 write a script to insert dummy values into db for dev and testing purposes. Use the testInsert script as an example</p>
+<p>-2 add page to view the actuator on off times in table format
+-3 the web app displays time in UTC zone, must find a way to convert to EST time unicode(datetime object here)</p>
+</div>
+<div class="section" id="occpnode">
+<h2>OccpNode<a class="headerlink" href="#occpnode" title="Permalink to this headline">¶</a></h2>
+<p>-1 build the pcb protobord occp node
+-1 clean up the door node code</p>
+<p>-2 draw the schematic of the bread board proto door node
+-2 doc the occp node</p>
+</div>
+<div class="section" id="envnode">
+<h2>EnvNode<a class="headerlink" href="#envnode" title="Permalink to this headline">¶</a></h2>
+<p>-1 build the pcb protobord occp node
+-1 clean up the door node code</p>
+<p>-2 draw the schematic of the bread board proto door node
+-2 doc the occp node</p>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Version 0.3.2 represents a more drastic change in the code with the introduction
+of the hub of nodes, hence to go back to single node code base we must back up
+to version 0.3.1 or 0.2.2</p>
+</li>
+<li><p class="first">Version 0.4 represents an architecure change. The homebakedpi web app will not longer be hosted on a remote host.
+The web app in 0.4will be hosted on the hub and will also act as a web app server.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Version 0.7 present another architecture change. The following is a list of the changes to the architecture and the infrastructure :</dt>
+<dd><ol class="first last arabic">
+<li><dl class="first docutils">
+<dt>No hardware and software dependencies to the hub (ie serial communication between nodes and the hub, hard software links to actuators).</dt>
+<dd><p class="first last">Communication between hub and the nodes will be done over wifi using a web api.
+Selected actuators will need to be also activated over wifi via a web api (ie Insteon)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Prod DB will be copied from the dev DB with no data and a script will be created to reload the prod data. All time stamped data will
+be lost in the process</p>
+</li>
+<li><p class="first">The dev and the prod will be setup on identical servers.</p>
+</li>
+<li><p class="first">All development will be done directly to the dev server over ssh</p>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">TO DO</a><ul>
+<li><a class="reference internal" href="#app">App</a></li>
+<li><a class="reference internal" href="#webapp">WebApp</a></li>
+<li><a class="reference internal" href="#occpnode">OccpNode</a></li>
+<li><a class="reference internal" href="#envnode">EnvNode</a></li>
+<li><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/TODO.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Vincent Roy.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/TODO.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

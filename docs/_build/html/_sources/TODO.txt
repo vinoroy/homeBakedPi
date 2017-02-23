@@ -6,7 +6,6 @@ App
 ---
 
 >1 prototype the event queue task treatment module
-+1 build fault tolerence for node data request over http (ex unplugged node)
 
 -2 the scheduling function of the actuators should be put in a separate class to be used by all
 -3 change instID for sensorID (this is a deep one it even touches the db)
@@ -25,21 +24,21 @@ WebApp
 OccpNode
 --------
 
+-1 build the pcb protobord occp node
 -1 clean up the door node code
--1 build the protobord occp node
 
-+2 draw the schematic of the occp node
->2 doc the occp node
+-2 draw the schematic of the bread board proto door node
+-2 doc the occp node
 
 
 EnvNode
 -------
 
--1 clean up the env node code (change the int values for floats)
--1 build the pcb protobord env node
+-1 build the pcb protobord occp node
+-1 clean up the door node code
 
-+2 draw the schematic of the env node
->2 doc the env node
+-2 draw the schematic of the bread board proto door node
+-2 doc the occp node
 
 
 Notes

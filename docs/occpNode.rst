@@ -70,22 +70,39 @@ pvc board with standoffs.
 
     Figure 1 - Sparkfun Thing dev ESP8266
 
-.. figure:: ./images/dht22.jpeg
+.. figure:: ./images/pir.jpg
     :width: 100px
     :align: left
     :height: 100px
-    :alt: DHT22 temperature and humidity sensor
+    :alt: Parallax PIR sensor
 
-    Figure 2 - DHT22 temperature and humidity sensor
+    Figure 2 - Parallax PIR sensor
 
-.. figure:: ./images/envNodeSchematic.png
+
+.. figure:: ./images/doorSwitch.png
+    :width: 100px
+    :align: left
+    :height: 100px
+    :alt: Magnetic door switch sensor
+
+    Figure 3 - Magnetic door switch sensor
+
+
+.. figure:: ./images/occpNodeSchematic.png
     :width: 600px
     :align: left
     :height: 500px
     :alt: envNode schematic
 
-    Figure 3 - Schematic for the environmental node
+    Figure 4 - Schematic for the occupational node
 
 
+.. figure:: ./images/occpNodePhoto.jpg
+    :width: 600px
+    :align: left
+    :height: 500px
+    :alt: envNode schematic
+
+    Figure 5 - Occupational node mounted on a bread board
 
 
