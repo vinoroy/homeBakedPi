@@ -10,6 +10,7 @@ Module with Unit test class for testing the api of the homeBakedPiWebApp
 import unittest
 import urllib2
 from subprocess import call
+import time
 
 
 
@@ -23,7 +24,7 @@ class TestSensorOFF(unittest.TestCase):
         Setup the testing
         """
 
-        pass
+        time.sleep(2)
 
 
     def test_insertTempSensorValue(self):

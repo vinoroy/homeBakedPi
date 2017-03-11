@@ -17,6 +17,8 @@ net = 1         # testing on the internet
 local = 1       # testing on the local network (i.e. physical nodes active on the local server)
 
 
+
+
 # perform test that are off line (off the internet and the sensor network)
 if (off == 1):
 
@@ -36,8 +38,10 @@ if (off == 1):
     from testDateTimeConversion import *
     from testTimeConvertToDays import *
 
-    from testSensorEventOFF import *
-    from testEventQueueOFF import *
+    from testEventQOFF import *
+    from testEventOFF import *
+    from testActionsOFF import *
+    from testLogOFF import *
 
     from testHomeBakedPiActuatorSchedulerOFF import *
 
@@ -48,6 +52,8 @@ if (net == 1):
     from testEventQueueONNetwork import *
 
     from testCommUtilONNetwork import *
+
+    from testActionsON import *
 
 
 # perform the test that are on the local network (i.e. physical nodes active on the local server)

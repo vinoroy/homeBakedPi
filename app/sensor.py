@@ -15,7 +15,6 @@ from datetime import timedelta
 from dateTimeConversion import *
 import platform
 import sqlite3
-from sensorEvent import *
 import numpy as np
 import math
 import urllib2
@@ -318,20 +317,37 @@ class Sensor:
     def verifyThresholds(self):
         """
         Verify if the new reading exceeds the thresholds. If a threshold is exceeded an event is added to the event pool.
+        This is an abstract method, it is implemented by lower level classes
 
         Args :
-            - return
+            - none
 
         Return :
             - none
+
         """
 
-        lwThrsh = self.thrsh[0]
-        upThrsh = self.thrsh[1]
+        raise NotImplementedError( "Should have implemented this" )
 
 
-        if self.getLastReadingInBuffer() >= upThrsh or self.getLastReadingInBuffer() <= lwThrsh:
-            self.getHub().getEventQ().addEventToPool(SensorEvent(self.mesureType,self.instID, self.getLastReadingInBuffer(),self.node.getNodeID(),self.alarmMsg))
+    def createEvent(self):
+        """
+        Create the event based on the specific sensor type. This is an abstract class, Hence it must be implements bu the concrete
+        clas
+
+        Args :
+            - none
+
+        Return :
+            - (Event) specific event object based on the concrete sensor class
+
+        """
+
+        raise NotImplementedError( "Should have implemented this" )
+
+
+
+
 
 
 

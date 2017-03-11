@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/homeBakedPi.iml" filepath="$PROJECT_DIR$/.idea/homeBakedPi.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../pythonTestCenter/.idea/pythonTestCenter.iml" filepath="$PROJECT_DIR$/../pythonTestCenter/.idea/pythonTestCenter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../reno/.idea/reno.iml" filepath="$PROJECT_DIR$/../reno/.idea/reno.iml" />
       <module fileurl="file://$PROJECT_DIR$/../trips/.idea/trips.iml" filepath="$PROJECT_DIR$/../trips/.idea/trips.iml" />
     </modules>
   </component>

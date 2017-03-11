@@ -85,6 +85,15 @@ class TestEnvSensorOFF(unittest.TestCase):
         self.assertTrue(newReading >= 0 & newReading <= 101)
 
 
+    def test_forceTempThrshEvent(self):
+        """
+        Test that it is possible to force a threshold of a mock temperature sensor and then get an event in the queue
+        """
+
+        self.myNode.addSensor(MOCK_TempSensor('MOCK-TMP-1',[0,1],self.myNode,'LOW'))
+        self.myNode.scanSensors('LOW') # scan once all sensors
+
+        self.assertEqual(self.myNode.getHub().getEventQ().getEventQLength(),1)
 
 
 

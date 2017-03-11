@@ -21,18 +21,25 @@ class EmailAgent:
     Attributes :
         - usrEmail : (string) email address of the user
         - pwd : (string) password for the usr email account
+        - smsGateway : (string) root address of the email to sms gateway
+        - cellNumber : (string) cell number to be used to send sms using the email to sms gateway
 
     """
 
-    def __init__(self, usrEmail, pwd):
+    def __init__(self, usrEmail, pwd, smsGateway, cellNumber):
         self.usrEmail = usrEmail
         self.pwd = pwd
+        self.smsGateway = smsGateway
+        self.cellNumber = cellNumber
+
     
     def sendMsg(self,to , subject, msg):
         """
-        Send a simple text message to an email via gmail smtp server
+        Send a simple text message to an email via gmail smtp server. This is a generic method that will be used by other
+        class methods to send messages
 
         Args :
+            - to : (sting) email address of the receiver
             - subject : (string) subject of the email
             - msg : (string) text message of the email
 
@@ -56,6 +63,45 @@ class EmailAgent:
         smtpserver.sendmail(self.usrEmail, to, cmpmsg)
 
         smtpserver.close()
+
+
+    def sendEmail(self,subject,msg):
+        """
+        Send a simple text message to the configured  users email
+
+        Args :
+            - subject : (string) subject of the email
+            - msg : (string) text message of the email
+
+        Return :
+            - none
+
+        """
+
+        self.sendMsg(self.usrEmail,subject,msg)
+
+
+    def sendSMS(self,subject,msg):
+        """
+        Send a simple text message to the configured users cell phone using an email to sms gateway
+
+        Args :
+            - subject : (string) subject of the email
+            - msg : (string) text message of the email
+
+        Return :
+            - none
+
+        """
+
+
+        self.sendMsg(self.cellNumber+self.smsGateway,subject,msg)
+
+
+
+
+
+
         
 
 class FtpAgent:

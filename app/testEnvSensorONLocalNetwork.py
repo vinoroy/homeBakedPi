@@ -85,3 +85,16 @@ class TestEnvSensorONLocalNetwork(unittest.TestCase):
         newReading = self.testSenLDR.getLastReadingInBuffer()
 
         self.assertTrue(isinstance(newReading, float))
+
+
+
+    def test_forceTempThrshEvent(self):
+        """
+        Test that it is possible to force a threshold of a ip temperature sensor and then get an event in the queue
+        """
+
+        self.myNode.addSensor(IPTempSensor('TMP-1',[0,1],self.myNode,'LOW'))
+        self.myNode.scanSensors('LOW') # scan once all sensors
+
+        self.assertEqual(self.myNode.getHub().getEventQ().getEventQLength(),1)
+

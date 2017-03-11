@@ -60,6 +60,18 @@ def paramReader(fileName):
             tempParams['emailPass'] = emailPassStr
 
 
+            # get the smsGateway
+            smsGateway = env.getElementsByTagName('smsGateway')[0]
+            smsGatewayStr = smsGateway.childNodes[0].data
+            tempParams['smsGateway'] = smsGatewayStr
+
+
+            # get the cellNumber
+            cellNumber = env.getElementsByTagName('cellNumber')[0]
+            cellNumberStr = cellNumber.childNodes[0].data
+            tempParams['cellNumber'] = cellNumberStr
+
+
             # get the mock Mode
             mockMode = env.getElementsByTagName('mockMode')[0]
             mockModeStr = mockMode.childNodes[0].data

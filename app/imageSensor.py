@@ -16,7 +16,6 @@ import platform
 import random
 import sqlite3
 import urllib,re
-from sensorEvent import *
 from sensor import *
 
 

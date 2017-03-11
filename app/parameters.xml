@@ -3,24 +3,32 @@
    <dbPath>/home/www/homeBakedPi/app/bakedPiDB</dbPath>
    <email>vinoroy70@gmail.com</email>
    <emailPass>miller12</emailPass>
+   <smsGateway>@sms.rogers.com</smsGateway>
+   <cellNumber>5147945869</cellNumber>
    <mockMode>0</mockMode>
 </env>
 <env title="dev">
    <dbPath>bakedPiDB</dbPath>
    <email>vinoroy70@gmail.com</email>
    <emailPass>miller12</emailPass>
+   <smsGateway>@sms.rogers.com</smsGateway>
+   <cellNumber>5147945869</cellNumber>
    <mockMode>0</mockMode>
 </env>
 <env title="dev-m">
    <dbPath>bakedPiDB</dbPath>
    <email>vinoroy70@gmail.com</email>
    <emailPass>miller12</emailPass>
+   <smsGateway>@sms.rogers.com</smsGateway>
+   <cellNumber>5147945869</cellNumber>
    <mockMode>1</mockMode>
 </env>
 <env title="local">
    <dbPath>../app/bakedPiDB</dbPath>
    <email>vinoroy70@gmail.com</email>
    <emailPass>miller12</emailPass>
+   <smsGateway>@sms.rogers.com</smsGateway>
+   <cellNumber>5147945869</cellNumber>
    <mockMode>0</mockMode>
 </env>
 </envList>

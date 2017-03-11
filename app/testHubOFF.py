@@ -11,7 +11,6 @@ from node import *
 from hub import *
 from envSensor import *
 from occpSensor import *
-from sensorEvent import *
 import time
 from actuator import *
 from hubFactory import *
@@ -70,7 +69,7 @@ class TestHubOFF(unittest.TestCase):
         """
 
         initLen = self.myHub.getNumberNodes()
-        self.myHub.addNode(SensorEvent('Temp', 'Temp12', 45,self.myNode.getNodeID(),'Temp alarm'))
+        self.myHub.addNode(MOCK_TempSensor('MOCK-TMP-2',[12,32],self.myNode,'LOW'))
         newLen = self.myHub.getNumberNodes()
 
         self.assertEqual(initLen,newLen)
@@ -252,7 +251,7 @@ class TestHubOFF(unittest.TestCase):
 
         """
 
-        self.assertEqual(isinstance(self.myHub.getEventQ(),EventQueue),1)
+        self.assertEqual(isinstance(self.myHub.getEventQ(),EventQ),1)
 
 
     def test_getNumberNodes(self):
@@ -305,7 +304,7 @@ class TestHubOFF(unittest.TestCase):
 
         initLen = self.myHub.getNumberActuators()
 
-        self.myHub.addActuator(SensorEvent('Temp', 'Temp12', 45,self.myNode.getNodeID(),'Temp alarm'))
+        self.myHub.addActuator(Node('KitchenNode',self.myHub,'','','ENV'))
 
         newLen = self.myHub.getNumberActuators()
 

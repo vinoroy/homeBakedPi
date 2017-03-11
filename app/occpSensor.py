@@ -16,19 +16,48 @@ import platform
 import random
 import sqlite3
 import urllib,re
-from sensorEvent import *
 from sensor import *
+from events import *
+
+
+class OccpSensor(Sensor):
+    """
+    Abstract class for the occupational type sensors.
+    """
+
+
+    def __init__(self,node,freq,instID):
+        Sensor.__init__(self,node,freq,instID)
+
+
+    def verifyThresholds(self):
+        """
+        Verify thresholds for occupational type sensors. Verify if the new reading exceeds the threshold.
+        If a threshold is exceeded an event is added to the event pool.
+
+        Args :
+            - return
+
+        Return :
+            - none
+        """
 
 
 
-class DoorSwitch(Sensor):
+        if self.getLastReadingInBuffer() == self.thrsh:
+            self.getHub().getEventQ().addEventToQueue(self.createEvent())
+
+
+
+
+class DoorSwitchSensor(OccpSensor):
     """
     Abstract class for the door contact switch family of sensors. Here only some specific
     attributes are specified, no method implementation
     """
 
     def __init__(self,node,freq,instID):
-        Sensor.__init__(self,node,freq,instID)
+        OccpSensor.__init__(self,node,freq,instID)
         self.mesureType = 'Contact switch'
         self.mesureUnit ='binary'
         self.instType = ''
@@ -37,13 +66,13 @@ class DoorSwitch(Sensor):
 
 
 
-class IPDoorSwitch(DoorSwitch):
+class IPDoorSwitch(DoorSwitchSensor):
 
 
-    def __init__(self, instID, limits,node,freq):
-        DoorSwitch.__init__(self,node,freq,instID)
+    def __init__(self, instID, limit,node,freq):
+        DoorSwitchSensor.__init__(self,node,freq,instID)
         self.instType = 'IPDOORSWITCH'
-        self.thrsh = limits
+        self.thrsh = limit
         self.urlSensorExtension = 'door'
 
 
@@ -66,18 +95,35 @@ class IPDoorSwitch(DoorSwitch):
         return sensorValue
 
 
+    def createEvent(self):
+        """
+        Create the event based on the specific sensor type.
 
-class MOCK_DoorSwitch(DoorSwitch):
+        Args :
+            - none
+
+        Return :
+            - (Event) specific event object based on the concrete sensor class
+
+        """
+
+
+        return DoorOpening(self.getHub().getEventQ(),self.getNode().getNodeID(),self.getInstID(),self.getLastReadingInBuffer())
+
+
+
+
+class MOCK_DoorSwitch(DoorSwitchSensor):
     """
     Mock door contact switch class used for integration and unit tests when
     sensors are offline
     """
 
 
-    def __init__(self,instID,limits,node,freq):
-        DoorSwitch.__init__(self,node,freq,instID)
+    def __init__(self,instID,limit,node,freq):
+        DoorSwitchSensor.__init__(self,node,freq,instID)
         self.instType ='MOCKDOORSWITCH'
-        self.thrsh = limits
+        self.thrsh = limit
 
 
     def getValueFrmSensor(self):
@@ -94,21 +140,37 @@ class MOCK_DoorSwitch(DoorSwitch):
 
         # generate a random int number for the light value
         idxRnd = random.randint(0, 4)
-        mockValues = [0, 1, 0, 1, 0]
+        mockValues = [1, 1, 1, 1, 1]
         mockValue = mockValues[idxRnd]
 
         return mockValue
 
 
+    def createEvent(self):
+        """
+        Create the event based on the specific sensor type.
 
-class MotionDetection(Sensor):
+        Args :
+            - none
+
+        Return :
+            - (Event) specific event object based on the concrete sensor class
+
+        """
+
+        return MOCK_DoorOpening(self.getHub().getEventQ(),self.getNode().getNodeID(),self.getInstID(),self.getLastReadingInBuffer())
+
+
+
+
+class MotionDetectionSensor(OccpSensor):
     """
     Abstract class for the motion detection family of sensors. Here only some specific
     attributes are specified, no method implementation
     """
 
     def __init__(self,node,freq,instID):
-        Sensor.__init__(self,node,freq,instID)
+        OccpSensor.__init__(self,node,freq,instID)
         self.mesureType = 'Motion detection'
         self.mesureUnit ='binary'
         self.instType = ''
@@ -116,13 +178,15 @@ class MotionDetection(Sensor):
         self.alarmMsg = 'Motion detection'
 
 
-class IPMotionDetection(MotionDetection):
+class IPMotionDetection(MotionDetectionSensor):
 
-    def __init__(self, instID, limits,node,freq):
-        MotionDetection.__init__(self,node,freq,instID)
+    def __init__(self, instID, limit,node,freq):
+        MotionDetectionSensor.__init__(self,node,freq,instID)
         self.instType = 'IPMOTION'
-        self.thrsh = limits
+        self.thrsh = limit
         self.urlSensorExtension = 'motion'
+
+
 
 
     def getValueFrmSensor(self):
@@ -143,18 +207,34 @@ class IPMotionDetection(MotionDetection):
         return sensorValue
 
 
+    def createEvent(self):
+        """
+        Create the event based on the specific sensor type.
 
-class MOCK_MotionDetection(MotionDetection):
+        Args :
+            - none
+
+        Return :
+            - (Event) specific event object based on the concrete sensor class
+
+        """
+
+        return MotionDetection(self.getHub().getEventQ(),self.getNode().getNodeID(),self.getInstID(),self.getLastReadingInBuffer())
+
+
+
+
+class MOCK_MotionDetection(MotionDetectionSensor):
     """
     Mock door contact switch class used for integration and unit tests when
     sensors are offline
     """
 
 
-    def __init__(self,instID,limits,node,freq):
-        MotionDetection.__init__(self,node,freq,instID)
+    def __init__(self,instID,limit,node,freq):
+        MotionDetectionSensor.__init__(self,node,freq,instID)
         self.instType ='MOCKMOTION'
-        self.thrsh = limits
+        self.thrsh = limit
 
 
     def getValueFrmSensor(self):
@@ -171,10 +251,26 @@ class MOCK_MotionDetection(MotionDetection):
 
         # generate a random int number for the light value
         idxRnd = random.randint(0, 4)
-        mockValues = [0, 1, 0, 1, 0]
+        mockValues = [1, 1, 1, 1, 1]
         mockValue = mockValues[idxRnd]
 
         return mockValue
+
+
+    def createEvent(self):
+        """
+        Create the event based on the specific sensor type.
+
+        Args :
+            - none
+
+        Return :
+            - (Event) specific event object based on the concrete sensor class
+
+        """
+
+        return MOCK_MotionDetection(self.getHub().getEventQ(),self.getNode().getNodeID(),self.getInstID(),self.getLastReadingInBuffer())
+
 
 
 class RFIDSensor(Sensor):

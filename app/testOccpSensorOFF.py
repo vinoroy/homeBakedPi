@@ -28,10 +28,10 @@ class TestOccpSensorOFF(unittest.TestCase):
         self.myHub = Hub('Main','bakedPiDB')
         self.myNode = Node('KitchenNode',self.myHub,'','','ENV')
 
-        self.testDoorSwitch_wideThresholds = MOCK_DoorSwitch('MOCK-SW-1',[-1,2],self.myNode,'NONE')
-        self.testDoorSwitch_narrowThresholds = MOCK_DoorSwitch('MOCK-SW-2',[0,1],self.myNode,'NONE')
+        self.testDoorSwitch_wideThresholds = MOCK_DoorSwitch('MOCK-SW-1',2,self.myNode,'NONE')
+        self.testDoorSwitch_narrowThresholds = MOCK_DoorSwitch('MOCK-SW-2',1,self.myNode,'NONE')
 
-        self.testMotionDetection = MOCK_MotionDetection('MOCK-MD-1',[-1,2],self.myNode,'NONE')
+        self.testMotionDetection = MOCK_MotionDetection('MOCK-MD-1',1,self.myNode,'NONE')
 
 
     def test_takeReading_MOCK_DoorSwitch(self):

@@ -10,7 +10,7 @@
 #include <DHT.h>
 
 
-#define DHTPIN 12
+#define DHTPIN 16
 #define DHTTYPE DHT22
 
 
@@ -29,12 +29,8 @@ DHT dht(DHTPIN, DHTTYPE,15);
 ESP8266WebServer server(80);
  
  
-float humidity, temp_f;  // Values read from sensor
 String webString="";     // String to display
-// Generally, you should use "unsigned long" for variables that hold time
-unsigned long previousMillis = 0;        // will store last temp was read
-const long interval = 2000;              // interval at which to read sensor
-float randNumber;
+
  
 void handle_root() {
   server.send(200, "text/plain", "Hello from the esp8266 envNodeMock, read from /temp /humid /baro /ldr ");
@@ -66,12 +62,7 @@ void setup(void)
   
   server.on("/temp", [](){  // if you add this subdirectory to your webserver call, you get text below :)
 
-    int t = (int)dht.readTemperature();
-
-    Serial.println("Temp : ");
-    Serial.println(t);
-
-    int temperature_data = (int)dht.readTemperature();
+    float temperature_data = dht.readTemperature();
       
     webString="KITCHEN;TMP-1;"+String(temperature_data);   
     
@@ -81,14 +72,7 @@ void setup(void)
 
   server.on("/humid", [](){  // if you add this subdirectory to your webserver call, you get text below :)
   
-    
-    float h = dht.readHumidity();
-
-    Serial.println("Humidity : ");
-    Serial.println(h);
-    
-    
-    int humidity_data = (int)dht.readHumidity();
+    float humidity_data = dht.readHumidity();
 
     webString="KITCHEN;HUMID-1;"+String(humidity_data);
     
@@ -97,9 +81,8 @@ void setup(void)
   });
 
   server.on("/ldr", [](){  // if you add this subdirectory to your webserver call, you get text below :)
-    randNumber = random(0,999);
-
-    int ldr_data = (unsigned int) analogRead(A0);
+    
+    float ldr_data = analogRead(A0);
     
     webString="KITCHEN;LDR-1;"+String(ldr_data);
     

@@ -33,7 +33,7 @@ class TestCommUtilONNetwork(unittest.TestCase):
         emailsBefore = numberOfEmailsInbox('vinoroy70@gmail.com','miller12')
 
 
-        myMail = EmailAgent('vinoroy70@gmail.com','miller12')
+        myMail = EmailAgent('vinoroy70@gmail.com','miller12','@sms,rogers.com','5147945869')
         currDateTime = datetime.today()
         currDateTimeStr = currDateTime.isoformat().__str__()
         testMsg = 'Testing the email agent : '+currDateTimeStr

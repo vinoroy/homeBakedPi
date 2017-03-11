@@ -8,7 +8,6 @@ Module with Unit test class for testing the eventQueue class on the network (ie 
 
 
 import unittest
-from sensorEvent import *
 from hub import *
 from node import *
 from envSensor import *
@@ -27,20 +26,23 @@ class TestEventQueueONNetwork(unittest.TestCase):
         """
 
         self.myHub = Hub('Main','bakedPiDB')
-        self.myNode = Node('KitchenNode',self.myHub,'','','ENV')
+
         
         
-    def test_handleTempThrshEvent(self):
+    def test_handleEvents_TempEnvThreshold_Event(self):
         """
-        Test to verify that an event will be generated from a sensor threshold verification. A mock temperature sensor
-        is created with very small thresholds, hence the random temperature reading will exceed the threshold value. This
+        Test to verify that an event will be generated from a sensor threshold verification. A temperature sensor
+        is created with very small thresholds, hence the normal temperature reading will exceed the threshold value. This
         will result in an email msg.
         """
 
 
+        self.myNode = Node('KITCHEN',self.myHub,'','http://192.168.0.119','ENV')
+
+
         emailsBefore = numberOfEmailsInbox('vinoroy70@gmail.com','miller12')
 
-        self.myNode.addSensor(MOCK_TempSensor('MOCK-TMP-1',[0,1],self.myNode,'LOW'))
+        self.myNode.addSensor(IPTempSensor('TMP-1',[0,1],self.myNode,'LOW'))
         self.myNode.scanSensors('LOW') # scan once all sensors
         self.myNode.getHub().getEventQ().handleEvents()
 
@@ -49,6 +51,32 @@ class TestEventQueueONNetwork(unittest.TestCase):
         emailsAfter = numberOfEmailsInbox('vinoroy70@gmail.com','miller12')
 
         self.assertGreater(emailsAfter,emailsBefore)
+
+        time.sleep(4)
+
+
+    def test_handleEvents_DoorOpening_Event(self):
+        """
+        Test to verify that an event will be generated from a sensor. A door contact switch sensor
+        is created and the door is manually opened and hence will result in an exceeded threshold value. This
+        will result in an email msg.
+        """
+
+
+        self.myNode = Node('ENTRANCE',self.myHub,'','http://192.168.0.167','ENV')
+
+        emailsBefore = numberOfEmailsInbox('vinoroy70@gmail.com','miller12')
+
+        self.myNode.addSensor(IPDoorSwitch('SW-1',1,self.myNode,'LOW'))
+        self.myNode.scanSensors('LOW') # scan once all sensors
+        self.myNode.getHub().getEventQ().handleEvents()
+
+        self.assertEqual(self.myNode.getHub().getEventQ().getEventQLength(),0)
+
+        emailsAfter = numberOfEmailsInbox('vinoroy70@gmail.com','miller12')
+
+        self.assertGreater(emailsAfter,emailsBefore)
+
 
 
     

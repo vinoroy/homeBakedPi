@@ -30,8 +30,9 @@ class TestEnvSensorONLocalNetwork(unittest.TestCase):
         self.myHub = Hub('Main','bakedPiDB')
         self.myNode = Node('ENTRANCE',self.myHub,'','http://192.168.0.181','ENV')
 
-        self.testDoorSwitch = IPDoorSwitch('SW-1',[-1,2],self.myNode,'NONE')
-        self.testMotion = IPMotionDetection('MD-1',[-1,2],self.myNode,'NONE')
+
+        self.testDoorSwitch = IPDoorSwitch('SW-1',1,self.myNode,'NONE')
+        self.testMotion = IPMotionDetection('MD-1',1,self.myNode,'NONE')
 
 
 

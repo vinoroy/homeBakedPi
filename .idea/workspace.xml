@@ -2,36 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07281560-4b9f-4e4e-9165-53ad11ee25df" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/doctrees/TODO.doctree" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_images/doorSwitch.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/doorSwitch.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_images/occpNodePhoto.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/occpNodePhoto.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_images/occpNodeSchematic.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/occpNodeSchematic.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_images/pir.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/pir.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/TODO.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/TODO.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/eventQueue.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/sensorEvent.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/testEventQueueOFF.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/testSensorEventOFF.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/event/SPEC.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/event/TODO.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/event/actions.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/event/app.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/event/dateTimeConversion.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/event/eventQ.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/event/events.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/event/template.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/event/testEventAPI.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/event/testEventQ.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/bakedPiDB" afterPath="$PROJECT_DIR$/app/bakedPiDB" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/doctrees/envNode.doctree" afterPath="$PROJECT_DIR$/docs/_build/doctrees/envNode.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/docs/_build/doctrees/environment.pickle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/docs/_build/doctrees/index.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/objects.inv" afterPath="$PROJECT_DIR$/docs/_build/html/objects.inv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/doctrees/occpNode.doctree" afterPath="$PROJECT_DIR$/docs/_build/doctrees/occpNode.doctree" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/TODO.rst" afterPath="$PROJECT_DIR$/docs/TODO.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/envNode.html" afterPath="$PROJECT_DIR$/docs/_build/html/envNode.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/envNode.rst" afterPath="$PROJECT_DIR$/docs/envNode.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/_sources/envNode.txt" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/envNode.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/index.html" afterPath="$PROJECT_DIR$/docs/_build/html/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/index.rst" afterPath="$PROJECT_DIR$/docs/index.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/_sources/index.txt" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/index.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/modules.html" afterPath="$PROJECT_DIR$/docs/_build/html/modules.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/occpNode.html" afterPath="$PROJECT_DIR$/docs/_build/html/occpNode.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/occpNode.rst" afterPath="$PROJECT_DIR$/docs/occpNode.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/_sources/occpNode.txt" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/occpNode.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/searchindex.js" afterPath="$PROJECT_DIR$/docs/_build/html/searchindex.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webApp/app.py" afterPath="$PROJECT_DIR$/webApp/app.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/commUtil.py" afterPath="$PROJECT_DIR$/app/commUtil.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/envSensor.py" afterPath="$PROJECT_DIR$/app/envSensor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/espEnvNode/espEnvNode/espEnvNode.ino" afterPath="$PROJECT_DIR$/espEnvNode/espEnvNode/espEnvNode.ino" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/hbpApp.py" afterPath="$PROJECT_DIR$/app/hbpApp.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/homeBakedPi.iml" afterPath="$PROJECT_DIR$/.idea/homeBakedPi.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/hub.py" afterPath="$PROJECT_DIR$/app/hub.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/hubFactory.py" afterPath="$PROJECT_DIR$/app/hubFactory.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/imageSensor.py" afterPath="$PROJECT_DIR$/app/imageSensor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/occpSensor.py" afterPath="$PROJECT_DIR$/app/occpSensor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/paramReader.py" afterPath="$PROJECT_DIR$/app/paramReader.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/parameters.xml" afterPath="$PROJECT_DIR$/app/parameters.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/sensor.py" afterPath="$PROJECT_DIR$/app/sensor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/testCommUtilONNetwork.py" afterPath="$PROJECT_DIR$/app/testCommUtilONNetwork.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/testEnvSensorOFF.py" afterPath="$PROJECT_DIR$/app/testEnvSensorOFF.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/testEnvSensorONLocalNetwork.py" afterPath="$PROJECT_DIR$/app/testEnvSensorONLocalNetwork.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/testEventQueueONNetwork.py" afterPath="$PROJECT_DIR$/app/testEventQueueONNetwork.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/testHubOFF.py" afterPath="$PROJECT_DIR$/app/testHubOFF.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webApp/testInsertAPI.py" afterPath="$PROJECT_DIR$/webApp/testInsertAPI.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/testNodeOFF.py" afterPath="$PROJECT_DIR$/app/testNodeOFF.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/testOccpSensorOFF.py" afterPath="$PROJECT_DIR$/app/testOccpSensorOFF.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/testOccpSensorONLocalNetwork.py" afterPath="$PROJECT_DIR$/app/testOccpSensorONLocalNetwork.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/testParamReader.py" afterPath="$PROJECT_DIR$/app/testParamReader.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/testSensorOFF.py" afterPath="$PROJECT_DIR$/app/testSensorOFF.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/testSuite.py" afterPath="$PROJECT_DIR$/app/testSuite.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="homeBakedPi.iws" />
@@ -55,11 +67,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TODO.rst" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docs/TODO.rst">
+      <file leaf-file-name="eventQ.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/eventQ.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.86180127" vertical-offset="0" max-vertical-offset="1095">
-              <caret line="37" column="64" selection-start-line="37" selection-start-column="64" selection-end-line="37" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2160">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -68,8 +80,8 @@
       <file leaf-file-name="SERVERS.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/references/SERVERS.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1125">
+              <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -78,70 +90,80 @@
       <file leaf-file-name="hub.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/hub.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="8925">
-              <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="7635" max-vertical-offset="9045">
+              <caret line="41" column="142" selection-start-line="41" selection-start-column="142" selection-end-line="41" selection-end-column="142" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sensor.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/sensor.py">
+      <file leaf-file-name="testInsertAPI.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webApp/testInsertAPI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1395" max-vertical-offset="9555">
-              <caret line="627" column="32" selection-start-line="627" selection-start-column="32" selection-end-line="627" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="684" max-vertical-offset="1110">
+              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding>
-                <element signature="e#165#178#0" expanded="true" />
+                <element signature="e#134#149#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GIT.txt" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webApp/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9870">
+              <caret line="579" column="0" selection-start-line="579" selection-start-column="0" selection-end-line="579" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="startLocalWebApp.sh" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/startLocalWebApp.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="165">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testSuite.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/testSuite.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1140">
+              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testHomeBakedPiONLocalNetwork.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/testHomeBakedPiONLocalNetwork.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="1185">
+              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GIT.txt" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/references/GIT.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="495">
-              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+            <state vertical-scroll-proportion="-0.03649635" vertical-offset="15" max-vertical-offset="495">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="occpNode.rst" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/occpNode.rst">
+      <file leaf-file-name="testOccpSensorONLocalNetwork.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/testOccpSensorONLocalNetwork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1575" max-vertical-offset="1710">
-              <caret line="105" column="12" selection-start-line="105" selection-start-column="12" selection-end-line="105" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="envNode.rst" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/envNode.rst">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1050" max-vertical-offset="1500">
-              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.rst" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/index.rst">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="525">
-              <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PLAN.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/PLAN.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1335">
-              <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -151,7 +173,7 @@
   </component>
   <component name="FindManager">
     <FindUsagesManager>
-      <setting name="OPEN_NEW_TAB" value="true" />
+      <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
@@ -160,64 +182,64 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/venv.sh" />
-        <option value="$PROJECT_DIR$/app/homeBakedPiScript.sh" />
-        <option value="$PROJECT_DIR$/app/parameters.xml" />
-        <option value="$PROJECT_DIR$/app/startLocalWebApp.sh" />
-        <option value="$PROJECT_DIR$/app/testHomeBakedPiActuatorSchedulerOFF.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/docs/conf.py" />
-        <option value="$PROJECT_DIR$/app/STICKY.txt" />
-        <option value="$PROJECT_DIR$/shell/hbpShell.py" />
-        <option value="$PROJECT_DIR$/app/hbpShell.py" />
-        <option value="$PROJECT_DIR$/espEnvNode/REQ.txt" />
-        <option value="$PROJECT_DIR$/espEnvNode/COMP.txt" />
-        <option value="$PROJECT_DIR$/espDoorNode/COMP.txt" />
-        <option value="$PROJECT_DIR$/webApp/insertCurrentValues.py" />
-        <option value="$PROJECT_DIR$/docs/modules.rst" />
-        <option value="$PROJECT_DIR$/docs/intro.rst" />
-        <option value="$PROJECT_DIR$/app/SPEC.txt" />
-        <option value="$PROJECT_DIR$/event/TODO.txt" />
-        <option value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/event.py" />
-        <option value="$PROJECT_DIR$/app/eventQueue.py" />
-        <option value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/testAPSched.py" />
-        <option value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/testIntegration.py" />
-        <option value="$PROJECT_DIR$/docs/PLAN.txt" />
-        <option value="$PROJECT_DIR$/app/hub.py" />
-        <option value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/testEventQ.py" />
-        <option value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/events.py" />
-        <option value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/actions.py" />
-        <option value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/testEventAPI.py" />
-        <option value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/eventQueue.py" />
-        <option value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/app.py" />
-        <option value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/TODO.txt" />
-        <option value="$PROJECT_DIR$/../trips/hereford2017.txt" />
-        <option value="$PROJECT_DIR$/app/testSuite.py" />
-        <option value="$PROJECT_DIR$/app/testEnvSensorONLocalNetwork.py" />
-        <option value="$PROJECT_DIR$/app/testHomeBakedPiONLocalNetwork.py" />
-        <option value="$PROJECT_DIR$/references/COMMANDS.txt" />
-        <option value="$PROJECT_DIR$/references/SERVERS.txt" />
-        <option value="$PROJECT_DIR$/webApp/templates/systemOver.html" />
-        <option value="$PROJECT_DIR$/webApp/templates/nodeDetailed.html" />
-        <option value="$PROJECT_DIR$/webApp/templates/base.html" />
-        <option value="$PROJECT_DIR$/webApp/templates/baseLogged.html" />
-        <option value="$PROJECT_DIR$/webApp/app.py" />
-        <option value="$PROJECT_DIR$/webApp/TODO.txt" />
-        <option value="$PROJECT_DIR$/app/TODO.txt" />
         <option value="$PROJECT_DIR$/espDoorNode/TODO.txt" />
         <option value="$PROJECT_DIR$/espEnvNode/TODO.txt" />
         <option value="$PROJECT_DIR$/docs/index.rst" />
         <option value="$PROJECT_DIR$/docs/envNode.rst" />
         <option value="$PROJECT_DIR$/docs/occpNode.rst" />
+        <option value="$PROJECT_DIR$/event/testEventQ.py" />
+        <option value="$PROJECT_DIR$/event/log.py" />
+        <option value="$PROJECT_DIR$/event/testLog.py" />
+        <option value="$PROJECT_DIR$/app/log.py" />
+        <option value="$PROJECT_DIR$/app/testLog.py" />
+        <option value="$PROJECT_DIR$/event/actions.py" />
+        <option value="$PROJECT_DIR$/event/events.py" />
+        <option value="$PROJECT_DIR$/event/eventQ.py" />
+        <option value="$PROJECT_DIR$/../reno/NOTES.txt" />
+        <option value="$PROJECT_DIR$/app/testEventQ.py" />
+        <option value="$PROJECT_DIR$/app/testEvents.py" />
+        <option value="$PROJECT_DIR$/app/testEventsOFF.py" />
+        <option value="$PROJECT_DIR$/app/testLogOFF.py" />
+        <option value="$PROJECT_DIR$/app/hbpApp.py" />
+        <option value="$PROJECT_DIR$/app/testActionsON.py" />
+        <option value="$PROJECT_DIR$/app/commUtil.py" />
+        <option value="$PROJECT_DIR$/app/parameters.xml" />
+        <option value="$PROJECT_DIR$/app/paramReader.py" />
+        <option value="$PROJECT_DIR$/app/testParamReader.py" />
+        <option value="$PROJECT_DIR$/app/testCommUtilONNetwork.py" />
+        <option value="$PROJECT_DIR$/app/eventQ.py" />
+        <option value="$PROJECT_DIR$/app/actions.py" />
+        <option value="$PROJECT_DIR$/app/testActionsOFF.py" />
+        <option value="$PROJECT_DIR$/app/testEventOFF.py" />
+        <option value="$PROJECT_DIR$/app/testEventQueueOFF.py" />
+        <option value="$PROJECT_DIR$/app/testEnvSensorOFF.py" />
+        <option value="$PROJECT_DIR$/app/testEnvSensorONLocalNetwork.py" />
         <option value="$PROJECT_DIR$/app/sensor.py" />
+        <option value="$PROJECT_DIR$/app/imageSensor.py" />
+        <option value="$PROJECT_DIR$/app/envSensor.py" />
+        <option value="$PROJECT_DIR$/app/testSensorEventOFF.py" />
+        <option value="$PROJECT_DIR$/app/testHubOFF.py" />
+        <option value="$PROJECT_DIR$/app/testNodeOFF.py" />
+        <option value="$PROJECT_DIR$/app/testSensorOFF.py" />
+        <option value="$PROJECT_DIR$/app/hubFactory.py" />
+        <option value="$PROJECT_DIR$/app/testOccpSensorOFF.py" />
+        <option value="$PROJECT_DIR$/app/testOccpSensorONLocalNetwork.py" />
+        <option value="$PROJECT_DIR$/app/hub.py" />
+        <option value="$PROJECT_DIR$/app/events.py" />
+        <option value="$PROJECT_DIR$/app/testEventQOFF.py" />
+        <option value="$PROJECT_DIR$/app/testEventQueueONNetwork.py" />
         <option value="$PROJECT_DIR$/docs/TODO.rst" />
+        <option value="$PROJECT_DIR$/app/occpSensor.py" />
+        <option value="$PROJECT_DIR$/webApp/testInsertAPI.py" />
+        <option value="$PROJECT_DIR$/webApp/app.py" />
+        <option value="$PROJECT_DIR$/app/testSuite.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1440" />
-    <option name="height" value="801" />
+    <option name="height" value="804" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -245,7 +267,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -264,8 +285,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="homeBakedPi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="homeBakedPi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="references" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,7 +309,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../trips" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../reno" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
@@ -285,11 +321,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/event" />
       <recent name="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto" />
       <recent name="$PROJECT_DIR$/docs" />
       <recent name="$PROJECT_DIR$/espEnvNode" />
-      <recent name="$PROJECT_DIR$/app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto" />
@@ -299,36 +335,66 @@
       <recent name="$PROJECT_DIR$/shell" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in testInsertAPI">
-    <configuration default="false" name="testSuite" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python tests.Unittests in testSuite">
+    <configuration default="false" name="Unittests in testEnvSensorOFF" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/webApp/venv/bin/python" />
+      <envs />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="homeBakedPi" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/testSuite.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/testEnvSensorOFF.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests in testEventQ" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittests in testOccpSensorOFF" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
-      <option name="SDK_HOME" value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/venv/bin/python2.7" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pythonTestCenter" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/testEventQ.py" />
+      <module name="homeBakedPi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/testOccpSensorOFF.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in testEventQueueONNetwork" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="homeBakedPi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/testEventQueueONNetwork.py" />
       <option name="CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
@@ -344,7 +410,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests in testHomeBakedPiONLocalNetwork" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittests in testEventQOFF" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -354,7 +420,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="homeBakedPi" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/testHomeBakedPiONLocalNetwork.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/testEventQOFF.py" />
       <option name="CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
@@ -367,30 +433,6 @@
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in testEnvSensorONLocalNetwork" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="homeBakedPi" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/testEnvSensorONLocalNetwork.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -573,20 +615,45 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.testSuite" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in testEventQ" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in testHomeBakedPiONLocalNetwork" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in testEnvSensorONLocalNetwork" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in testInsertAPI" />
+    <configuration default="false" name="Unittests in testSuite" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/webApp/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="homeBakedPi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/testSuite.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <list size="6">
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in testSuite" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in testEnvSensorOFF" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in testOccpSensorOFF" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in testEventQueueONNetwork" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in testEventQOFF" />
+      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittests in testInsertAPI" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in testInsertAPI" />
-        <item index="1" class="java.lang.String" itemvalue="Python.testSuite" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in testHomeBakedPiONLocalNetwork" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in testEnvSensorONLocalNetwork" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in testEventQ" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in testEventQueueONNetwork" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in testEventQOFF" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in testOccpSensorOFF" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in testEnvSensorOFF" />
       </list>
     </recent_temporary>
   </component>
@@ -623,26 +690,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="801" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="22" width="1440" height="804" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289855" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24947146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24947146" sideWeight="0.49892008" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39854014" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24947146" sideWeight="0.49892008" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39650145" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24947146" sideWeight="0.5010799" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32796487" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3265306" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3265306" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32796487" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -663,377 +730,382 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/app/actions.py</url>
+          <line>257</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="12" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/dateTimeConversion.py">
+    <entry file="file://$PROJECT_DIR$/../reno/NOTES.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1695">
+        <state vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="1320">
+          <caret line="75" column="45" selection-start-line="75" selection-start-column="45" selection-end-line="75" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/log.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="795" max-vertical-offset="3555">
+          <caret line="72" column="25" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testLogOFF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="430" max-vertical-offset="2460">
+          <caret line="53" column="0" selection-start-line="46" selection-start-column="8" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/espEnvNode/espEnvNode/espEnvNode.ino">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1239" max-vertical-offset="1650">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/hbpShell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
-          <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/testActuatorOFF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4890">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/testEnvSensorOFF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1410">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/commUtil.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2640">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/envSensor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.06870229" vertical-offset="330" max-vertical-offset="5040">
-          <caret line="28" column="46" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/dateTimeConversion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1695">
-          <caret line="73" column="23" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/eventQueue.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="2205">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../trips/hereford2017.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86132514" vertical-offset="1016" max-vertical-offset="1665">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/testSensorOFF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6495">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/hbpApp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1635">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/testHomeBakedPiONLocalNetwork.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="513" max-vertical-offset="1185">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/testEnvSensorONLocalNetwork.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="1320">
-          <caret line="30" column="72" selection-start-line="30" selection-start-column="72" selection-end-line="30" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/testSuite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
-          <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/SERVER_SETUP.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="761" max-vertical-offset="1395">
-          <caret line="83" column="89" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/templates/systemActivation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="634">
+        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="810">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/homeBakedPiScheduleScript.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="634">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="411">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/homeBakedPiScript.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="150">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="410">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/app/testParamReader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="634">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="78" column="57" selection-start-line="78" selection-start-column="57" selection-end-line="78" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/testInsertAPI.py">
+    <entry file="file://$PROJECT_DIR$/app/testCommUtilONNetwork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="634" max-vertical-offset="1065">
-          <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/templates/nodeDetailed.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="36.333332" vertical-offset="1922" max-vertical-offset="2295">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/venv/lib/python2.7/site-packages/jinja2/testsuite/inheritance.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7170732" vertical-offset="2264" max-vertical-offset="3780">
-          <caret line="108" column="27" selection-start-line="108" selection-start-column="27" selection-end-line="108" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36674815" vertical-offset="0" max-vertical-offset="1380">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6259169" vertical-offset="194" max-vertical-offset="1020">
-          <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/templates/baseLogged.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="885">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="231" max-vertical-offset="1125">
+          <caret line="35" column="90" selection-start-line="35" selection-start-column="90" selection-end-line="35" selection-end-column="90" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/parameters.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="89.42308" vertical-offset="3990" max-vertical-offset="9765">
-          <caret line="112" column="60" selection-start-line="112" selection-start-column="60" selection-end-line="112" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/STICKY.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/references/COMMANDS.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="1770">
-          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/event/SPEC.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/TODO.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/actions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2115">
-          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/testEventQ.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="1950">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/testEventAPI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="475" max-vertical-offset="885">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2260" max-vertical-offset="2670">
-          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pythonTestCenter/eventSchedProto/events.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="3000">
-          <caret line="137" column="72" selection-start-line="137" selection-start-column="72" selection-end-line="137" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/testSensorEventOFF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="720">
-          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/eventQueue.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1090" max-vertical-offset="1500">
-          <caret line="90" column="24" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/sensorEvent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="1140">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/event/actions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2115">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="174" max-vertical-offset="585">
+          <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/event/TODO.txt">
+    <entry file="file://$PROJECT_DIR$/app/paramReader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/references/GIT.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="495">
-          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/index.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="525">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/PLAN.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1335">
-          <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/envNode.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1050" max-vertical-offset="1500">
+        <state vertical-scroll-proportion="0.0" vertical-offset="856" max-vertical-offset="1485">
           <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/occpNode.rst">
+    <entry file="file://$PROJECT_DIR$/app/hbpApp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1710">
-          <caret line="105" column="12" selection-start-line="105" selection-start-column="12" selection-end-line="105" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/hub.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8760">
-          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/sensor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1395" max-vertical-offset="9555">
-          <caret line="627" column="32" selection-start-line="627" selection-start-column="32" selection-end-line="627" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="523" max-vertical-offset="1710">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding>
-            <element signature="e#165#178#0" expanded="true" />
+            <element signature="e#281#305#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/espEnvNode/espEnvNode/espEnvNode.ino">
+    <entry file="file://$PROJECT_DIR$/app/testActionsOFF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1905">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="819" max-vertical-offset="1230">
+          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testHomeBakedPiActuatorSchedulerOFF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.216545" vertical-offset="568" max-vertical-offset="2385">
+          <caret line="135" column="8" selection-start-line="135" selection-start-column="8" selection-end-line="135" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/classes_homeBakedPi.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/packages_homeBakedPi.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testEnvSensorOFF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1134" max-vertical-offset="1545">
+          <caret line="95" column="55" selection-start-line="95" selection-start-column="55" selection-end-line="95" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/imageSensor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="3105">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testNodeOFF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="673" max-vertical-offset="4035">
+          <caret line="58" column="53" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/references/SERVERS.txt">
+    <entry file="file://$PROJECT_DIR$/app/testActionsON.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="468" max-vertical-offset="1125">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1005">
+          <caret line="29" column="95" selection-start-line="29" selection-start-column="95" selection-end-line="29" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testSensorOFF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="309" max-vertical-offset="6615">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/envSensor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="7035">
+          <caret line="56" column="72" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="72" />
+          <folding>
+            <element signature="e#159#172#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testHubOFF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3658" max-vertical-offset="6405">
+          <caret line="253" column="65" selection-start-line="253" selection-start-column="65" selection-end-line="253" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/commUtil.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="793" max-vertical-offset="3360">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/hubFactory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="2895">
+          <caret line="135" column="81" selection-start-line="135" selection-start-column="81" selection-end-line="135" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testEnvSensorONLocalNetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1515">
+          <caret line="31" column="0" selection-start-line="29" selection-start-column="8" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testEventQOFF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1215" max-vertical-offset="1725">
+          <caret line="97" column="37" selection-start-line="97" selection-start-column="37" selection-end-line="97" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/actions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4074" max-vertical-offset="4485">
+          <caret line="284" column="0" selection-start-line="284" selection-start-column="0" selection-end-line="284" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testOccpSensorOFF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="673" max-vertical-offset="1860">
+          <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testEventQueueONNetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="790" max-vertical-offset="1350">
+          <caret line="57" column="50" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
+          <folding>
+            <element signature="e#166#181#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/references/COMMANDS.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1770">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/TODO.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86180127" vertical-offset="0" max-vertical-offset="1095">
-          <caret line="37" column="64" selection-start-line="37" selection-start-column="64" selection-end-line="37" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1515">
+          <caret line="15" column="58" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testEventOFF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1065">
+          <caret line="41" column="90" selection-start-line="41" selection-start-column="90" selection-end-line="41" selection-end-column="90" />
+          <folding>
+            <element signature="e#183#198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/events.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3424" max-vertical-offset="5205">
+          <caret line="238" column="0" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/sensor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4334" max-vertical-offset="9795">
+          <caret line="299" column="11" selection-start-line="299" selection-start-column="11" selection-end-line="299" selection-end-column="11" />
+          <folding>
+            <element signature="e#165#178#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/occpSensor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2820" max-vertical-offset="6210">
+          <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/references/SERVERS.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1125">
+          <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/hub.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7635" max-vertical-offset="9045">
+          <caret line="41" column="142" selection-start-line="41" selection-start-column="142" selection-end-line="41" selection-end-column="142" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/eventQ.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2160">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webApp/testInsertAPI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="684" max-vertical-offset="1110">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <element signature="e#134#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/espDoorNode/espDoorNode_161211/espDoorNode_161211.ino">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.751825" vertical-offset="2775" max-vertical-offset="3585">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webApp/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9870">
+          <caret line="579" column="0" selection-start-line="579" selection-start-column="0" selection-end-line="579" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/startLocalWebApp.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="411">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testOccpSensorONLocalNetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testSuite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1140">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/testHomeBakedPiONLocalNetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="1185">
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/references/GIT.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.03649635" vertical-offset="15" max-vertical-offset="495">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

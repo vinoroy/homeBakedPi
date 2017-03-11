@@ -43,6 +43,14 @@ class TestSensorOFF(unittest.TestCase):
         self.testSenBaro = MOCK_TempSensor('MOCK-BARO-1',[0,1200],self.myNode,'LOW')
 
 
+    def tearDown(self):
+        """
+        Setup the testing
+        """
+
+        self.myHub.getLog().clearAllLogEntries()
+
+
     def test_getLastReading_WOReadings(self):
         """
         Testing the getLastReading method using a mock temperature sensor without having taken a reading. Must return

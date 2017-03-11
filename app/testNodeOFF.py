@@ -12,7 +12,6 @@ from hub import *
 from envSensor import *
 from occpSensor import *
 from imageSensor import *
-from sensorEvent import *
 import time
 
 
@@ -57,7 +56,7 @@ class TestNodeOFF(unittest.TestCase):
 
         initLen = self.myNode.getNumberSensors()
 
-        self.myNode.addSensor(SensorEvent('Temp', 'Temp12', 45,self.myNode.getNodeID(),'Temp alarm'))
+        self.myNode.addSensor(Hub('Main','bakedPiDB'))
 
         newLen = self.myNode.getNumberSensors()
 

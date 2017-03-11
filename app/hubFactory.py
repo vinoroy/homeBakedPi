@@ -25,14 +25,18 @@ class HubFactory:
                          1  - create the hub from the attributes stored in the database file
         - email : (string) email address where the notifications will be sent
         - emailPass : (string) password for the email account where the notifications will be sent.
+        - smsGateway : (string) root address of the email to sms gateway
+        - cellNumber : (string) cell number to be used to send sms using the email to sms gateway
         - mockMode : (int) flag to indicate if the application hub is in test mode (1 = test mode)
 
     """
 
-    def __init__(self, dbFile, mockMode, email = 'vinoroy70@gmail.com', emailPass = 'miller12'):
+    def __init__(self, dbFile, mockMode, email = 'vinoroy70@gmail.com', emailPass = 'miller12',smsGateway='',cellNumber=''):
         self.dbFile = dbFile
         self.email = email
         self.emailPass = emailPass
+        self.smsGateway = smsGateway
+        self.cellNumber = cellNumber
         self.mockMode = mockMode
 
 
@@ -49,7 +53,7 @@ class HubFactory:
 
         """
 
-        self.myHub = Hub('Main',self.dbFile,self.email, self.emailPass)
+        self.myHub = Hub('Main',self.dbFile,self.email, self.emailPass,self.smsGateway,self.cellNumber)
 
         ######################################################################################################
         # create the nodes and the sensors
@@ -105,11 +109,11 @@ class HubFactory:
 
                         elif active == 1 and instType == 'IPDOORSWITCH':
 
-                            self.myNode.addSensor(IPDoorSwitch(instID,[lowLimit,upperLimit],self.myNode,freq))
+                            self.myNode.addSensor(IPDoorSwitch(instID,lowLimit,self.myNode,freq))
 
                         elif active == 1 and instType == 'IPMOTION':
 
-                            self.myNode.addSensor(IPMotionDetection(instID,[lowLimit,upperLimit],self.myNode,freq))
+                            self.myNode.addSensor(IPMotionDetection(instID,lowLimit,self.myNode,freq))
 
                         elif active == 1 and instType == 'MOCKTEMP':
 
@@ -129,7 +133,7 @@ class HubFactory:
 
                         elif active == 1 and instType =='MOCKDOOR':
 
-                            self.myNode.addSensor(MOCK_DoorSwitch(instID,self.myNode,freq))
+                            self.myNode.addSensor(MOCK_DoorSwitch(instID,lowLimit,self.myNode,freq))
 
                     sensorsInDBForNodeX.close()
 

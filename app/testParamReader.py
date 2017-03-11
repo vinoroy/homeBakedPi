@@ -23,7 +23,7 @@ class TestParamReader(unittest.TestCase):
         pass
 
 
-    def test_paramReader_withThreeEnvs(self):
+    def test_paramReader_withFourEnvs(self):
         """
         Testing the paramReader with know number of environments
         """
@@ -75,4 +75,6 @@ class TestParamReader(unittest.TestCase):
         self.assertEqual(params['dbPath'],'bakedPiDB')
         self.assertEqual(params['email'],'vinoroy70@gmail.com')
         self.assertEqual(params['emailPass'],'miller12')
+        self.assertEqual(params['smsGateway'],'@sms.rogers.com')
+        self.assertEqual(params['cellNumber'],'5147945869')
         self.assertEqual(params['mockMode'],1)

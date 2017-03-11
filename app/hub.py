@@ -12,13 +12,13 @@ from commUtil import *
 from dateTimeConversion import *
 import time
 from numbers import Number
-from sensorEvent import *
-from eventQueue import *
+from eventQ import *
 from node import *
 import sqlite3
 from occpSensor import *
 from actuator import *
 from imageSensor import *
+from log import *
 
 
     
@@ -33,19 +33,21 @@ class Hub():
         - actuators : (list Actuators) list of all the actuators that compose the hub
         - hubMailAgt : (EmailAgent) reference to the EmailAgent object of the hub
         - hubID : (string) name of the hub
-        - eventQ : (EventQueue) reference to the event queue object that is part of the hub
+        - eventQ : (EventQ) reference to the event queue object that is part of the hub
+        - log : (Log) refernce to the log object of the hub
         - dbFile : (string) name of the database file associated to the hub
 
     """
 
-    def __init__(self,hubID, dbFile, email = 'vinoroy70@gmail.com', emailPass = 'miller12'):
+    def __init__(self,hubID, dbFile, email = 'vinoroy70@gmail.com', emailPass = 'miller12',smsGateway='@sms.rogers.com',cellNumber='5147945869'):
         self.nodes = []
         self.node = Node('mock',self,'','','') # mock node for uml association
         self.actuators = []
         self.actuator = Actuator('mock','',self) # mock actuator for uml association
-        self.hubMailAgt = EmailAgent(email,emailPass)
+        self.hubMailAgt = EmailAgent(email,emailPass,smsGateway,cellNumber)
         self.hubID = hubID
-        self.eventQ = EventQueue(self)
+        self.eventQ = EventQ(self)
+        self.log = Log(self)
         self.dbFile = dbFile
 
 
@@ -79,6 +81,7 @@ class Hub():
         return self.dbFile
 
 
+
     def getEventQ(self):
         """
         Returns the event queue object of the hub
@@ -92,6 +95,22 @@ class Hub():
         """
 
         return self.eventQ
+
+
+
+    def getLog(self):
+        """
+        Returns the log object of the hub
+
+        Args :
+            - none
+
+        Return :
+            - (Log) log of the hub
+
+        """
+
+        return self.log
 
 
     def getNumberNodes(self):

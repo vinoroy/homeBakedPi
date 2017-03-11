@@ -5,17 +5,42 @@ TO DO
 App
 ---
 
->1 prototype the event queue task treatment module
-+1 build fault tolerence for node data request over http (ex unplugged node)
+>1 developpe the event queue task treatment module
+        - add live event based tests via web api
+        - add alarm on / off state to the hub
+        - relagate to a DB the actions associated to an event
+        + add temperature threshold event
+        + integrate event framework to homeBakedPi
+                + modify verify thresholds for envSensor --> adding the createEvent methods in sensors
+                + modify verify thresholds for occpSensor
+                + add on and off test to verify threshold verification
+        + review documention of the event modules
+        + problem with paramreader look at unit tests
+        + add sms and email actions ---> must add smsGateway and cellNumber to xml params and to hub creation process
+        + add tests for actions
+        + add tests for event
+        + clear log entries in eventQ tests
+        + add log entry for event creation
+        + add event logging >> building the tests for the log
+        + copy the event files to the app folder
+        + adding the tests to eventQ
+        + change the event type names to captial letters
 
 -2 the scheduling function of the actuators should be put in a separate class to be used by all
 -3 change instID for sensorID (this is a deep one it even touches the db)
 -4 generalize comm util email agent so that it can connect to any smtp servers
 
 
+Shell
+-----
+
+- command to clear the readings tables (also the log entries)
+
+
 WebApp
 ------
 
+- correct the bash script to update homeBakedPi (problem with the copy of the static files)
 >1 write a script to insert dummy values into db for dev and testing purposes. Use the testInsert script as an example
 
 -2 add page to view the actuator on off times in table format
@@ -26,9 +51,8 @@ OccpNode
 --------
 
 -1 clean up the door node code
--1 build the protobord occp node
+>1 build the perfboard occp node
 
-+2 draw the schematic of the occp node
 >2 doc the occp node
 
 
@@ -36,9 +60,8 @@ EnvNode
 -------
 
 -1 clean up the env node code (change the int values for floats)
--1 build the pcb protobord env node
+>1 build the perfboard env node
 
-+2 draw the schematic of the env node
 >2 doc the env node
 
 
@@ -65,3 +88,9 @@ Notes
         4)  All development will be done directly to the dev server over ssh
 
 
+Completed
+---------
+
++1 build fault tolerence for node data request over http (ex unplugged node)
++2 draw the schematic of the occp node
++2 draw the schematic of the env node

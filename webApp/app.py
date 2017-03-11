@@ -27,6 +27,7 @@ from flask import jsonify
 from datetime import datetime
 from datetime import timedelta
 from dateTimeConversion import *
+from events import *
 
 
 
@@ -543,7 +544,8 @@ def toggleActuator():
 def insertSensorValue(insertStr):
     """
     Function to insert a value for an instrument. This is used generally used when an instrument sends data over the network
-    as a result of an event.
+    as a result of an event. If the method finds the node and the sensor the value is inserted and the events in the eventQ
+    are handled
 
     Args :
         - insertStr (string) string the indicates the nodeID, the instID and the value
@@ -566,11 +568,16 @@ def insertSensorValue(insertStr):
 
         theInstrument.insertEventValue(value)
 
+        theHub.getEventQ().handleEvents()
+
         return '1'
 
     else:
 
         return '0'
+
+
+
 
 #**********************************************************************************************************************
 #

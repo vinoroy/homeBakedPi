@@ -15,23 +15,85 @@ from dateTimeConversion import *
 import platform
 import random
 import sqlite3
-from sensorEvent import *
 from sensor import *
-    
+from events import *
 
-class TempSensor(Sensor):
+
+
+
+
+class EnvSensor(Sensor):
+    """
+    Abstract class for the environmental type sensors.
+    """
+
+
+    def __init__(self,node,freq,instID):
+        Sensor.__init__(self,node,freq,instID)
+
+
+    def verifyThresholds(self):
+        """
+        Verify thresholds for environment type sensors. Verify if the new reading exceeds the thresholds.
+        If a threshold is exceeded an event is added to the event pool.
+
+        Args :
+            - return
+
+        Return :
+            - none
+        """
+
+        lwThrsh = self.thrsh[0]
+        upThrsh = self.thrsh[1]
+
+
+        #self.createEvent()
+
+        if self.getLastReadingInBuffer() >= upThrsh or self.getLastReadingInBuffer() <= lwThrsh:
+
+            #self.getHub().getEventQ().addEventToPool(SensorEvent(self.mesureType,self.instID, self.getLastReadingInBuffer(),self.node.getNodeID(),self.alarmMsg))
+
+            self.getHub().getEventQ().addEventToQueue(self.createEvent())
+
+
+
+    def createEvent(self):
+        """
+        Create the event based on the specific sensor type.
+
+        Args :
+            - none
+
+        Return :
+            - (Event) specific event object based on the concrete sensor class
+
+        """
+
+        return EnvThreshold(self.getHub().getEventQ(),self.getNode().getNodeID(),self.getInstID(),self.getLastReadingInBuffer())
+
+
+
+
+class TempSensor(EnvSensor):
     """
     Abstract class for the temperature family of sensors. Here only some specific
     attributes are specified, no method implementation
     """
     
     def __init__(self,node,freq,instID):
-        Sensor.__init__(self,node,freq,instID)
+        EnvSensor.__init__(self,node,freq,instID)
         self.mesureType = 'Temperature'
         self.mesureUnit ='deg C'
         self.instType =''
         self.dbTable = 'TEMPREADINGS'
         self.alarmMsg = 'Temperature alarm'
+
+
+    #def createEvent(self):
+
+
+
         
 
 
@@ -98,15 +160,31 @@ class MOCK_TempSensor(TempSensor):
         return mockValue
 
 
+    def createEvent(self):
+        """
+        Create the event based on the specific sensor type.
 
-class LDRSensor(Sensor):
+        Args :
+            - none
+
+        Return :
+            - (Event) specific event object based on the concrete sensor class
+
+        """
+
+        return MOCK_EnvThreshold(self.getHub().getEventQ(),self.getNode().getNodeID(),self.getInstID(),self.getLastReadingInBuffer())
+
+
+
+
+class LDRSensor(EnvSensor):
     """
     Abstract class for the LDR (light dependant resistor) family of sensors. Here only some specific
     attributes are specified, no method implementation
     """
 
     def __init__(self,node,freq,instID):
-        Sensor.__init__(self,node,freq,instID)
+        EnvSensor.__init__(self,node,freq,instID)
         self.mesureType = 'Light'
         self.mesureUnit ='luus'
         self.instType =''
@@ -178,17 +256,31 @@ class MOCK_LDRSensor(LDRSensor):
         return mockValue
 
 
+    def createEvent(self):
+        """
+        Create the event based on the specific sensor type.
+
+        Args :
+            - none
+
+        Return :
+            - (Event) specific event object based on the concrete sensor class
+
+        """
+
+        return MOCK_EnvThreshold(self.getHub().getEventQ(),self.getNode().getNodeID(),self.getInstID(),self.getLastReadingInBuffer())
 
 
 
-class HumiditySensor(Sensor):
+
+class HumiditySensor(EnvSensor):
     """
     Abstract class for the humidity family of sensors. Here only some specific
     attributes are specified, no method implementation
     """
 
     def __init__(self,node,freq,instID):
-        Sensor.__init__(self,node,freq,instID)
+        EnvSensor.__init__(self,node,freq,instID)
         self.mesureType = 'Humidity'
         self.mesureUnit ='% Humidity'
         self.instType =''
@@ -261,15 +353,31 @@ class MOCK_HumiditySensor(HumiditySensor):
         return mockValue
 
 
+    def createEvent(self):
+        """
+        Create the event based on the specific sensor type.
 
-class BarometricPressureSensor(Sensor):
+        Args :
+            - none
+
+        Return :
+            - (Event) specific event object based on the concrete sensor class
+
+        """
+
+        return MOCK_EnvThreshold(self.getHub().getEventQ(),self.getNode().getNodeID(),self.getInstID(),self.getLastReadingInBuffer())
+
+
+
+
+class BarometricPressureSensor(EnvSensor):
     """
     Abstract class for the barometric pressure family of sensors. Here only some specific
     attributes are specified, no method implementation
     """
 
     def __init__(self,node,freq,instID):
-        Sensor.__init__(self,node,freq,instID)
+        EnvSensor.__init__(self,node,freq,instID)
         self.mesureType = 'Barometric pressure'
         self.mesureUnit ='hPa'
         self.dbTable = 'BAROREADINGS'
@@ -338,3 +446,18 @@ class MOCK_BarometricPressureSensor(BarometricPressureSensor):
         mockValue = mockValues[idxRnd]
 
         return mockValue
+
+
+    def createEvent(self):
+        """
+        Create the event based on the specific sensor type.
+
+        Args :
+            - none
+
+        Return :
+            - (Event) specific event object based on the concrete sensor class
+
+        """
+
+        return MOCK_EnvThreshold(self.getHub().getEventQ(),self.getNode().getNodeID(),self.getInstID(),self.getLastReadingInBuffer())

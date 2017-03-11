@@ -42,6 +42,8 @@ def createHub(argv):
     dbPath = params['dbPath']
     email = params['email']
     emailPass = params['emailPass']
+    smsGateway = params['smsGateway']
+    cellNumber = params['cellNumber']
     mockMode = params['mockMode']
 
     #print '-------------Env Params-------------------'
@@ -51,7 +53,7 @@ def createHub(argv):
     #print 'Email : %s' % email
     #print 'Email password : %s' % emailPass
 
-    myFac = HubFactory(dbPath,mockMode,email,emailPass)
+    myFac = HubFactory(dbPath,mockMode,email,emailPass,smsGateway,cellNumber)
 
     aHub = myFac.createHub()
 
