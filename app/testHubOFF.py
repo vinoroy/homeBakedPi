@@ -45,6 +45,28 @@ class TestHubOFF(unittest.TestCase):
         self.myAct1.updateDBState()
         self.myAct2.updateDBState()
 
+        # prep database for tests
+        conn = sqlite3.connect(self.myHub.getDBFile())
+        conn.execute("UPDATE '%s' SET '%s' = '%i'" % (self.myHub.dbTable,'ENVMONITORING',0))
+        conn.commit()
+        conn.execute("UPDATE '%s' SET '%s' = '%i'" % (self.myHub.dbTable,'OCCPMONITORING',0))
+        conn.commit()
+        conn.close()
+
+
+    def tearDown(self):
+        """
+        Cleanup after tests
+        """
+
+        # prep database for tests
+        conn = sqlite3.connect(self.myHub.getDBFile())
+        conn.execute("UPDATE '%s' SET '%s' = '%i'" % (self.myHub.dbTable,'ENVMONITORING',0))
+        conn.commit()
+        conn.execute("UPDATE '%s' SET '%s' = '%i'" % (self.myHub.dbTable,'OCCPMONITORING',0))
+        conn.commit()
+        conn.close()
+
 
 
     def test_addNode(self):
@@ -415,6 +437,39 @@ class TestHubOFF(unittest.TestCase):
         self.assertEqual(theInst,-1,'getInstID error')
 
 
+
+    def test_getMonitoringParam(self):
+        """
+        Test the getMonitoringParam method
+        """
+
+        result = self.myHub.getMonitoringParam('ENV')
+
+        self.assertEqual(result,False)
+
+
+    def test_setMonitoringParam_ENVParam(self):
+        """
+        Test the setMonitoringParam method for the environmental monitoring param
+        """
+
+        self.myHub.setMonitoringParam('ENV',True)
+
+        result = self.myHub.getMonitoringParam('ENV')
+
+        self.assertEqual(result,True)
+
+
+    def test_setMonitoringParam_OCCPParam(self):
+        """
+        Test the setMonitoringParam method for the occupational monitoring param
+        """
+
+        self.myHub.setMonitoringParam('OCCP',True)
+
+        result = self.myHub.getMonitoringParam('OCCP')
+
+        self.assertEqual(result,True)
 
 
 

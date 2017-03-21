@@ -48,13 +48,12 @@ class EnvSensor(Sensor):
         upThrsh = self.thrsh[1]
 
 
-        #self.createEvent()
+        if self.getHub().getMonitoringParam('ENV') == True :
 
-        if self.getLastReadingInBuffer() >= upThrsh or self.getLastReadingInBuffer() <= lwThrsh:
+            if self.getLastReadingInBuffer() >= upThrsh or self.getLastReadingInBuffer() <= lwThrsh:
 
-            #self.getHub().getEventQ().addEventToPool(SensorEvent(self.mesureType,self.instID, self.getLastReadingInBuffer(),self.node.getNodeID(),self.alarmMsg))
+                self.getHub().getEventQ().addEventToQueue(self.createEvent())
 
-            self.getHub().getEventQ().addEventToQueue(self.createEvent())
 
 
 
@@ -89,12 +88,6 @@ class TempSensor(EnvSensor):
         self.dbTable = 'TEMPREADINGS'
         self.alarmMsg = 'Temperature alarm'
 
-
-    #def createEvent(self):
-
-
-
-        
 
 
 class IPTempSensor(TempSensor):

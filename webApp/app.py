@@ -17,7 +17,7 @@ del path
 
 from flask.ext.bootstrap import Bootstrap
 from flask.ext.wtf import Form
-from wtforms import StringField, SubmitField, PasswordField, DecimalField
+from wtforms import StringField, SubmitField, PasswordField, DecimalField, BooleanField
 from wtforms.validators import Required, DataRequired
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, send_file, send_from_directory
@@ -97,6 +97,21 @@ class ScheduleForm(Form):
     closeTime = DecimalField('Close time', validators=[Required()])
     submit = SubmitField('Submit')
 
+
+class SysActivationForm(Form):
+    """
+    Class for the system activation form. This will include the types of fields to be used and the validation process of each field
+
+    Attributes :
+        - envActivation : (bool) state of the environmental monitoring
+        - occpActivation : (bool) state of the occupational monitoring
+        - submit : (button)
+
+    """
+
+    envActivation = BooleanField('Environmental monitoring',validators=[Required()])
+    occpActivation = BooleanField('Occupational monitoring',validators=[Required()])
+    submit = SubmitField('Submit')
 
 
 def makeHub():
@@ -292,13 +307,13 @@ def home():
 @app.route('/nodeDetailed/', methods=['GET'])
 def nodeDetailed():
     """
-    Function to render the environmental node detailed page of the app
+    Function to render the node detailed page of the app
 
     Args :
-        - none
+        -
 
     Return :
-        - (page ref) environmental node detailed page page
+        - (page ref) node detailed page
     """
 
     if not session.get('logged_in'):
@@ -318,6 +333,7 @@ def nodeDetailed():
     cams = theHub.getListOfNodesWithCamera()
 
     actuators = theHub.getListActuatorsWithState()
+
     listOfSensors = theNode.getListSensorsID()
 
     selSensor = theNode.getSensor(listOfSensors[selSensorNum])
@@ -338,6 +354,60 @@ def nodeDetailed():
         listOfValues = selSensor.getLastMonthValuesFrmDB()
 
     return render_template('nodeDetailed.html',cams=cams,listNodes=listNodes,selNode=selNode, listOfSensors=listOfSensors,selSensorName=selSensorName,selSensorNum=selSensorNum,listOfValues=listOfValues,selGrafTable=selGrafTable,selTimePeriode=selTimePeriode,actuators=actuators)
+
+
+
+@app.route('/eventLogReport/', methods=['GET'])
+def eventLogReport():
+    """
+    Function to render the report of the event log
+
+    Args :
+        - selTimePeriode (string) time periode for the log display
+
+    Return :
+        - (page ref) event log report page
+    """
+
+    if not session.get('logged_in'):
+        abort(401)
+
+    selTimePeriode = request.args.get('selTimePeriode')
+
+
+    theHub = getHub()
+
+    listNodes = theHub.getListOfNodes()
+
+    cams = theHub.getListOfNodesWithCamera()
+
+    actuators = theHub.getListActuatorsWithState()
+
+    theLog = theHub.getLog()
+
+
+    # based on the selected time interval get the logs
+    if selTimePeriode == 'Last day':
+
+        listOfValues = theLog.getLastDayLogEntries()
+
+
+    elif selTimePeriode == 'Last week':
+
+        listOfValues = theLog.getLastWeekLogEntries()
+
+    elif selTimePeriode == 'Last month':
+
+        listOfValues = theLog.getLastMonthLogEntries()
+
+    elif selTimePeriode == 'All':
+
+        listOfValues = theLog.getLogEntriesFrmDB()
+
+
+    return render_template('eventLogReport.html',cams=cams,listNodes=listNodes,actuators=actuators,listOfValues=listOfValues,selTimePeriode=selTimePeriode)
+
+
 
 
 
@@ -400,11 +470,11 @@ def setSchedules():
     return render_template('setSchedules.html',listNodes=listNodes,cams=cams,actuators=actuators, form=form, error=error, selActuator=selActuator,listActuators=listActuators, scheduleTimes=scheduleTimes)
 
 
-@app.route('/systemActivation')
+
+@app.route('/systemActivation', methods=['GET', 'POST'])
 def systemActivation():
     """
-    Function to render the system activation parameters page where the user can arm and disarm the system. This
-    function is UNDER CONSTRUCTION !!!
+    Function to render the system activation parameters page where the user can arm and disarm the system.
 
     Args :
         - none
@@ -412,6 +482,8 @@ def systemActivation():
     Return :
         - (page ref) homeBakedPi system activation page
     """
+
+    error = None
 
     if not session.get('logged_in'):
         abort(401)
@@ -424,7 +496,32 @@ def systemActivation():
 
     actuators = theHub.getListActuatorsWithState()
 
-    return render_template('systemActivation.html',cams=cams,listNodes=listNodes,actuators=actuators)
+
+    curEnvMonitorngState = theHub.getMonitoringParam('ENV')
+    curOccoMonitoringState = theHub.getMonitoringParam('OCCP')
+
+
+    monitorState = [curEnvMonitorngState,curOccoMonitoringState]
+
+    form = SysActivationForm()
+
+
+    envActivationState = form.envActivation.data
+    occpActivationState = form.occpActivation.data
+
+
+    if request.method == 'POST':
+
+
+        theHub.setMonitoringParam('ENV',envActivationState)
+        theHub.setMonitoringParam('OCCP',occpActivationState)
+
+        return redirect('home')
+
+
+    return render_template('systemActivation.html',cams=cams,listNodes=listNodes,actuators=actuators,form=form, monitorState=monitorState)
+
+
 
 
 @app.route('/setThresholds/', methods=['GET', 'POST'])

@@ -36,6 +36,18 @@
             </li>
 
 
+            <!--Event log drop down menu-->
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Event log<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('eventLogReport',selTimePeriode='Last day') }}">Last day</a></li>
+                    <li><a href="{{ url_for('eventLogReport',selTimePeriode='Last week') }}">Last week</a></li>
+                    <li><a href="{{ url_for('eventLogReport',selTimePeriode='Last month') }}">Last month</a></li>
+                    <li><a href="{{ url_for('eventLogReport',selTimePeriode='All') }}">All</a></li>
+
+                </ul>
+            </li>
+
+
             <!--Config drop down menu-->
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Config<span class="caret"></span></a>
                 <ul class="dropdown-menu">

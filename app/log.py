@@ -80,7 +80,7 @@ class Log:
             - last : (int) 1 = get the last value
 
         Return :
-            - logDateMatrix : (list of list) array of date and log entries (datenumber, date str, description, days frm most recent)
+            - logDateMatrix : (list of list) array of date and log entries (datenumber, date str, event type, description, days frm most recent)
             - if no values the return will be an empty list
 
         """

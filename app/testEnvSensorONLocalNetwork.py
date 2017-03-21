@@ -34,6 +34,16 @@ class TestEnvSensorONLocalNetwork(unittest.TestCase):
         self.testSenHumid = IPHumiditySensor('HUMID-1',[0,100000],self.myNode,'LOW')
         self.testSenLDR = IPLDRSensor('LDR-1',[0,100000],self.myNode,'LOW')
 
+        self.myHub.setMonitoringParam('ENV',True)
+
+
+    def tearDown(self):
+        """
+        Cleanup after tests
+        """
+
+        self.myHub.setMonitoringParam('ENV',False)
+
 
 
     def test_takeReading_IPTempSensor(self):

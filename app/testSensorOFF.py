@@ -42,6 +42,8 @@ class TestSensorOFF(unittest.TestCase):
         self.testSenTemp = MOCK_TempSensor('MOCK-TMP-1',[0,100],self.myNode,'LOW')
         self.testSenBaro = MOCK_TempSensor('MOCK-BARO-1',[0,1200],self.myNode,'LOW')
 
+        self.myHub.setMonitoringParam('ENV',True)
+
 
     def tearDown(self):
         """
@@ -49,6 +51,8 @@ class TestSensorOFF(unittest.TestCase):
         """
 
         self.myHub.getLog().clearAllLogEntries()
+
+        self.myHub.setMonitoringParam('ENV',False)
 
 
     def test_getLastReading_WOReadings(self):

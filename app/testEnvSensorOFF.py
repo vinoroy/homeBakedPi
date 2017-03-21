@@ -36,6 +36,17 @@ class TestEnvSensorOFF(unittest.TestCase):
         self.testSenBaro = MOCK_BarometricPressureSensor('MOCK-BARO-1',[70,120],self.myNode,'LOW')
         self.testSenHumidity = MOCK_HumiditySensor('MOCK-HUMID-1',[0,101],self.myNode,'LOW')
 
+        self.myHub.setMonitoringParam('ENV',True)
+
+
+    def tearDown(self):
+        """
+        Cleanup after tests
+        """
+
+        self.myHub.setMonitoringParam('ENV',False)
+
+
 
     def test_takeReading_Mock_TempSensor(self):
         """

@@ -336,8 +336,3 @@ class MOCK_RFIDDetection(Event):
         self.numberOfActions = len(self.actions)
 
         self.logEvent()
-
-
-
-    
-

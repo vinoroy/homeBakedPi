@@ -49,6 +49,7 @@ class Hub():
         self.eventQ = EventQ(self)
         self.log = Log(self)
         self.dbFile = dbFile
+        self.dbTable = 'HUBPARAMS'
 
 
     def getHubID(self):
@@ -317,6 +318,94 @@ class Hub():
         """
 
         return len(self.actuators)
+
+
+    def getMonitoringParam(self,paramType):
+        """
+        Return the state of the monitoring parameters in the db. ENV for environmental monitoring and OCCP for
+        occupational monitoring
+
+        Args :
+            - paramType : (string) ENV for environmental monitoring and OCCP for occupational monitoring
+
+        Return :
+            - (bool) state of the monitoring parameter
+
+        """
+
+
+        conn = sqlite3.connect(self.getDBFile())
+
+        result = conn.execute("SELECT * FROM '%s'" % (self.dbTable))
+        row = result.fetchone()
+
+        envParams = row[0]
+        occpParams = row[1]
+
+
+        if paramType == 'ENV':
+
+            resultDigital = envParams
+
+        elif paramType == 'OCCP':
+
+            resultDigital = occpParams
+
+        conn.close()
+
+
+        if resultDigital == 0:
+
+            resultBool = False
+
+        elif resultDigital == 1:
+
+            resultBool = True
+
+        return resultBool
+
+
+
+    def setMonitoringParam(self,paramType,value):
+        """
+        Set the state of the monitoring parameters in the db. ENV for environmental monitoring and OCCP for
+        occupational monitoring. Note that boolean values to represent the state of the monitoring params in the app,
+        however in the db the values are stored as integers 1 true 0 false
+
+        Args :
+            - paramType : (string) ENV for environmental monitoring and OCCP for occupational monitoring
+            - value : (bool)
+
+        Return :
+            - none
+
+        """
+
+        conn = sqlite3.connect(self.getDBFile())
+
+
+        if paramType == 'ENV':
+
+            dbField = 'ENVMONITORING'
+
+        elif paramType == 'OCCP':
+
+            dbField = 'OCCPMONITORING'
+
+
+        if value :
+
+            insertValue = 1
+
+        else:
+
+            insertValue = 0
+
+
+        conn.execute("UPDATE '%s' SET '%s' = '%i'" % (self.dbTable,dbField,insertValue))
+        conn.commit()
+
+        conn.close()
 
 
 

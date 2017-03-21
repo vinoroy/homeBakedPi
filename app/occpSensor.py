@@ -43,9 +43,11 @@ class OccpSensor(Sensor):
         """
 
 
+        if self.getHub().getMonitoringParam('OCCP') == True :
 
-        if self.getLastReadingInBuffer() == self.thrsh:
-            self.getHub().getEventQ().addEventToQueue(self.createEvent())
+            if self.getLastReadingInBuffer() == self.thrsh:
+                
+                self.getHub().getEventQ().addEventToQueue(self.createEvent())
 
 
 

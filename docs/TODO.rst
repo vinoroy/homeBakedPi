@@ -6,8 +6,9 @@ App
 ---
 
 >1 developpe the event queue task treatment module
-        - add live event based tests via web api
-        - add alarm on / off state to the hub
+        + add alarm on / off state to the hub
+        > add live event based tests via web api
+        - remove email and sms from xml file
         - relagate to a DB the actions associated to an event
         + add temperature threshold event
         + integrate event framework to homeBakedPi
@@ -40,6 +41,7 @@ Shell
 WebApp
 ------
 
+> show the event log
 - correct the bash script to update homeBakedPi (problem with the copy of the static files)
 >1 write a script to insert dummy values into db for dev and testing purposes. Use the testInsert script as an example
 
@@ -50,7 +52,8 @@ WebApp
 OccpNode
 --------
 
--1 clean up the door node code
+>1 debug the event stuff
+>1 clean up the door node code
 >1 build the perfboard occp node
 
 >2 doc the occp node
@@ -59,7 +62,7 @@ OccpNode
 EnvNode
 -------
 
--1 clean up the env node code (change the int values for floats)
+>1 clean up the env node code (change the int values for floats)
 >1 build the perfboard env node
 
 >2 doc the env node

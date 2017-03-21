@@ -27,7 +27,18 @@ class TestEventQueueONNetwork(unittest.TestCase):
 
         self.myHub = Hub('Main','bakedPiDB')
 
-        
+        self.myHub.setMonitoringParam('ENV',True)
+        self.myHub.setMonitoringParam('OCCP',True)
+
+
+    def tearDown(self):
+        """
+        Cleanup after tests
+        """
+
+        self.myHub.setMonitoringParam('ENV',False)
+        self.myHub.setMonitoringParam('OCCP',False)
+
         
     def test_handleEvents_TempEnvThreshold_Event(self):
         """

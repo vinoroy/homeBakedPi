@@ -232,9 +232,11 @@ class Sensor:
         print '\t\tInstrument type : ' + self.instType
 
         # only print if threshold have been added
-        if len(self.thrsh) == 1:
+        if type(self.thrsh) is list:
             print '\t\tLower threshold : ' + str(self.thrsh[0])
             print '\t\tUpper threshold : ' + str(self.thrsh[1])
+        else:
+            print '\t\tTheshold : ' + str(self.thrsh)
         
         
     def prtSensorValuesInBuffer(self):
@@ -344,9 +346,6 @@ class Sensor:
         """
 
         raise NotImplementedError( "Should have implemented this" )
-
-
-
 
 
 

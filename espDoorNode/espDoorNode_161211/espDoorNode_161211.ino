@@ -10,7 +10,7 @@
 #include <ESP8266WebServer.h>
 
 // door switch assignments
-const int doorPin = 16;     
+const int doorPin = 13;     
 
 long debouncingTimeDoor = 15; //Debouncing Time in Milliseconds
 volatile unsigned long lastTimeMicrosDoor;
@@ -51,7 +51,7 @@ void setup(void)
 
   // door setup
   pinMode(doorPin, INPUT);
-  attachInterrupt(doorPin, doorEvent, FALLING);
+  attachInterrupt(doorPin, doorEvent, RISING);
 
   // pir motion setup
   pinMode(pirPin, INPUT);
@@ -68,7 +68,6 @@ void setup(void)
     Serial.print(".");
   }
   Serial.println("");
-  Serial.println("DHT Weather Reading Server");
   Serial.print("Connected to ");
   Serial.println(ssid);
   Serial.print("IP address: ");
@@ -119,13 +118,15 @@ void loop(void)
 
   if (pirMotionDetectedState == 1 and pirMotionMsgSentState == 0){
 
-    sendEventToWebAPI("KITCHEN;MD-1;1","pirMotionDetected"); 
+    sendEventToWebAPI("ENTRANCE;MD-1;1","pirMotionDetected"); 
   }
   
 }
 
 
 void doorEvent() {
+
+  Serial.println("door interupt detected");
 
   if((long)(micros() - lastTimeMicrosDoor) >= debouncingTimeDoor * 1000) {
     

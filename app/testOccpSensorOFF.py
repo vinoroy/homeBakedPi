@@ -33,6 +33,16 @@ class TestOccpSensorOFF(unittest.TestCase):
 
         self.testMotionDetection = MOCK_MotionDetection('MOCK-MD-1',1,self.myNode,'NONE')
 
+        self.myHub.setMonitoringParam('OCCP',True)
+
+
+    def tearDown(self):
+        """
+        Cleanup after tests
+        """
+
+        self.myHub.setMonitoringParam('OCCP',False)
+
 
     def test_takeReading_MOCK_DoorSwitch(self):
         """
