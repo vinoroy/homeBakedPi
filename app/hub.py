@@ -425,6 +425,10 @@ class Hub():
         for aNode in self.nodes:
             aNode.scanSensors('LOW')
 
+
+        self.getEventQ().handleEvents()
+
+
         print 'LOW frequency update state of all actuators :' + str(datetime.today())
 
         for aAct in self.actuators:

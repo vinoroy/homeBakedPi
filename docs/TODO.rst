@@ -6,8 +6,9 @@ App
 ---
 
 >1 developpe the event queue task treatment module
+        > add live event based tests - problem with temp event not sending email ... actually all events aren't sending
+        - must add a handle events for a low san
         + add alarm on / off state to the hub
-        > add live event based tests via web api
         - remove email and sms from xml file
         - relagate to a DB the actions associated to an event
         + add temperature threshold event
@@ -41,7 +42,7 @@ Shell
 WebApp
 ------
 
-> show the event log
++ show the event log
 - correct the bash script to update homeBakedPi (problem with the copy of the static files)
 >1 write a script to insert dummy values into db for dev and testing purposes. Use the testInsert script as an example
 
@@ -51,7 +52,7 @@ WebApp
 
 OccpNode
 --------
-
+- the door opening does not seem to send an event
 >1 debug the event stuff
 >1 clean up the door node code
 >1 build the perfboard occp node

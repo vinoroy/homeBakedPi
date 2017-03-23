@@ -1,0 +1,11 @@
+
+
+# problem with the FTDI driver for mac
+
+1) reinstall the FTDI driver
+
+2) restart the computer and it should work
+
+3) if all else fails you may want to kill the native mac driver using the following procedure
+
+https://learn.sparkfun.com/tutorials/how-to-install-ftdi-drivers/mac

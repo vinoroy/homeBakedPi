@@ -272,8 +272,7 @@ class MotionDetection(Event):
 
         self.eventType = 'MOTION_DETECTION'
 
-        self.actions.append(SendSMS(self))
-        self.actions.append(OpenLight(self))
+        self.actions.append(MOCK_OpenLight(self))
 
         self.numberOfActions = len(self.actions)
 
