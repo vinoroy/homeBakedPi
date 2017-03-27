@@ -51,17 +51,20 @@
 <p>This module contains the Hub class. The hub is the central governing component of the homeBakedPi system.</p>
 <dl class="class">
 <dt id="hub.Hub">
-<em class="property">class </em><code class="descclassname">hub.</code><code class="descname">Hub</code><span class="sig-paren">(</span><em>hubID</em>, <em>dbFile</em>, <em>email='vinoroy70&#64;gmail.com'</em>, <em>emailPass='miller12'</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">hub.</code><code class="descname">Hub</code><span class="sig-paren">(</span><em>hubID</em>, <em>dbFile</em>, <em>email='vinoroy70&#64;gmail.com'</em>, <em>emailPass='miller12'</em>, <em>smsGateway='&#64;sms.rogers.com'</em>, <em>cellNumber='5147945869'</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub" title="Permalink to this definition">¶</a></dt>
 <dd><p>The hub is the central governing component of the homeBakedPi system. It is composed of one or more nodes. Each node contains
 one or more sensors. The hub contains several methods to manage the nodes (add, remove a node, get index of a node, etc)</p>
 <dl class="docutils">
 <dt>Attributes :</dt>
 <dd><ul class="first last simple">
 <li>nodes : (list Nodes) list of all the nodes that compose the hub</li>
+<li>nodeLk : (Node) dummy node to provide a link for the UML diagram</li>
 <li>actuators : (list Actuators) list of all the actuators that compose the hub</li>
+<li>actuatorLk : (Actuator) dummy Actuator to provide a link for the UML diagram</li>
 <li>hubMailAgt : (EmailAgent) reference to the EmailAgent object of the hub</li>
 <li>hubID : (string) name of the hub</li>
-<li>eventQ : (EventQueue) reference to the event queue object that is part of the hub</li>
+<li>eventQ : (EventQ) reference to the event queue object that is part of the hub</li>
+<li>log : (Log) refernce to the log object of the hub</li>
 <li>dbFile : (string) name of the database file associated to the hub</li>
 </ul>
 </dd>
@@ -359,6 +362,43 @@ If the node type is not specified all nodes attached to the hub will be returned
 </dd></dl>
 
 <dl class="method">
+<dt id="hub.Hub.getLog">
+<code class="descname">getLog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log object of the hub</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Log) log of the hub</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hub.Hub.getMonitoringParam">
+<code class="descname">getMonitoringParam</code><span class="sig-paren">(</span><em>paramType</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getMonitoringParam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the state of the monitoring parameters in the db. ENV for environmental monitoring and OCCP for
+occupational monitoring</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>paramType : (string) ENV for environmental monitoring and OCCP for occupational monitoring</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(bool) state of the monitoring parameter</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="hub.Hub.getNode">
 <code class="descname">getNode</code><span class="sig-paren">(</span><em>nodeID</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.getNode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the reference for the corresponding node. Returns -1 if the node is
@@ -541,6 +581,27 @@ Used for debugging purposes</p>
 </dl>
 </dd></dl>
 
+<dl class="method">
+<dt id="hub.Hub.setMonitoringParam">
+<code class="descname">setMonitoringParam</code><span class="sig-paren">(</span><em>paramType</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#hub.Hub.setMonitoringParam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the state of the monitoring parameters in the db. ENV for environmental monitoring and OCCP for
+occupational monitoring. Note that boolean values to represent the state of the monitoring params in the app,
+however in the db the values are stored as integers 1 true 0 false</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>paramType : (string) ENV for environmental monitoring and OCCP for occupational monitoring</li>
+<li>value : (bool)</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -550,7 +611,7 @@ Used for debugging purposes</p>
 <p>This module contains a factory class designed for the creation of a Hub.</p>
 <dl class="class">
 <dt id="hubFactory.HubFactory">
-<em class="property">class </em><code class="descclassname">hubFactory.</code><code class="descname">HubFactory</code><span class="sig-paren">(</span><em>dbFile</em>, <em>mockMode</em>, <em>email='vinoroy70&#64;gmail.com'</em>, <em>emailPass='miller12'</em><span class="sig-paren">)</span><a class="headerlink" href="#hubFactory.HubFactory" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">hubFactory.</code><code class="descname">HubFactory</code><span class="sig-paren">(</span><em>dbFile</em>, <em>mockMode</em>, <em>email='vinoroy70&#64;gmail.com'</em>, <em>emailPass='miller12'</em>, <em>smsGateway=''</em>, <em>cellNumber=''</em><span class="sig-paren">)</span><a class="headerlink" href="#hubFactory.HubFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>The HubFactory is a factory class that is responsible for the creation of a hub. Hub creation can be linked
 to a database, hence all of the hub attibutes and nodes can be loaded from a database.</p>
 <dl class="docutils">
@@ -567,6 +628,10 @@ to a database, hence all of the hub attibutes and nodes can be loaded from a dat
 <li><p class="first">email : (string) email address where the notifications will be sent</p>
 </li>
 <li><p class="first">emailPass : (string) password for the email account where the notifications will be sent.</p>
+</li>
+<li><p class="first">smsGateway : (string) root address of the email to sms gateway</p>
+</li>
+<li><p class="first">cellNumber : (string) cell number to be used to send sms using the email to sms gateway</p>
 </li>
 <li><p class="first">mockMode : (int) flag to indicate if the application hub is in test mode (1 = test mode)</p>
 </li>
@@ -607,6 +672,8 @@ all of the sensing instruments and provides the basic logic of the node.</p>
 <dt>Attributes :</dt>
 <dd><ul class="first last">
 <li><p class="first">sensors : (Sensor list) list of sensor objects attached to the node</p>
+</li>
+<li><p class="first">sensorLk : (Sensor) dummy object to provide a link in the UML diagram</p>
 </li>
 <li><p class="first">nodeID : (string) name of the node</p>
 </li>
@@ -964,6 +1031,25 @@ instantiated from this class. Furthermore not all methods are implemented</p>
 <dd><ul class="first last simple">
 <li>1 if successful storage in price db</li>
 <li>-1 if unsuccessful storage in price db</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensor.Sensor.createEvent">
+<code class="descname">createEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.createEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the event based on the specific sensor type. This is an abstract class, Hence it must be implements bu the concrete
+clas</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Event) specific event object based on the concrete sensor class</li>
 </ul>
 </dd>
 </dl>
@@ -1378,11 +1464,12 @@ result of an event.</p>
 <dl class="method">
 <dt id="sensor.Sensor.verifyThresholds">
 <code class="descname">verifyThresholds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor.Sensor.verifyThresholds" title="Permalink to this definition">¶</a></dt>
-<dd><p>Verify if the new reading exceeds the thresholds. If a threshold is exceeded an event is added to the event pool.</p>
+<dd><p>Verify if the new reading exceeds the thresholds. If a threshold is exceeded an event is added to the event pool.
+This is an abstract method, it is implemented by lower level classes</p>
 <dl class="docutils">
 <dt>Args :</dt>
 <dd><ul class="first last simple">
-<li>return</li>
+<li>none</li>
 </ul>
 </dd>
 <dt>Return :</dt>
@@ -1405,6 +1492,49 @@ result of an event.</p>
 <em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">BarometricPressureSensor</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.BarometricPressureSensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract class for the barometric pressure family of sensors. Here only some specific
 attributes are specified, no method implementation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="envSensor.EnvSensor">
+<em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">EnvSensor</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.EnvSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for the environmental type sensors.</p>
+<dl class="method">
+<dt id="envSensor.EnvSensor.createEvent">
+<code class="descname">createEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.EnvSensor.createEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the event based on the specific sensor type.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Event) specific event object based on the concrete sensor class</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="envSensor.EnvSensor.verifyThresholds">
+<code class="descname">verifyThresholds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.EnvSensor.verifyThresholds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify thresholds for environment type sensors. Verify if the new reading exceeds the thresholds.
+If a threshold is exceeded an event is added to the event pool.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>return</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -1523,6 +1653,24 @@ attributes are specified, no method implementation</p>
 <dd><p>Mock barometric pressure class used for integration and unit tests when
 sensors are offline</p>
 <dl class="method">
+<dt id="envSensor.MOCK_BarometricPressureSensor.createEvent">
+<code class="descname">createEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_BarometricPressureSensor.createEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the event based on the specific sensor type.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Event) specific event object based on the concrete sensor class</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="envSensor.MOCK_BarometricPressureSensor.getValueFrmSensor">
 <code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_BarometricPressureSensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the current value from the sensor</p>
@@ -1547,6 +1695,24 @@ sensors are offline</p>
 <em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">MOCK_HumiditySensor</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_HumiditySensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mock humidity class used for integration and unit tests when
 sensors are offline</p>
+<dl class="method">
+<dt id="envSensor.MOCK_HumiditySensor.createEvent">
+<code class="descname">createEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_HumiditySensor.createEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the event based on the specific sensor type.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Event) specific event object based on the concrete sensor class</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="method">
 <dt id="envSensor.MOCK_HumiditySensor.getValueFrmSensor">
 <code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_HumiditySensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
@@ -1573,6 +1739,24 @@ sensors are offline</p>
 <dd><p>Mock LDR class used for integration and unit tests when
 sensors are offline</p>
 <dl class="method">
+<dt id="envSensor.MOCK_LDRSensor.createEvent">
+<code class="descname">createEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_LDRSensor.createEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the event based on the specific sensor type.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Event) specific event object based on the concrete sensor class</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="envSensor.MOCK_LDRSensor.getValueFrmSensor">
 <code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_LDRSensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the current value from the sensor</p>
@@ -1597,6 +1781,24 @@ sensors are offline</p>
 <em class="property">class </em><code class="descclassname">envSensor.</code><code class="descname">MOCK_TempSensor</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_TempSensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mock temperture class used for integration and unit tests when
 sensors are offline</p>
+<dl class="method">
+<dt id="envSensor.MOCK_TempSensor.createEvent">
+<code class="descname">createEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_TempSensor.createEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the event based on the specific sensor type.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Event) specific event object based on the concrete sensor class</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="method">
 <dt id="envSensor.MOCK_TempSensor.getValueFrmSensor">
 <code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#envSensor.MOCK_TempSensor.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
@@ -1630,17 +1832,35 @@ attributes are specified, no method implementation</p>
 <span class="target" id="module-occpSensor"></span><p>&#64;author: Vincent Roy [*]</p>
 <p>This module contains all of the occupation sensor classes</p>
 <dl class="class">
-<dt id="occpSensor.DoorSwitch">
-<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">DoorSwitch</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.DoorSwitch" title="Permalink to this definition">¶</a></dt>
+<dt id="occpSensor.DoorSwitchSensor">
+<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">DoorSwitchSensor</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.DoorSwitchSensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract class for the door contact switch family of sensors. Here only some specific
 attributes are specified, no method implementation</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="occpSensor.MOCK_DoorSwitch">
-<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">MOCK_DoorSwitch</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_DoorSwitch" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">MOCK_DoorSwitch</code><span class="sig-paren">(</span><em>instID</em>, <em>limit</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_DoorSwitch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mock door contact switch class used for integration and unit tests when
 sensors are offline</p>
+<dl class="method">
+<dt id="occpSensor.MOCK_DoorSwitch.createEvent">
+<code class="descname">createEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_DoorSwitch.createEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the event based on the specific sensor type.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Event) specific event object based on the concrete sensor class</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="method">
 <dt id="occpSensor.MOCK_DoorSwitch.getValueFrmSensor">
 <code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_DoorSwitch.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
@@ -1663,9 +1883,27 @@ sensors are offline</p>
 
 <dl class="class">
 <dt id="occpSensor.MOCK_MotionDetection">
-<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">MOCK_MotionDetection</code><span class="sig-paren">(</span><em>instID</em>, <em>limits</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_MotionDetection" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">MOCK_MotionDetection</code><span class="sig-paren">(</span><em>instID</em>, <em>limit</em>, <em>node</em>, <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_MotionDetection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mock door contact switch class used for integration and unit tests when
 sensors are offline</p>
+<dl class="method">
+<dt id="occpSensor.MOCK_MotionDetection.createEvent">
+<code class="descname">createEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_MotionDetection.createEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the event based on the specific sensor type.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Event) specific event object based on the concrete sensor class</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="method">
 <dt id="occpSensor.MOCK_MotionDetection.getValueFrmSensor">
 <code class="descname">getValueFrmSensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MOCK_MotionDetection.getValueFrmSensor" title="Permalink to this definition">¶</a></dt>
@@ -1707,10 +1945,35 @@ sensors are offline</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="occpSensor.MotionDetection">
-<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">MotionDetection</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MotionDetection" title="Permalink to this definition">¶</a></dt>
+<dt id="occpSensor.MotionDetectionSensor">
+<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">MotionDetectionSensor</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.MotionDetectionSensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract class for the motion detection family of sensors. Here only some specific
 attributes are specified, no method implementation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="occpSensor.OccpSensor">
+<em class="property">class </em><code class="descclassname">occpSensor.</code><code class="descname">OccpSensor</code><span class="sig-paren">(</span><em>node</em>, <em>freq</em>, <em>instID</em><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.OccpSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for the occupational type sensors.</p>
+<dl class="method">
+<dt id="occpSensor.OccpSensor.verifyThresholds">
+<code class="descname">verifyThresholds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.OccpSensor.verifyThresholds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify thresholds for occupational type sensors. Verify if the new reading exceeds the threshold.
+If a threshold is exceeded an event is added to the event pool.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>return</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -1780,6 +2043,551 @@ attributes are specified, no method implementation</p>
 <code class="descname">takeReading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#occpSensor.RFIDSensor.takeReading" title="Permalink to this definition">¶</a></dt>
 <dd><p>Not implemented in the base class but must be in the concrete
 classes</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-eventQ">
+<span id="eventq-module"></span><h2>EventQ module<a class="headerlink" href="#module-eventQ" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Vincent Roy [*]</p>
+<p>This module contains an event queue class that is responsible for storing and handling untreated events as they are
+generated by the homeBakedPi sensor network.</p>
+<dl class="class">
+<dt id="eventQ.EventQ">
+<em class="property">class </em><code class="descclassname">eventQ.</code><code class="descname">EventQ</code><span class="sig-paren">(</span><em>hub</em><span class="sig-paren">)</span><a class="headerlink" href="#eventQ.EventQ" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is responsible for storing and handling untreated events as they are generated by the homeBakedPi sensor
+network.</p>
+<dl class="docutils">
+<dt>Attributes :</dt>
+<dd><blockquote class="first">
+<div><ul class="simple">
+<li>hub : (Hub) refernce to the associated hub object</li>
+<li>queue : (Event list) array list of all the untreated events</li>
+<li>eventQLk : (Event) dummy object to provide a link fot the UML diagram</li>
+</ul>
+</div></blockquote>
+<p class="last">object</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="eventQ.EventQ.addEventToQueue">
+<code class="descname">addEventToQueue</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#eventQ.EventQ.addEventToQueue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends an event to the event queue if it is of the right type</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>event : (Event) event generated by one of the sensors in the network</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventQ.EventQ.getEventQLength">
+<code class="descname">getEventQLength</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eventQ.EventQ.getEventQLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the length of the event queue</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) length of the event queue</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventQ.EventQ.getHub">
+<code class="descname">getHub</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eventQ.EventQ.getHub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reference to the hub object</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Hub) reference to the hub object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventQ.EventQ.handleEvents">
+<code class="descname">handleEvents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eventQ.EventQ.handleEvents" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a handler that essentially requests each registered event to perform their list of actions. The events
+are removed from the queue as they are processed</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventQ.EventQ.printEvents">
+<code class="descname">printEvents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eventQ.EventQ.printEvents" title="Permalink to this definition">¶</a></dt>
+<dd><p>This functions prints to console the info on each event</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventQ.EventQ.rmEventFrmQueue">
+<code class="descname">rmEventFrmQueue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eventQ.EventQ.rmEventFrmQueue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the oldest event in the event queue (FIFO) and return it to the requester</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Event) the oldest event object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-events">
+<span id="events-module"></span><h2>Events module<a class="headerlink" href="#module-events" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Vincent Roy [*]</p>
+<p>Module contains the Event class responsible for registering the information and actions with regards to a
+sensor event.</p>
+<dl class="class">
+<dt id="events.DoorOpening">
+<em class="property">class </em><code class="descclassname">events.</code><code class="descname">DoorOpening</code><span class="sig-paren">(</span><em>eventQueue</em>, <em>nodeID</em>, <em>instID</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#events.DoorOpening" title="Permalink to this definition">¶</a></dt>
+<dd><p>Door opening event class</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.EnvThreshold">
+<em class="property">class </em><code class="descclassname">events.</code><code class="descname">EnvThreshold</code><span class="sig-paren">(</span><em>eventQueue</em>, <em>nodeID</em>, <em>instID</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#events.EnvThreshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Environmental threshold event class</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.Event">
+<em class="property">class </em><code class="descclassname">events.</code><code class="descname">Event</code><span class="sig-paren">(</span><em>eventQ</em>, <em>nodeID=''</em>, <em>instID=''</em>, <em>value=''</em><span class="sig-paren">)</span><a class="headerlink" href="#events.Event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base event class used to register all of the information and actions with regards to an event (ie door opening,
+motion detection, sensor threshold exceeded, etc)</p>
+<dl class="docutils">
+<dt>Attributes :</dt>
+<dd><ul class="first last simple">
+<li>eventType : (string) type of the event</li>
+<li>nodeID : (string) identification of the node from which the event was generated</li>
+<li>instID : (string) identification of the instrument from which the event was generated</li>
+<li>value : (float) value of the instrument associated with the event</li>
+<li>eventQ : (EventQ) reference to the eventQueue object</li>
+<li>numDate : (float) date number of the event</li>
+<li>actions : (list Actions) list of the registered actions with the event</li>
+<li>actionsLk : (Action) dummy Action object to provide a link for the UML diagram</li>
+<li>numberOfActions : (int) number of actions that are to be performed with the event</li>
+<li>numberOfActionsDone : (int) number of actions that have been succescfully done</li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="events.Event.getBasicEventMsg">
+<code class="descname">getBasicEventMsg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#events.Event.getBasicEventMsg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a message from the event data</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(string) message from the event data</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="events.Event.getEventQ">
+<code class="descname">getEventQ</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#events.Event.getEventQ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reference to the eventQueue that holds the event</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(EventQ) event queue tht holds the event</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="events.Event.getEventType">
+<code class="descname">getEventType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#events.Event.getEventType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the event type</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(string) event type</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="events.Event.getNumberOfActions">
+<code class="descname">getNumberOfActions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#events.Event.getNumberOfActions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of actions that must be done in response to the event</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) number of actions that must be done in response to the event</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="events.Event.getNumberOfActionsDone">
+<code class="descname">getNumberOfActionsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#events.Event.getNumberOfActionsDone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of actions that have been done in response to the event</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) number of actions that have been done in response to the event</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="events.Event.logEvent">
+<code class="descname">logEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#events.Event.logEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts into the log the event</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="events.Event.performAssociatedActions">
+<code class="descname">performAssociatedActions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#events.Event.performAssociatedActions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walks through the registered actions and requests for the action to be performed</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="events.Event.printEventInfo">
+<code class="descname">printEventInfo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#events.Event.printEventInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints to console the info about the event</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="events.MOCK_DoorOpening">
+<em class="property">class </em><code class="descclassname">events.</code><code class="descname">MOCK_DoorOpening</code><span class="sig-paren">(</span><em>eventQueue</em>, <em>nodeID</em>, <em>instID</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#events.MOCK_DoorOpening" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock door opening event class</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.MOCK_EnvThreshold">
+<em class="property">class </em><code class="descclassname">events.</code><code class="descname">MOCK_EnvThreshold</code><span class="sig-paren">(</span><em>eventQueue</em>, <em>nodeID</em>, <em>instID</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#events.MOCK_EnvThreshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock environmental threshold event class</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.MOCK_MotionDetection">
+<em class="property">class </em><code class="descclassname">events.</code><code class="descname">MOCK_MotionDetection</code><span class="sig-paren">(</span><em>eventQueue</em>, <em>nodeID</em>, <em>instID</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#events.MOCK_MotionDetection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock motion detection event class</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.MOCK_RFIDDetection">
+<em class="property">class </em><code class="descclassname">events.</code><code class="descname">MOCK_RFIDDetection</code><span class="sig-paren">(</span><em>eventQueue</em>, <em>nodeID</em>, <em>instID</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#events.MOCK_RFIDDetection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock RFID detection event class</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.MotionDetection">
+<em class="property">class </em><code class="descclassname">events.</code><code class="descname">MotionDetection</code><span class="sig-paren">(</span><em>eventQueue</em>, <em>nodeID</em>, <em>instID</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#events.MotionDetection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Motion detection event class</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.RFIDDetection">
+<em class="property">class </em><code class="descclassname">events.</code><code class="descname">RFIDDetection</code><span class="sig-paren">(</span><em>eventQueue</em>, <em>nodeID</em>, <em>instID</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#events.RFIDDetection" title="Permalink to this definition">¶</a></dt>
+<dd><p>RFID detection event class</p>
+</dd></dl>
+
+</div>
+<div class="section" id="actions-module">
+<h2>Actions module<a class="headerlink" href="#actions-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-actions"></span><p>&#64;author: Vincent Roy [*]</p>
+<p>This module contains all of the classes for the actions in response to an event</p>
+<dl class="class">
+<dt id="actions.Action">
+<em class="property">class </em><code class="descclassname">actions.</code><code class="descname">Action</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#actions.Action" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is an action class. It serves as a base class for all actions that are associated to an event</p>
+<p>Attributes :</p>
+<blockquote>
+<div><ul class="simple">
+<li>event : (Event) reference to the event object that holds the action</li>
+<li>actionType : (string) type of action</li>
+<li>actionDone : (int) 0 not done 1 done</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="actions.Action.doAction">
+<code class="descname">doAction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actions.Action.doAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not implemented in the base class but must be implemented in the concrete
+classes</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actions.Action.getActionDoneState">
+<code class="descname">getActionDoneState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actions.Action.getActionDoneState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the state of the action</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(int) state of the action</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actions.Action.getEvent">
+<code class="descname">getEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actions.Action.getEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reference to the event object associated to the action</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Event) reference to the associated event</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="actions.Action.logActionDone">
+<code class="descname">logActionDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actions.Action.logActionDone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that registers to the log the action performed. Also updates the state of the action</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="actions.DelayAndVerifyRFIDEvent">
+<em class="property">class </em><code class="descclassname">actions.</code><code class="descname">DelayAndVerifyRFIDEvent</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#actions.DelayAndVerifyRFIDEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is responsible for performing a background delay of a certain duration and then to launch a task to
+verify RFID reader for the latest TAG entry</p>
+<dl class="method">
+<dt id="actions.DelayAndVerifyRFIDEvent.doAction">
+<code class="descname">doAction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actions.DelayAndVerifyRFIDEvent.doAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function waits for xx seconds and then verify if a new RFID tag has been registered</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="actions.MOCK_DelayAndVerifyRFIDEvent">
+<em class="property">class </em><code class="descclassname">actions.</code><code class="descname">MOCK_DelayAndVerifyRFIDEvent</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#actions.MOCK_DelayAndVerifyRFIDEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock class responsible for performing a mock background delay of a certain duration and then to launch a task to
+verify RFID reader for the latest TAG entry</p>
+<dl class="method">
+<dt id="actions.MOCK_DelayAndVerifyRFIDEvent.doAction">
+<code class="descname">doAction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actions.MOCK_DelayAndVerifyRFIDEvent.doAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock function waits for 30 seconds and then verify if a new RFID tag has been registered</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="actions.MOCK_OpenLight">
+<em class="property">class </em><code class="descclassname">actions.</code><code class="descname">MOCK_OpenLight</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#actions.MOCK_OpenLight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock class class responsible for opening a mock light</p>
+<dl class="method">
+<dt id="actions.MOCK_OpenLight.doAction">
+<code class="descname">doAction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actions.MOCK_OpenLight.doAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock function opens a mock light</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="actions.MOCK_SendEmail">
+<em class="property">class </em><code class="descclassname">actions.</code><code class="descname">MOCK_SendEmail</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#actions.MOCK_SendEmail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock class is responsible for sending a mock email to the registered client</p>
+<dl class="method">
+<dt id="actions.MOCK_SendEmail.doAction">
+<code class="descname">doAction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actions.MOCK_SendEmail.doAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock functions sends a mock email</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="actions.MOCK_SendSMS">
+<em class="property">class </em><code class="descclassname">actions.</code><code class="descname">MOCK_SendSMS</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#actions.MOCK_SendSMS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock class responsible for sending a mock sms</p>
+<dl class="method">
+<dt id="actions.MOCK_SendSMS.doAction">
+<code class="descname">doAction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actions.MOCK_SendSMS.doAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mock functions sends a mock sms</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="actions.OpenLight">
+<em class="property">class </em><code class="descclassname">actions.</code><code class="descname">OpenLight</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#actions.OpenLight" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is class is responsible for opening a light</p>
+<dl class="method">
+<dt id="actions.OpenLight.doAction">
+<code class="descname">doAction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actions.OpenLight.doAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function opens a light</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="actions.SendEmail">
+<em class="property">class </em><code class="descclassname">actions.</code><code class="descname">SendEmail</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#actions.SendEmail" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is responsible for sending an email to the registered client with details of the event</p>
+<dl class="method">
+<dt id="actions.SendEmail.doAction">
+<code class="descname">doAction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actions.SendEmail.doAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This functions sends an email</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="actions.SendSMS">
+<em class="property">class </em><code class="descclassname">actions.</code><code class="descname">SendSMS</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#actions.SendSMS" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is responsible for sending an sms</p>
+<dl class="method">
+<dt id="actions.SendSMS.doAction">
+<code class="descname">doAction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actions.SendSMS.doAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This functions sends an sms with the details of the event</p>
 </dd></dl>
 
 </dd></dl>
@@ -2194,6 +3002,158 @@ attributes are specified and added to the actuator base class.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-log">
+<span id="log-module"></span><h2>Log module<a class="headerlink" href="#module-log" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Vincent Roy [*]</p>
+<p>This module logs all of the homeBakedPi events, actions and scheduled tasks</p>
+<dl class="class">
+<dt id="log.Log">
+<em class="property">class </em><code class="descclassname">log.</code><code class="descname">Log</code><span class="sig-paren">(</span><em>hub</em><span class="sig-paren">)</span><a class="headerlink" href="#log.Log" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is used to log all of the homeBakedPi events, actions and scheduled tasks</p>
+<p>Attributes :</p>
+<blockquote>
+<div><ul class="simple">
+<li>hub : (Hub) hub objects that hold the log</li>
+<li>dbTable : (string) name of the table where the events logs are stored</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="log.Log.clearAllLogEntries">
+<code class="descname">clearAllLogEntries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.clearAllLogEntries" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function clears from the db all log entries</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="log.Log.getHub">
+<code class="descname">getHub</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.getHub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the ref to the hub</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>(Hub) reference to the hub object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="log.Log.getLastDayLogEntries">
+<code class="descname">getLastDayLogEntries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.getLastDayLogEntries" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gets from the database the log entries for the last day.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>logDateMatrix : (list of list) array of date and sensor values (datenumber, date str, value, days frm most recent)</li>
+<li>if no values the return will be an empty array</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="log.Log.getLastMonthLogEntries">
+<code class="descname">getLastMonthLogEntries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.getLastMonthLogEntries" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gets from the database the values for the last month.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>sensorDateMatrix : (list of list) array of date and sensor values (datenumber, date str, value, days frm most recent)</li>
+<li>if no values the return will be an empty array</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="log.Log.getLastWeekLogEntries">
+<code class="descname">getLastWeekLogEntries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.getLastWeekLogEntries" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gets from the database the values for the last week.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>sensorDateMatrix : (list of list) array of date and sensor values (datenumber, date str, value, days frm most recent)</li>
+<li>if no values the return will be an empty array</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="log.Log.getLogEntriesFrmDB">
+<code class="descname">getLogEntriesFrmDB</code><span class="sig-paren">(</span><em>strDate=None</em>, <em>endDate=None</em>, <em>last=0</em><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.getLogEntriesFrmDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gets from the database historic entries for the log.</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>strDate : (float) datenum of the start date of the search</li>
+<li>endDate : (float) datenum of the end date of the search</li>
+<li>last : (int) 1 = get the last value</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>logDateMatrix : (list of list) array of date and log entries (datenumber, date str, event type, description, days frm most recent)</li>
+<li>if no values the return will be an empty list</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="log.Log.insertLogEntry">
+<code class="descname">insertLogEntry</code><span class="sig-paren">(</span><em>numDate</em>, <em>type</em>, <em>decription</em><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.insertLogEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts an entry into the log database with a timestamp</p>
+<dl class="docutils">
+<dt>Args :</dt>
+<dd><ul class="first last simple">
+<li>numDate : (float) date number of the log entry</li>
+<li>type : (string) event, action or task</li>
+<li>description : (string) textual description (may include nodeID, instID etc)</li>
+</ul>
+</dd>
+<dt>Return :</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="commutility-module">
 <h2>commUtility module<a class="headerlink" href="#commutility-module" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -2299,7 +3259,11 @@ datenumber system which sets datenumber 0 equivalent to 1900</p>
 <li><a class="reference internal" href="#module-sensor">Sensor module</a></li>
 <li><a class="reference internal" href="#module-envSensor">EnvSensor module</a></li>
 <li><a class="reference internal" href="#occpsensor-module">OccpSensor module</a></li>
+<li><a class="reference internal" href="#module-eventQ">EventQ module</a></li>
+<li><a class="reference internal" href="#module-events">Events module</a></li>
+<li><a class="reference internal" href="#actions-module">Actions module</a></li>
 <li><a class="reference internal" href="#module-actuator">Actuator module</a></li>
+<li><a class="reference internal" href="#module-log">Log module</a></li>
 <li><a class="reference internal" href="#commutility-module">commUtility module</a></li>
 <li><a class="reference internal" href="#module-dateTimeConversion">dateTimeConversionModule module</a></li>
 </ul>

@@ -51,10 +51,41 @@ OccpSensor module
 
 
 
+EventQ module
+-------------
+
+.. automodule:: eventQ
+   :members:
+
+
+
+Events module
+-------------
+
+.. automodule:: events
+   :members:
+
+
+
+Actions module
+-------------
+.. automodule:: actions
+   :members:
+
+
+
 Actuator module
 ---------------
 
 .. automodule:: actuator
+   :members:
+
+
+
+Log module
+-------------
+
+.. automodule:: log
    :members:
 
 

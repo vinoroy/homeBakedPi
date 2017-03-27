@@ -13,8 +13,8 @@ the creative commons share a like licence, which means that you are completely f
 long as you provide the appropriate attribution and give others access to any derived works.
 
 
-The architecture
-----------------
+High level architecture
+-----------------------
 
 The homeBakedPi system is composed of a hub, sensor nodes, actuators, a web app and command line interface.
 
@@ -33,10 +33,10 @@ send notifications. At it's core is a hub that acts as a coordinator for all of 
 to the nodes and actuators is done over a wifi network using a simple message passing protocol. Data from the elements of the homeBkedPi
 nwetwork is stored in an SQLite database.
 
-Since the web app is developed in Python it could be hosted on the users choice of operating system. The Raspberry pi using a
+Since the app is developed in Python it could be hosted on the users choice of operating system. The Raspberry pi using a
 raspbian linux distribution is one of many options.
 
-The code for the web app is available on the homeBakedPi github
+The code for the app is available on the homeBakedPi github
 
 
 **Sensor nodes**
@@ -69,6 +69,17 @@ The web app is also available on the homeBakedPi github.
 
 A command line interface has also been developed. This tool can be used to control and view the components of the home
 automation system. It can also be used to add and remove components of the system.
+
+
+.. figure:: ./images/classes_homeBakedPi.png
+    :width: 400px
+    :align: left
+    :height: 500px
+    :alt: homeBakedPi UML
+
+    Figure 1 - UML diagram of the homeBakedPi system
+
+
 
 
 

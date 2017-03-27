@@ -21,6 +21,7 @@ class Node():
 
     Attributes :
         - sensors : (Sensor list) list of sensor objects attached to the node
+        - sensorLk : (Sensor) dummy object to provide a link in the UML diagram
         - nodeID : (string) name of the node
         - nodeMsgID : (character) character used in prefixing a message to be sent to the physical node by serial comm.
                                   The character enables a node to recognize if the message is destined for it. Must
@@ -33,7 +34,7 @@ class Node():
     
     def __init__(self,nodeID,hub,nodeMsgID,nodeUrl,nodeType):
         self.sensors = []
-        self.sensor = Sensor(self) # mock sensor for UML association
+        self.sensorLk = Sensor(self) # mock sensor for UML association
         self.nodeID = nodeID
         self.nodeMsgID = nodeMsgID
         self.nodeURL = nodeUrl

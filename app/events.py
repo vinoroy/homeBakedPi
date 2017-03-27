@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-@author: Vincent Roy []
+@author: Vincent Roy [*]
 
 Module contains the Event class responsible for registering the information and actions with regards to a
 sensor event.
@@ -19,11 +19,12 @@ class Event:
     Attributes :
         - eventType : (string) type of the event
         - nodeID : (string) identification of the node from which the event was generated
-        - instID : (string) identification of the instrument from which theevent was generated
+        - instID : (string) identification of the instrument from which the event was generated
         - value : (float) value of the instrument associated with the event
         - eventQ : (EventQ) reference to the eventQueue object
         - numDate : (float) date number of the event
         - actions : (list Actions) list of the registered actions with the event
+        - actionsLk : (Action) dummy Action object to provide a link for the UML diagram
         - numberOfActions : (int) number of actions that are to be performed with the event
         - numberOfActionsDone : (int) number of actions that have been succescfully done
 
@@ -42,6 +43,7 @@ class Event:
         self.eventQ = eventQ
         self.numDate = numCurrDate
         self.actions = []
+        self.actionsLk = Action([]) # dummy Action for UML association
         self.numberOfActions = None
         self.numberOfActionsDone = 0
 
@@ -229,10 +231,8 @@ class DoorOpening(Event):
 
         self.eventType = 'DOOR_OPENING'
 
-        #self.actions.append(DelayAndVerifyRFIDEvent(self))
         self.actions.append(SendEmail(self))
         self.actions.append(SendSMS(self))
-        #self.actions.append(OpenLight(self))
 
         self.numberOfActions = len(self.actions)
 
@@ -272,6 +272,8 @@ class MotionDetection(Event):
 
         self.eventType = 'MOTION_DETECTION'
 
+        # for now we are not doing anything with the motion detection since it seems to be a bit
+        # sensative ... hence lots of false alarms
         self.actions.append(MOCK_OpenLight(self))
 
         self.numberOfActions = len(self.actions)

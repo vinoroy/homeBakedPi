@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-@author: Vincent Roy []
+@author: Vincent Roy [*]
 
 This module contains all of the classes for the actions in response to an event
 
@@ -17,7 +17,7 @@ from dateTimeConversion import *
 
 class Action:
     """
-    This class is action class. It serves as a base class for all actions that are associated to an event
+    This class is an action class. It serves as a base class for all actions that are associated to an event
 
     Attributes :
 
@@ -114,7 +114,7 @@ class DelayAndVerifyRFIDEvent(Action):
 
     def doAction(self):
         """
-        This function waits for 30 seconds and then verify if a new RFID tag has been registered
+        This function waits for xx seconds and then verify if a new RFID tag has been registered
 
         """
 
@@ -202,7 +202,7 @@ class SendSMS(Action):
 
     def doAction(self):
         """
-        This functions sends an sms
+        This functions sends an sms with the details of the event
 
         """
 
@@ -240,7 +240,7 @@ class MOCK_SendSMS(Action):
 
 class SendEmail(Action):
     """
-    This class is responsible for sending an email to the registered client
+    This class is responsible for sending an email to the registered client with details of the event
 
     """
 

@@ -78,7 +78,7 @@ class TestEventQueueONNetwork(unittest.TestCase):
 
         emailsBefore = numberOfEmailsInbox('vinoroy70@gmail.com','miller12')
 
-        self.myNode.addSensor(IPDoorSwitch('SW-1',1,self.myNode,'LOW'))
+        self.myNode.addSensor(IPDoorSwitch('SW-1',0,self.myNode,'LOW'))
         self.myNode.scanSensors('LOW') # scan once all sensors
         self.myNode.getHub().getEventQ().handleEvents()
 

@@ -51,8 +51,8 @@
 the creative commons share a like licence, which means that you are completely free to use, change, and share this work, as
 long as you provide the appropriate attribution and give others access to any derived works.</p>
 </div>
-<div class="section" id="the-architecture">
-<h2>The architecture<a class="headerlink" href="#the-architecture" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="high-level-architecture">
+<h2>High level architecture<a class="headerlink" href="#high-level-architecture" title="Permalink to this headline">¶</a></h2>
 <p>The homeBakedPi system is composed of a hub, sensor nodes, actuators, a web app and command line interface.</p>
 <a class="reference internal image-reference" href="_images/archHbp.png"><img alt="alternate text" class="align-center" src="_images/archHbp.png" style="width: 400px; height: 300px;" /></a>
 <p><strong>App</strong></p>
@@ -60,9 +60,9 @@ long as you provide the appropriate attribution and give others access to any de
 send notifications. At it&#8217;s core is a hub that acts as a coordinator for all of the home monitoring system activities. Communication
 to the nodes and actuators is done over a wifi network using a simple message passing protocol. Data from the elements of the homeBkedPi
 nwetwork is stored in an SQLite database.</p>
-<p>Since the web app is developed in Python it could be hosted on the users choice of operating system. The Raspberry pi using a
+<p>Since the app is developed in Python it could be hosted on the users choice of operating system. The Raspberry pi using a
 raspbian linux distribution is one of many options.</p>
-<p>The code for the web app is available on the homeBakedPi github</p>
+<p>The code for the app is available on the homeBakedPi github</p>
 <p><strong>Sensor nodes</strong></p>
 <p>The sensor nodes are used to sense the environment. They are composed of a micro controller, sensors and software. These
 can be implemented in the users choice of hardware and programming language. The esp8266 using the Arduino C programming
@@ -81,6 +81,10 @@ monitorning system. The web app uses the Flask web framework.</p>
 <p><strong>Command line interface</strong></p>
 <p>A command line interface has also been developed. This tool can be used to control and view the components of the home
 automation system. It can also be used to add and remove components of the system.</p>
+<div class="figure align-left" id="id1">
+<a class="reference internal image-reference" href="_images/classes_homeBakedPi.png"><img alt="homeBakedPi UML" src="_images/classes_homeBakedPi.png" style="width: 400px; height: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1 - UML diagram of the homeBakedPi system</span></p>
+</div>
 </div>
 </div>
 
@@ -94,7 +98,7 @@ automation system. It can also be used to add and remove components of the syste
   <ul>
 <li><a class="reference internal" href="#">Introduction</a><ul>
 <li><a class="reference internal" href="#about-homebakedpi">About homeBakedPi</a></li>
-<li><a class="reference internal" href="#the-architecture">The architecture</a></li>
+<li><a class="reference internal" href="#high-level-architecture">High level architecture</a></li>
 </ul>
 </li>
 </ul>

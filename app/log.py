@@ -17,7 +17,8 @@ class Log:
 
     Attributes :
 
-        - aaa : (aaa) description of attribute (ex aaa)
+        - hub : (Hub) hub objects that hold the log
+        - dbTable : (string) name of the table where the events logs are stored
 
     """
 

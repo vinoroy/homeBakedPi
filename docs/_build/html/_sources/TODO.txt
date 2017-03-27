@@ -5,18 +5,27 @@ TO DO
 App
 ---
 
->1 prototype the event queue task treatment module
-
+-1 build UML
+-1 doc the code and the manual
+-2 remove email and sms from xml file
+-2 relagate to a DB the actions associated to an event
 -2 the scheduling function of the actuators should be put in a separate class to be used by all
 -3 change instID for sensorID (this is a deep one it even touches the db)
 -4 generalize comm util email agent so that it can connect to any smtp servers
 
 
+Shell
+-----
+
+- command to clear the readings tables (also the log entries)
+
+
 WebApp
 ------
 
->1 write a script to insert dummy values into db for dev and testing purposes. Use the testInsert script as an example
-
+-1 doc the app manual
+-2 correct the bash script to update homeBakedPi (problem with the copy of the static files)
+>2 write a script to insert dummy values into db for dev and testing purposes. Use the testInsert script as an example
 -2 add page to view the actuator on off times in table format
 -3 the web app displays time in UTC zone, must find a way to convert to EST time unicode(datetime object here)
 
@@ -24,21 +33,13 @@ WebApp
 OccpNode
 --------
 
--1 build the pcb protobord occp node
--1 clean up the door node code
-
--2 draw the schematic of the bread board proto door node
--2 doc the occp node
+>1 doc the occp node manual
 
 
 EnvNode
 -------
 
--1 build the pcb protobord occp node
--1 clean up the door node code
-
--2 draw the schematic of the bread board proto door node
--2 doc the occp node
+>1 doc the env node manual
 
 
 Notes
@@ -64,3 +65,9 @@ Notes
         4)  All development will be done directly to the dev server over ssh
 
 
+Completed
+---------
+
++1 build fault tolerence for node data request over http (ex unplugged node)
++2 draw the schematic of the occp node
++2 draw the schematic of the env node

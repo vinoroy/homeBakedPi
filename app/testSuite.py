@@ -13,8 +13,8 @@ import unittest
 
 # parameters of the test
 off = 1         # testing off the internet and off the sensor network
-net = 1         # testing on the internet
-local = 1       # testing on the local network (i.e. physical nodes active on the local server)
+net = 0         # testing on the internet
+local = 0       # testing on the local network (i.e. physical nodes active on the local server)
 
 
 
