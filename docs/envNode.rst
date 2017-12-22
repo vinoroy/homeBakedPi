@@ -10,7 +10,7 @@ About the environmental node
 
 The environmental sensor node is used to sense the temperature, humidity and luminosity. It is composed of a esp8266
 Sparkfun Thing Dev micro controller, DHT22 temperature and humidity sensor and light dependant resistor (LDR) to measure
-the luminosity.
+the luminosity..
 
 The code to control the microcontroller is programmed in Arduino C.
 

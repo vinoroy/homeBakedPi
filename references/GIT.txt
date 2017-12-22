@@ -2,6 +2,11 @@
 user : vinoroy70
 pass word for bitbucket : MillerBeer12
 
+
+# make a git repo
+git init
+
+
 # to add files for staging
 git add .
 

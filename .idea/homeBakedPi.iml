@@ -6,6 +6,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="trips" />
     <orderEntry type="module" module-name="reno" />
+    <orderEntry type="module" module-name="computerVisionBook" />
+    <orderEntry type="module" module-name="fipi" />
   </component>
 </module>
-

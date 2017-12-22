@@ -13,3 +13,35 @@ envNode
 - micro usb cable
 
 * to order
+
+
+enclosure design notes
+----------------------
+
+1/8 (0.118 in) clear acrylic
+hex standoffs from digikey
+machine screws from
+
+
+dimensions
+
+2 inch interior height
+pcb is 65mm * 55mm ( .71 ratio)
+make enclosure main layout 100mm * 70mm
+
+I've asked for quotes for cutting at the folowing places
+
+uMake
+RoboCut
+Ponoko
+HotPopFactory
+https://torontotoollibrary.com/service-laser-cutter/
+
+
+
+example of the acrylic enclosure
+https://www.fasttech.com/product/1131400-protective-acrylic-box-enclosure-for-raspberry-pi
+
+
+
+

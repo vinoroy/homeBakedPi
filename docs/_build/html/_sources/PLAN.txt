@@ -1,11 +1,15 @@
 PROJECT PLAN
 ============
 
+
+
 Goal :
 ------
 
 The goal of HomeBakedPy is to elaborate a prototype of a home monitoring and
 automation system that protect the home as well as to operate its vital systems efficiently.
+
+
 
 Objectives :
 ------------
@@ -13,6 +17,8 @@ Objectives :
  - gain expertise the technologies required to monitor and automate a home
  - monitor a home and control is vital systems
  - have fun
+
+
 
 Deliverables :
 --------------
@@ -31,36 +37,31 @@ Deliverables :
 Phase I (may 2017) :
 --------------------
 
-
-1) construct the env node on a perfbord
-
-2) construct the occp node on a perfboard
-
-3) adapt the web app the the new node types
-
-4) documentation
-
-5) setup the aq and prod environment on the raspberry pi 1 and 2
-
-6) design and code the event pool and action modules
-
-7) add logging
+1) construct the env node on a breadboard (100%)
+2) construct the occp node on a breadboard (100%)
+3) adapt the web app the the new node types (100%)
+4) document the project and the code (90%)
+5) setup the aq and prod environment on the raspberry pi 1 and 2 (50%)
+6) design and code the event pool and action modules (100%)
+7) add event logging (100%)
 
 
-Phase II :
-----------
+
+Phase II (to be determined) :
+-----------------------------
 
 -) order parts for the insteon light control
 -) prototype the insteon light control
 -) design and code the software for the lighting control
 
-
 -) design and order the parts for the tag / remote identification
 -) design and code the identification software
 
-
 -) design and order the parts for the camera
 -) design and code the software for the camera
+
+-) design and order the parts for the siren
+-) design and code the software for the siren
 
 
 -) deign and code the image door lock module
@@ -68,17 +69,3 @@ Phase II :
 
 -) detect phone using wifi arp-scan
 
-
-Completed
----------
-
-+) clean up homeBakedPi code to remove all old sensors
-+) design and code a mock esp environmental node (esp code)
-+) design and code env sensors for the environmental node in the homeBakedPi framework
-+) design and order parts for the env node (temp, humidity and ldr)
-+) construct the env node on breadboard
-+) design and code the esp software for the temp and humidity (esp code)
-+) design and order parts for the occp node (door contact switch, dead lock switch and motion detection)
-+) construct the occp node on breadboard
-+) design and code the software for the occp node (esp code)
-+) design and code env sensors for the occp node in the homeBakedPi framework

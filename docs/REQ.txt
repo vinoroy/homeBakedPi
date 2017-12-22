@@ -1,6 +1,23 @@
 REQUIREMENTS
 ------------
 
+The requirements are divided into four groups
+
+
+monitor
+store
+visualize
+take action
+
+
+
+monitor
+the environmental parameters (temp, humidity, lighting and pressure)
+home occupant entry (RFID tag reader and door contacts
+
+
+
+
  1) Home environmental monitoring and notification
 
  - measure the environmental parameters (temp, humidity, lighting and pressure) at one or
@@ -8,7 +25,7 @@ REQUIREMENTS
  - monitor the environmental parameters based on thresholds. Each environmental sensor can be 
    attributed a high and low threhold wich will trigger a notification
  - issue notifications by email or text if an environmental parameter exceeds a threshold
- - display home environmental paramters on web portal (summary, tabular and graf)
+ - display home environmental parameters on web portal (summary, tabular and graf)
   
 2) Home occupancy monitoring and notification
 
@@ -16,6 +33,7 @@ REQUIREMENTS
  - monitor room occupancy via motion detection and sound sensor
  - visually monitor room with camera
  - notify by email and text home occupant entry
+ - control lights based on occupancy status
  - display home occupant entry times on web portal
  - display room occupancy on web portal
  - display images of rooms on web portal
@@ -46,3 +64,8 @@ REQUIREMENTS
  - detect state of the oven and range (on or off)
  - detect and notify fire
  - detect and notify gases
+ - notify based on state
+
+
+
+

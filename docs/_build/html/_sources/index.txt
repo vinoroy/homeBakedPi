@@ -16,6 +16,7 @@ Contents:
    envNode.rst
    occpNode.rst
    modules.rst
+   PLAN.rst
    TODO.rst
 
 

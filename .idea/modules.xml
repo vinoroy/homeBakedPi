@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../computerVisionBook/.idea/computerVisionBook.iml" filepath="$PROJECT_DIR$/../computerVisionBook/.idea/computerVisionBook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../fipi/.idea/fipi.iml" filepath="$PROJECT_DIR$/../fipi/.idea/fipi.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/homeBakedPi.iml" filepath="$PROJECT_DIR$/.idea/homeBakedPi.iml" />
       <module fileurl="file://$PROJECT_DIR$/../reno/.idea/reno.iml" filepath="$PROJECT_DIR$/../reno/.idea/reno.iml" />
       <module fileurl="file://$PROJECT_DIR$/../trips/.idea/trips.iml" filepath="$PROJECT_DIR$/../trips/.idea/trips.iml" />
     </modules>
   </component>
 </project>
-
