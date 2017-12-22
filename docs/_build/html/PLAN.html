@@ -17,13 +17,15 @@
         VERSION:     '0.7.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="homeBakedPi 0.7.1 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="TO DO" href="TODO.html" />
     <link rel="prev" title="Modules" href="modules.html" />
    
@@ -45,15 +47,15 @@
 <h1>PROJECT PLAN<a class="headerlink" href="#project-plan" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="goal">
 <h2>Goal :<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h2>
-<p>The goal of HomeBakedPy is to elaborate a prototype of a home monitoring and
-automation system that protect the home as well as to operate its vital systems efficiently.</p>
+<p>The goal of HomeBakedPy is to elaborate an open source and open hardware DIY home monitoring and
+automation system to protect and operate a home&#8217;s vital systems efficiently.</p>
 </div>
 <div class="section" id="objectives">
 <h2>Objectives :<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>gain expertise the technologies required to monitor and automate a home</li>
-<li>monitor a home and control is vital systems</li>
+<li>gain expertise in the elaboration and management of an open source project</li>
 <li>have fun</li>
 </ul>
 </div></blockquote>
@@ -61,44 +63,34 @@ automation system that protect the home as well as to operate its vital systems 
 <div class="section" id="deliverables">
 <h2>Deliverables :<a class="headerlink" href="#deliverables" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><ul>
-<li><p class="first">working software and hardware of a home monitoring and control system</p>
-</li>
-<li><p class="first">poster presentation</p>
-</li>
+<div><ul class="simple">
+<li>working software and hardware of a home monitoring and control system</li>
 <li><dl class="first docutils">
 <dt>documentation</dt>
-<dd><p class="first last">project plan (PLAN.txt)
+<dd>project plan (PLAN.txt)
 requirements (REQ.txt)
-code
-documentation</p>
-</dd>
+code (githib)
+documentation</dd>
 </dl>
 </li>
-<li><p class="first">github repos</p>
-</li>
+<li>web site or blog used in the promotion of the system</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="phase-i-may-2017">
-<h2>Phase I (may 2017) :<a class="headerlink" href="#phase-i-may-2017" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="upcoming-developments-may-2018">
+<h2>Upcoming developments (may 2018) :<a class="headerlink" href="#upcoming-developments-may-2018" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>construct the env node on a breadboard (100%)</li>
-<li>construct the occp node on a breadboard (100%)</li>
-<li>adapt the web app the the new node types (100%)</li>
-<li>document the project and the code (90%)</li>
-<li>setup the aq and prod environment on the raspberry pi 1 and 2 (50%)</li>
-<li>design and code the event pool and action modules (100%)</li>
-<li>add event logging (100%)</li>
+<li>setup the aq and prod environment on the raspberry pi 1 and 2</li>
 </ol>
 </div>
-<div class="section" id="phase-ii-to-be-determined">
-<h2>Phase II (to be determined) :<a class="headerlink" href="#phase-ii-to-be-determined" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="unscheduled-developments">
+<h2>Unscheduled developments :<a class="headerlink" href="#unscheduled-developments" title="Permalink to this headline">¶</a></h2>
+<p>-) add event view in the web app</p>
+<p>-) design and order the parts for the tag / remote identification
+-) design and code the identification software</p>
 <p>-) order parts for the insteon light control
 -) prototype the insteon light control
 -) design and code the software for the lighting control</p>
-<p>-) design and order the parts for the tag / remote identification
--) design and code the identification software</p>
 <p>-) design and order the parts for the camera
 -) design and code the software for the camera</p>
 <p>-) design and order the parts for the siren
@@ -121,8 +113,8 @@ documentation</p>
 <li><a class="reference internal" href="#goal">Goal :</a></li>
 <li><a class="reference internal" href="#objectives">Objectives :</a></li>
 <li><a class="reference internal" href="#deliverables">Deliverables :</a></li>
-<li><a class="reference internal" href="#phase-i-may-2017">Phase I (may 2017) :</a></li>
-<li><a class="reference internal" href="#phase-ii-to-be-determined">Phase II (to be determined) :</a></li>
+<li><a class="reference internal" href="#upcoming-developments-may-2018">Upcoming developments (may 2018) :</a></li>
+<li><a class="reference internal" href="#unscheduled-developments">Unscheduled developments :</a></li>
 </ul>
 </li>
 </ul>
@@ -138,7 +130,7 @@ documentation</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/PLAN.txt"
+      <li><a href="_sources/PLAN.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -160,11 +152,11 @@ documentation</p>
       &copy;2017, Vincent Roy.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="_sources/PLAN.txt"
+      <a href="_sources/PLAN.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

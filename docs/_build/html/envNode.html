@@ -17,13 +17,15 @@
         VERSION:     '0.7.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="homeBakedPi 0.7.1 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Occupational node" href="occpNode.html" />
     <link rel="prev" title="Introduction" href="intro.html" />
    
@@ -49,7 +51,7 @@
 <h2>About the environmental node<a class="headerlink" href="#about-the-environmental-node" title="Permalink to this headline">¶</a></h2>
 <p>The environmental sensor node is used to sense the temperature, humidity and luminosity. It is composed of a esp8266
 Sparkfun Thing Dev micro controller, DHT22 temperature and humidity sensor and light dependant resistor (LDR) to measure
-the luminosity.</p>
+the luminosity..</p>
 <p>The code to control the microcontroller is programmed in Arduino C.</p>
 <p>The environmental node acts as an http web server in order to receive sensor data request from the hub. The results of
 a data request are relayed back to the hub over the http. A typical http request consist of the ip address of the node
@@ -140,7 +142,7 @@ pvc board with standoffs.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/envNode.txt"
+      <li><a href="_sources/envNode.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -162,11 +164,11 @@ pvc board with standoffs.</p>
       &copy;2017, Vincent Roy.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="_sources/envNode.txt"
+      <a href="_sources/envNode.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
